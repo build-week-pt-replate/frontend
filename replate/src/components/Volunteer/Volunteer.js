@@ -40,7 +40,7 @@ class Volunteer extends React.Component {
             <input
               type="text"
               name="firstName"
-              onchange={this.changeHandler}
+              onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
           </div>
@@ -49,7 +49,7 @@ class Volunteer extends React.Component {
             <input
               type="text"
               name="lastName"
-              onchange={this.changeHandler}
+              onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
           </div>
@@ -58,7 +58,7 @@ class Volunteer extends React.Component {
             <input
               type="text"
               name="phone"
-              onchange={this.changeHandler}
+              onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
           </div>
@@ -67,7 +67,7 @@ class Volunteer extends React.Component {
             <input
               type="text"
               name="email"
-              onchange={this.changeHandler}
+              onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
           </div>
@@ -76,7 +76,7 @@ class Volunteer extends React.Component {
             <input
               type="password"
               name="password"
-              onchange={this.changeHandler}
+              onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
           </div>
@@ -85,7 +85,7 @@ class Volunteer extends React.Component {
             <input
               type="password"
               name="repeatPassword"
-              onchange={this.changeHandler}
+              onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
           </div>
