@@ -12,7 +12,7 @@ class StepOneForm extends Component {
     } = this.props.formData;
 
     return (
-        <form onSubmit={() =>{}}>
+        <form onSubmit={this.props.updateStepNumber}>
           <h2>Create Your Account</h2>
           <label htmlFor="company">Company Name</label>
           <input

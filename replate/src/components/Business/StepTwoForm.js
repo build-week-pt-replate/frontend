@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 class StepTwoForm extends Component {
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
   render() {
     const {
       officeName,
@@ -10,7 +14,7 @@ class StepTwoForm extends Component {
     } = this.props.formData;
 
     return (
-        <form onSubmit={() =>{/* action here */}}>
+        <form onSubmit={this.handleSubmit}>
           <h2>Your business location</h2>
           <label htmlFor="officeName">Office Name</label>
           <input

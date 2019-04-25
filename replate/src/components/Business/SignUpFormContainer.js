@@ -28,6 +28,14 @@ class SignUpFormContainer extends Component {
     });
   };
 
+  updateStepNumber = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      stepNumber: this.state.stepNumber + 1,
+    })
+  }
+
   render() {
     return (
       <div className="signup-form-wrapper">
@@ -39,7 +47,8 @@ class SignUpFormContainer extends Component {
         {
           this.state.stepNumber === 1 ?
             (<StepOneForm handleInputChange={this.handleInputChange}
-                                                      formData={this.state}
+                          formData={this.state}
+                          updateStepNumber={this.updateStepNumber}
             />)
 
             :
