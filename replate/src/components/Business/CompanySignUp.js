@@ -7,22 +7,17 @@ class CompanySignUp extends Component {
     super(props);
 
     this.state = {
-      newCompany: {
-        company: '',
-        phone: '',
-        email: '',
-        password: '',
-        repeatPassword: '',
-      }
+      company: '',
+      phone: '',
+      email: '',
+      password: '',
+      repeatPassword: '',
     };
   }
 
   handleInputChange = event => {
     this.setState( {
-      newCompany: {
-        ...this.state.newCompany,
-        [event.target.name]: event.target.value,
-      }
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -42,7 +37,7 @@ class CompanySignUp extends Component {
             type="text"
             name="company"
             placeholder="Company Name"
-            value={this.state.newCompany.company}
+            value={this.state.company}
             onChange={this.handleInputChange}
           />
           <label htmlFor="phone">Phone</label>
@@ -51,7 +46,7 @@ class CompanySignUp extends Component {
             type="tel"
             name="phone"
             placeholder=" "
-            value={this.state.newCompany.phone}
+            value={this.state.phone}
             onChange={this.handleInputChange}
           />
           <label htmlFor="email">E-mail</label>
@@ -60,7 +55,7 @@ class CompanySignUp extends Component {
             type="email"
             name="email"
             placeholder=" "
-            value={this.state.newCompany.email}
+            value={this.state.email}
             onChange={this.handleInputChange}
           />
           <label htmlFor="password">Password</label>
@@ -69,7 +64,7 @@ class CompanySignUp extends Component {
             type="password"
             name="password"
             placeholder=" "
-            value={this.state.newCompany.password}
+            value={this.state.password}
             onChange={this.handleInputChange}
           />
           <label htmlFor="repeatPassword">Repeat Password</label>
@@ -78,7 +73,7 @@ class CompanySignUp extends Component {
             type="password"
             name="repeatPassword"
             placeholder=" "
-            value={this.state.newCompany.repeatPassword}
+            value={this.state.repeatPassword}
             onChange={this.handleInputChange}
           />
 
