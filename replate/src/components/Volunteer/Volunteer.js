@@ -55,6 +55,24 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
+            <p>City</p>
+            <input
+              type="text"
+              name="city"
+              onChange={this.changeHandler}
+              value={this.state.newVolunteer.name}
+            />
+          </div>
+          <div className="input-field">
+            <p>Zipcode</p>
+            <input
+              type="text"
+              name="zipcode"
+              onChange={this.changeHandler}
+              value={this.state.newVolunteer.name}
+            />
+          </div>
+          <div className="input-field">
             <p>Phone</p>
             <input
               type="text"
