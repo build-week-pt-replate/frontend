@@ -36,15 +36,19 @@ class SignUpFormContainer extends Component {
           <p>Thanks for your interest!</p>
         </div>
 
-        <StepOneForm handleInputChange={this.handleInputChange}
-                     formData={this.state}
-        />
+        {
+          this.state.stepNumber === 1 ?
+            (<StepOneForm handleInputChange={this.handleInputChange}
+                                                      formData={this.state}
+            />)
 
-        <StepTwoForm handleInputChange={this.handleInputChange}
-                     formData={this.state}
-        />
+            :
 
-
+            (
+            <StepTwoForm handleInputChange={this.handleInputChange}
+                         formData={this.state}
+            />)
+        }
 
       </div>
     );
