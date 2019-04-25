@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+
+import Volunteer from "../Volunteer/Volunteer";
 
 class SignUp extends React.Component {
   render() {
@@ -17,6 +19,7 @@ class SignUp extends React.Component {
           <h2>I'm a nonprofit</h2>
           <p>I want to receive donations</p>
         </Link>
+        <div />
       </div>
     );
   }
