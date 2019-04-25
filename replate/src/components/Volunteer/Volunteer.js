@@ -11,7 +11,8 @@ class Volunteer extends React.Component {
         phone: "",
         email: "",
         password: "",
-        repeatPassword: ""
+        repeatPassword: "",
+        username: ""
       }
     };
   }
@@ -67,6 +68,15 @@ class Volunteer extends React.Component {
             <input
               type="text"
               name="email"
+              onChange={this.changeHandler}
+              value={this.state.newVolunteer.name}
+            />
+          </div>
+          <div className="input-field">
+            <p>Username</p>
+            <input
+              type="text"
+              name="username"
               onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
