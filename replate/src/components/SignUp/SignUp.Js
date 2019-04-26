@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
 
-import Volunteer from "../Volunteer/Volunteer";
+import VolunteerForm from "../Volunteer/VolunteerForm";
 import SignUpFormContainer from "../Business/SignUpFormContainer";
 
 class SignUp extends React.Component {
@@ -21,7 +21,7 @@ class SignUp extends React.Component {
           <p>I want to receive donations</p>
         </Link>
         <div />
-        <Route path="/signup/volunteer" component={Volunteer} />
+        <Route path="/signup/volunteer" component={VolunteerForm} />
         <Route path="/signup/business" component={SignUpFormContainer} />
       </div>
     );

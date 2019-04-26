@@ -32,7 +32,7 @@ class Volunteer extends React.Component {
         <form className="sign-up-form">
           <h2>Create Your Account</h2>
           <div className="input-field">
-            <label for="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input
               id="firstName"
               type="text"
@@ -42,7 +42,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               id="lastName"
               type="text"
@@ -52,7 +52,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
             <input
               id="city"
               type="text"
@@ -62,7 +62,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="zipcode">Zipcode</label>
+            <label htmlFor="zipcode">Zipcode</label>
             <input
               id="zipcode"
               type="text"
@@ -72,7 +72,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="phone">Phone</label>
+            <label htmlFor="phone">Phone</label>
             <input
               id="phone"
               type="text"
@@ -82,7 +82,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="email">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input
               id="email"
               type="text"
@@ -92,7 +92,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               id="username"
               type="text"
@@ -102,7 +102,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               id="password"
               type="password"
@@ -112,7 +112,7 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label for="repeatPassword">Repeat password</label>
+            <label htmlFor="repeatPassword">Repeat password</label>
             <input
               id="repeatPassword"
               type="password"
