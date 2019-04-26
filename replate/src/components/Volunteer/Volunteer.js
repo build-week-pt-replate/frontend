@@ -1,5 +1,4 @@
 import React from "react";
-import { Router } from "react-router-dom";
 
 class Volunteer extends React.Component {
   constructor(props) {
@@ -37,8 +36,9 @@ class Volunteer extends React.Component {
         <form className="sign-up-form">
           <h2>Create Your Account</h2>
           <div className="input-field">
-            <p>First Name</p>
+            <label for="firstName">First Name</label>
             <input
+              id="firstName"
               type="text"
               name="firstName"
               onChange={this.changeHandler}
@@ -46,8 +46,9 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>Last Name</p>
+            <label for="lastName">Last Name</label>
             <input
+              id="lastName"
               type="text"
               name="lastName"
               onChange={this.changeHandler}
@@ -55,8 +56,9 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>City</p>
+            <label for="city">City</label>
             <input
+              id="city"
               type="text"
               name="city"
               onChange={this.changeHandler}
@@ -64,8 +66,9 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>Zipcode</p>
+            <label for="zipcode">Zipcode</label>
             <input
+              id="zipcode"
               type="text"
               name="zipcode"
               onChange={this.changeHandler}
@@ -73,8 +76,9 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>Phone</p>
+            <label for="phone">Phone</label>
             <input
+              id="phone"
               type="text"
               name="phone"
               onChange={this.changeHandler}
@@ -82,8 +86,9 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>E-mail</p>
+            <label for="email">E-mail</label>
             <input
+              id="email"
               type="text"
               name="email"
               onChange={this.changeHandler}
@@ -91,8 +96,9 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>Username</p>
+            <label for="username">Username</label>
             <input
+              id="username"
               type="text"
               name="username"
               onChange={this.changeHandler}
@@ -100,8 +106,9 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>Password</p>
+            <label for="password">Password</label>
             <input
+              id="password"
               type="password"
               name="password"
               onChange={this.changeHandler}
@@ -109,15 +116,16 @@ class Volunteer extends React.Component {
             />
           </div>
           <div className="input-field">
-            <p>Repeat password</p>
+            <label for="repeatPassword">Repeat password</label>
             <input
+              id="repeatPassword"
               type="password"
               name="repeatPassword"
               onChange={this.changeHandler}
               value={this.state.newVolunteer.name}
             />
           </div>
-          <button type="submit">Continue</button>
+          <button type="submit">Sign Up</button>
         </form>
       </div>
     );
