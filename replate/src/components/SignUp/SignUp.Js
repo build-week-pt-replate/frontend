@@ -1,8 +1,6 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
 
-import Volunteer from "../Volunteer/Volunteer";
-
 class SignUp extends React.Component {
   render() {
     return (
