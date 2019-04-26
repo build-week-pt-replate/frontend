@@ -9,7 +9,8 @@ class Login extends React.Component {
     credentials: {
       username: "",
       password: ""
-    }
+    },
+    user: null
   };
 
   changeHandler = e => {

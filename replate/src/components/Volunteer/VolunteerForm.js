@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class Volunteer extends React.Component {
   constructor(props) {
@@ -127,5 +128,9 @@ class Volunteer extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {};
+};
 
 export default Volunteer;
