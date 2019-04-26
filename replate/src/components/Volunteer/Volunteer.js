@@ -4,25 +4,21 @@ class Volunteer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newVolunteer: {
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        password: "",
-        repeatPassword: "",
-        username: ""
-      }
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      username: ""
     };
   }
 
   changeHandler = e => {
     this.setState({
-      newVolunteer: {
-        //Spreads previous state values, and changes current value depending on input from form
-        ...this.state.newVolunteer,
-        [e.target.name]: e.target.value
-      }
+      //Spreads previous state values, and changes current value depending on input from form
+      ...this.state,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -42,7 +38,7 @@ class Volunteer extends React.Component {
               type="text"
               name="firstName"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.firstName}
             />
           </div>
           <div className="input-field">
@@ -52,7 +48,7 @@ class Volunteer extends React.Component {
               type="text"
               name="lastName"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.lastName}
             />
           </div>
           <div className="input-field">
@@ -62,7 +58,7 @@ class Volunteer extends React.Component {
               type="text"
               name="city"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.city}
             />
           </div>
           <div className="input-field">
@@ -72,7 +68,7 @@ class Volunteer extends React.Component {
               type="text"
               name="zipcode"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.zipcode}
             />
           </div>
           <div className="input-field">
@@ -82,7 +78,7 @@ class Volunteer extends React.Component {
               type="text"
               name="phone"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.phone}
             />
           </div>
           <div className="input-field">
@@ -92,7 +88,7 @@ class Volunteer extends React.Component {
               type="text"
               name="email"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.email}
             />
           </div>
           <div className="input-field">
@@ -102,7 +98,7 @@ class Volunteer extends React.Component {
               type="text"
               name="username"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.username}
             />
           </div>
           <div className="input-field">
@@ -112,7 +108,7 @@ class Volunteer extends React.Component {
               type="password"
               name="password"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.password}
             />
           </div>
           <div className="input-field">
@@ -122,7 +118,7 @@ class Volunteer extends React.Component {
               type="password"
               name="repeatPassword"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.repeatPassword}
             />
           </div>
           <button type="submit">Sign Up</button>
