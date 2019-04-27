@@ -56,7 +56,7 @@ export const createVolunteerAccount = newAccount => dispatch => {
   return axios
     .post("http://localhost:3500/auth/vol/register", newAccount)
     .then(res => {
-      console.log(res);
+      console.log(res, res.data);
       dispatch({
         type: CREATING_VOLUNTEER_ACCOUNT_SUCCESS,
         payload: res.data
@@ -70,6 +70,19 @@ export const createVolunteerAccount = newAccount => dispatch => {
       });
     });
 };
+
+//Fetch Volunteer Dashboard/Data?
+// export const FETCH_VOLUNTEER_DATA_START = "FETCH_VOLUNTEER_DATA_START";
+// export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_VOLUNTEER_DATA_SUCCESS";
+// export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_VOLUNTEER_DATA_FAILURE";
+
+// export const fetchVolunteerData = () => dispatch => {
+//   dispatch({type: FETCH_VOLUNTEER_DATA_START});
+//   axios
+//     .get('')
+//     .then()
+//     .catch(err => )
+// }
 
 export const CREATING_BUSINESS_ACCOUNT_START =
   "CREATING_BUSINESS_ACCOUNT_START";

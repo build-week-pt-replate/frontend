@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createVolunteerAccount } from "../../actions";
 
-class Volunteer extends React.Component {
+class VolunteerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +12,9 @@ class Volunteer extends React.Component {
       email: "",
       password: "",
       repeatPassword: "",
-      username: ""
+      username: "",
+      zipcode: "",
+      city: ""
     };
   }
 
@@ -23,6 +26,23 @@ class Volunteer extends React.Component {
     });
   };
 
+  addAccount = e => {
+    e.preventDefault();
+    this.props.createVolunteerAccount(this.state);
+    //After submit, reset state
+    this.setState({
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      username: "",
+      zipcode: "",
+      city: ""
+    });
+  };
+
   render() {
     return (
       <div className="sign-up-wrapper">
@@ -30,7 +50,7 @@ class Volunteer extends React.Component {
           <h2>Volunteer Sign Up</h2>
           <p>Thanks for your interest!</p>
         </div>
-        <form className="sign-up-form">
+        <form className="sign-up-form" onSubmit={this.state.addAccount}>
           <h2>Create Your Account</h2>
           <div className="input-field">
             <label htmlFor="firstName">First Name</label>
@@ -129,8 +149,13 @@ class Volunteer extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {};
-};
+const mapStateToProps = ({ account, isLoading, error }) => ({
+  account,
+  isLoading,
+  error
+});
 
-export default Volunteer;
+export default connect(
+  mapStateToProps,
+  { createVolunteerAccount }
+)(VolunteerForm);

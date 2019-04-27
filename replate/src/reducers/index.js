@@ -8,6 +8,7 @@ import {
 } from "../actions";
 
 const initialState = {
+  volunteerAccounts: [],
   account: null,
   isLoading: false,
   error: null
