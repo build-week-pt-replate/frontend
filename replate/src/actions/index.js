@@ -3,27 +3,44 @@ import axios from "axios";
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_RESOLVED = "LOGIN_RESOLVED";
 
-export const LOGIN = {
-  LOGIN_START: "LOGIN_START",
-  LOGIN_RESOLVED: "LOGIN_RESOLVED"
-};
-
 export const login = credentials => dispatch => {
   dispatch({ type: LOGIN_START });
 
-  return axios
-    .post("", credentials)
-    .then(res => {
-      //Add token on this line
-      dispatch({ type: LOGIN_RESOLVED });
-    })
-    .catch(err => {
-      console.log("login err: ", err);
-      if (err.response.status === 403) {
-        //Remove token on this line;
-      }
-      dispatch({ type: LOGIN_RESOLVED });
-    });
+  //If it's a business account
+  if (credentials.businessAccount === true) {
+    return axios
+      .post("http://localhost:3500/auth/bus/login", credentials)
+      .then(res => {
+        //Creates a token in local storage if login is successful
+        localStorage.setItem("token", res.data.payload);
+        dispatch({ type: LOGIN_RESOLVED, payload: res.data.payload });
+      })
+      .catch(err => {
+        console.log("login err: ", err);
+        //If login is unsuccessful due to wrong credentials remove from local
+        if (err.response.status === 403) {
+          localStorage.removeItem("token");
+        }
+        dispatch({ type: LOGIN_RESOLVED });
+      });
+  } else {
+    //If volunteer account businessAccount === false
+    return axios
+      .post("http://localhost:3500/auth/vol/login", credentials)
+      .then(res => {
+        //Creates a token in local storage if login is successful
+        localStorage.setItem("token", res.data.payload);
+        dispatch({ type: LOGIN_RESOLVED, payload: res.data.payload });
+      })
+      .catch(err => {
+        console.log("login err: ", err);
+        //If login is unsuccessful due to wrong credentials remove from local
+        if (err.response.status === 403) {
+          localStorage.removeItem("token");
+        }
+        dispatch({ type: LOGIN_RESOLVED });
+      });
+  }
 };
 
 export const CREATING_VOLUNTEER_ACCOUNT_START =
