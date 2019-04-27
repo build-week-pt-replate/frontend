@@ -4,13 +4,20 @@ import {
   CREATING_BUSINESS_ACCOUNT_FAILURE,
   CREATING_VOLUNTEER_ACCOUNT_START,
   CREATING_VOLUNTEER_ACCOUNT_SUCCESS,
-  CREATING_VOLUNTEER_ACCOUNT_FAILURE
+  CREATING_VOLUNTEER_ACCOUNT_FAILURE,
+  DELETING_BUSINESS_ACCOUNT_SUCCESS,
+  DELETING_BUSINESS_ACCOUNT_FAILURE,
+  UPDATING_BUSINESS,
+  UPDATING_BUSINESS_SUCCESS,
+  UPDATING_BUSINESS_FAILURE,
 } from "../actions";
 
 const initialState = {
   account: null,
   isLoading: false,
-  error: null
+  error: null,
+  isBusinessInEditMode: null,
+  isDeletingBusiness: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -18,7 +25,7 @@ const rootReducer = (state = initialState, action) => {
     case CREATING_BUSINESS_ACCOUNT_START:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case CREATING_BUSINESS_ACCOUNT_SUCCESS:
       return {
@@ -32,6 +39,36 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: action.payload
+      };
+    case UPDATING_BUSINESS:
+      return {
+        ...state,
+        isBusinessInEditMode: action.payload,
+      };
+    case UPDATING_BUSINESS_SUCCESS:
+      return {
+        ...state,
+        isBusinessInEditMode: null,
+        error: null,
+        account: action.payload,
+      };
+    case UPDATING_BUSINESS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case DELETING_BUSINESS_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        isDeletingBusiness: true,
+        error: null,
+        account: action.payload,
+      };
+    case DELETING_BUSINESS_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        isDeletingBusiness: false,
+        error: action.payload,
       };
     case CREATING_VOLUNTEER_ACCOUNT_START:
       return {
