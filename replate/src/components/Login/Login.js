@@ -10,7 +10,7 @@ class Login extends React.Component {
       username: "",
       password: ""
     },
-    //Will be used to tell if user is logged in (null = no logine, not null = someones logged in )
+    //Will be used to tell if user is logged in (null = no login, not null = someones logged in )
     user: null
   };
 

@@ -76,7 +76,7 @@ class Volunteer extends React.Component {
             <label htmlFor="phone">Phone</label>
             <input
               id="phone"
-              type="text"
+              type="number"
               name="phone"
               onChange={this.changeHandler}
               value={this.state.phone}
@@ -86,7 +86,7 @@ class Volunteer extends React.Component {
             <label htmlFor="email">E-mail</label>
             <input
               id="email"
-              type="text"
+              type="email"
               name="email"
               onChange={this.changeHandler}
               value={this.state.email}
