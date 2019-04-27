@@ -29,7 +29,7 @@ export const createBusinessAccount = (newAccount) => dispatch => {
   dispatch({ type: CREATING_BUSINESS_ACCOUNT_START });
 
   const request = axios.post(
-    `http:/server/api/business`,
+    `http://localhost:3500/api/business`,
     newAccount
   );
 

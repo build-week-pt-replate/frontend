@@ -16,7 +16,10 @@ class SignUpFormContainer extends Component {
       password: '',
       repeatPassword: '',
       officeName: '',
-      officeAddress: '',
+      officeStreet: '',
+      officeCity: '',
+      officeState: '',
+      officeZip: '',
       officeEmail: '',
       stepNumber: 1,
     };
