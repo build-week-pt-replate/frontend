@@ -32,7 +32,7 @@ class Login extends React.Component {
   //   this.props
   //     //When credentials inputted into form and submitted, run the login action creator
   //     .login(this.state.credentials)
-  //     //After successful login, send user to protected website (FriendsList link)
+  //     //After successful login, send user to protected website
   //     .then(() => this.props.history.push("/protected"));
   // };
 
@@ -43,9 +43,13 @@ class Login extends React.Component {
           <form className="login-form-wrapper">
             <h2 className="login-title">Login to Replate</h2>
             <div className="div-login-inputs">
+              <form onSubmit={this.handleLogin} />
               <div className="input-title-div">
-                <p className="input-title-p">USER ID</p>
+                <label className="input-title-p" htmlFor="username">
+                  USERNAME
+                </label>
                 <input
+                  id="username"
                   className="login-input"
                   type="text"
                   name="username"
@@ -55,11 +59,14 @@ class Login extends React.Component {
               </div>
 
               <div className="input-title-div">
-                <p className="input-title-p">PASSWORD</p>
+                <label className="input-title-p" htmlFor="password">
+                  PASSWORD
+                </label>
                 <input
                   className="login-input"
                   type="password"
                   name="password"
+                  id="password"
                   value={this.state.credentials.password}
                   onChange={this.changeHandler}
                 />
@@ -74,10 +81,10 @@ class Login extends React.Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     isLogginIn: state.isLogginIn
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    isLoading: state.isLoading
+  };
+};
 
 export default Login;

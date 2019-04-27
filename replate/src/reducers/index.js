@@ -8,10 +8,10 @@ import {
 } from "../actions";
 
 const initialState = {
-  volunteerAccounts: [],
   account: null,
   isLoading: false,
-  error: null
+  error: null,
+  isLoggingIn: false
 };
 
 export default (state = initialState, action) => {
