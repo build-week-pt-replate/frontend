@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { actionCreator goes here } from '../actions';
+import { connect } from 'react-redux';
+import { createBusinessAccount } from '../../actions';
 
 import StepOneForm from './StepOneForm';
 import StepTwoForm from './StepTwoForm';
@@ -16,7 +16,10 @@ class SignUpFormContainer extends Component {
       password: '',
       repeatPassword: '',
       officeName: '',
-      officeAddress: '',
+      officeStreet: '',
+      officeCity: '',
+      officeState: '',
+      officeZip: '',
       officeEmail: '',
       stepNumber: 1,
     };
@@ -33,6 +36,34 @@ class SignUpFormContainer extends Component {
 
     this.setState({
       stepNumber: this.state.stepNumber + 1,
+    })
+  }
+
+  addAccount = (event) => {
+    event.preventDefault();
+    const newAccount = {
+      ...this.state,
+    }
+
+    this.props.createBusinessAccount(newAccount).then(() => {
+
+      if (!this.props.error) {
+        this.setState({
+          company: '',
+          phone: '',
+          email: '',
+          password: '',
+          repeatPassword: '',
+          officeName: '',
+          officeStreet: '',
+          officeCity: '',
+          officeState: '',
+          officeZip: '',
+          officeEmail: '',
+          stepNumber: 1,
+        })
+        // this.props.history.push("/business/:id/dashboard"); direct to dashboard
+      }
     })
   }
 
@@ -56,6 +87,7 @@ class SignUpFormContainer extends Component {
             (
             <StepTwoForm handleInputChange={this.handleInputChange}
                          formData={this.state}
+                         addAccount={this.addAccount}
             />)
         }
 
@@ -64,4 +96,15 @@ class SignUpFormContainer extends Component {
   }
 }
 
-export default SignUpFormContainer;
+const mapStateToProps = ({account, isLoading, error}) => ({
+  account,
+  isLoading,
+  error,
+});
+
+export default (
+  connect(
+    mapStateToProps,
+    { createBusinessAccount }
+  )(SignUpFormContainer)
+);
