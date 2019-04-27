@@ -8,7 +8,9 @@ class Login extends React.Component {
   state = {
     credentials: {
       username: "",
-      password: ""
+      password: "",
+      //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
+      businessAccount: false
     },
     //Will be used to tell if user is logged in (null = no login, not null = someones logged in )
     user: null
