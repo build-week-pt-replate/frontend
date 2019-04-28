@@ -1,28 +1,49 @@
 import React from "react";
+import { connect } from "react-redux";
+import { createVolunteerAccount } from "../../actions";
 
-class Volunteer extends React.Component {
+class VolunteerForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newVolunteer: {
-        firstName: "",
-        lastName: "",
-        phone: "",
-        email: "",
-        password: "",
-        repeatPassword: "",
-        username: ""
-      }
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      username: "",
+      zipcode: "",
+      city: ""
     };
   }
 
   changeHandler = e => {
     this.setState({
-      newVolunteer: {
-        //Spreads previous state values, and changes current value depending on input from form
-        ...this.state.newVolunteer,
-        [e.target.name]: e.target.value
-      }
+      //Spreads previous state values, and changes current value depending on input from form
+      ...this.state,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  addAccount = e => {
+    e.preventDefault();
+    const volunteer = {
+      ...this.state
+    };
+    console.log("did this work? addAccount");
+    this.props.createVolunteerAccount(volunteer);
+    //After submit, reset state
+    this.setState({
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      username: "",
+      zipcode: "",
+      city: ""
     });
   };
 
@@ -33,96 +54,96 @@ class Volunteer extends React.Component {
           <h2>Volunteer Sign Up</h2>
           <p>Thanks for your interest!</p>
         </div>
-        <form className="sign-up-form">
+        <form className="sign-up-form" onSubmit={this.addAccount}>
           <h2>Create Your Account</h2>
           <div className="input-field">
-            <label for="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input
               id="firstName"
               type="text"
               name="firstName"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.firstName}
             />
           </div>
           <div className="input-field">
-            <label for="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               id="lastName"
               type="text"
               name="lastName"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.lastName}
             />
           </div>
           <div className="input-field">
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
             <input
               id="city"
               type="text"
               name="city"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.city}
             />
           </div>
           <div className="input-field">
-            <label for="zipcode">Zipcode</label>
+            <label htmlFor="zipcode">Zipcode</label>
             <input
               id="zipcode"
               type="text"
               name="zipcode"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.zipcode}
             />
           </div>
           <div className="input-field">
-            <label for="phone">Phone</label>
+            <label htmlFor="phone">Phone</label>
             <input
               id="phone"
-              type="text"
+              type="number"
               name="phone"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.phone}
             />
           </div>
           <div className="input-field">
-            <label for="email">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input
               id="email"
-              type="text"
+              type="email"
               name="email"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.email}
             />
           </div>
           <div className="input-field">
-            <label for="username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               id="username"
               type="text"
               name="username"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.username}
             />
           </div>
           <div className="input-field">
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               id="password"
               type="password"
               name="password"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.password}
             />
           </div>
           <div className="input-field">
-            <label for="repeatPassword">Repeat password</label>
+            <label htmlFor="repeatPassword">Repeat password</label>
             <input
               id="repeatPassword"
               type="password"
               name="repeatPassword"
               onChange={this.changeHandler}
-              value={this.state.newVolunteer.name}
+              value={this.state.repeatPassword}
             />
           </div>
           <button type="submit">Sign Up</button>
@@ -132,4 +153,13 @@ class Volunteer extends React.Component {
   }
 }
 
-export default Volunteer;
+const mapStateToProps = ({ account, isLoading, error }) => ({
+  account,
+  isLoading,
+  error
+});
+
+export default connect(
+  mapStateToProps,
+  { createVolunteerAccount }
+)(VolunteerForm);

@@ -8,8 +8,12 @@ class Login extends React.Component {
   state = {
     credentials: {
       username: "",
-      password: ""
-    }
+      password: "",
+      //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
+      businessAccount: false
+    },
+    //Will be used to tell if user is logged in (null = no login, not null = someones logged in )
+    user: null
   };
 
   changeHandler = e => {
@@ -28,7 +32,7 @@ class Login extends React.Component {
   //   this.props
   //     //When credentials inputted into form and submitted, run the login action creator
   //     .login(this.state.credentials)
-  //     //After successful login, send user to protected website (FriendsList link)
+  //     //After successful login, send user to protected website
   //     .then(() => this.props.history.push("/protected"));
   // };
 
@@ -36,12 +40,15 @@ class Login extends React.Component {
     return (
       <div className="login-container">
         <div className="login-wrapper">
-          <form className="login-form-wrapper">
+          <form className="login-form-wrapper" onSubmit={this.handleLogin}>
             <h2 className="login-title">Login to Replate</h2>
             <div className="div-login-inputs">
               <div className="input-title-div">
-                <p className="input-title-p">USER ID</p>
+                <label className="input-title-p" htmlFor="username">
+                  USERNAME
+                </label>
                 <input
+                  id="username"
                   className="login-input"
                   type="text"
                   name="username"
@@ -51,11 +58,14 @@ class Login extends React.Component {
               </div>
 
               <div className="input-title-div">
-                <p className="input-title-p">PASSWORD</p>
+                <label className="input-title-p" htmlFor="password">
+                  PASSWORD
+                </label>
                 <input
                   className="login-input"
                   type="password"
                   name="password"
+                  id="password"
                   value={this.state.credentials.password}
                   onChange={this.changeHandler}
                 />
@@ -70,10 +80,10 @@ class Login extends React.Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     isLogginIn: state.isLogginIn
-//   };
-// };
+const mapStateToProps = state => {
+  return {
+    isLoading: state.isLoading
+  };
+};
 
 export default Login;
