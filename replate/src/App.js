@@ -5,7 +5,7 @@ import { Route, Link } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 // import PrivateRoute from "./components/PrivateRoute";
-// import VolunteerDash from "./components/Volunteer/VolunteerDash";
+import VolunteerDash from "./components/Volunteer/VolunteerDash";
 import VolunteerForm from "./components/Volunteer/VolunteerForm";
 import SignUpFormContainer from "./components/Business/SignUpFormContainer";
 
@@ -21,7 +21,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup/volunteer" component={VolunteerForm} />
         <Route path="/signup/business" component={SignUpFormContainer} />
-        {/* <Route path='/'/> */}
+        <Route path="/volunteer/dashboard" component={VolunteerDash} />
       </header>
     </div>
   );

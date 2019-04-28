@@ -1,4 +1,5 @@
 import React from "react";
+import DashHeader from "../Header/DashHeader";
 
 class VolunteerDash extends React.Component {
   constructor(props) {
@@ -9,12 +10,15 @@ class VolunteerDash extends React.Component {
 
   render() {
     return (
-      <div className="volunteer-dash">
-        <div className="requests-box">
-          <h3>Available Requests</h3>
-        </div>
-        <div className="requests-box">
-          <h3>Current Requests</h3>
+      <div className="dash-container">
+        <DashHeader />
+        <div className="volunteer-dash">
+          <div className="requests-box">
+            <h3>Available Requests</h3>
+          </div>
+          <div className="requests-box">
+            <h3>Current Requests</h3>
+          </div>
         </div>
       </div>
     );
