@@ -99,18 +99,70 @@ export const createBusinessAccount = newAccount => dispatch => {
     `http://localhost:3500/auth/bus/register`,
     newAccount
   );
-
-  return request
-    .then(res => {
+  console.log('TEST-NEWACCOUNT::', newAccount);
+  return request.then((res) => {
+    console.log('POST::', res);
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
-        payload: res.data
+        payload: res
       });
     })
     .catch(err => {
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_FAILURE,
         payload: err
+      });
+    });
+};
+
+export const DELETING_BUSINESS_ACCOUNT_SUCCESS = "DELETING_BUSINESS_ACCOUNT_SUCCESS";
+export const DELETING_BUSINESS_ACCOUNT_FAILURE = "DELETING_BUSINESS_ACCOUNT_FAILURE";
+
+export const deleteBusiness = (businessId) => (dispatch) => {
+  const request = axios.delete(
+    `http://api/business/${businessId}`);
+
+  return request.then(res => {
+    dispatch({
+      type: DELETING_BUSINESS_ACCOUNT_SUCCESS,
+      payload: res
+    });
+  })
+    .catch(err => {
+      dispatch({
+        type: DELETING_BUSINESS_ACCOUNT_FAILURE,
+        error: err
+      });
+    });
+};
+
+export const UPDATING_BUSINESS = "UPDATING_BUSINESS";
+
+export const updatingBusiness = (businessId) => (dispatch) => {
+  dispatch({
+    type: UPDATING_BUSINESS,
+    payload: businessId
+  });
+};
+
+export const UPDATING_BUSINESS_SUCCESS = "UPDATING_BUSINESS_SUCCESS";
+export const UPDATING_BUSINESS_FAILURE = "UPDATING_BUSINESS_FAILURE";
+
+export const saveUpdatedBusiness = (updatedBusiness) => (dispatch) => {
+  const request = axios.put(
+    `http://api/business/${updatedBusiness.id}`, updatedBusiness);
+
+  return request.then((res) => {
+    console.log('UPDATE RESPONSE:', res);
+    dispatch({
+      type: UPDATING_BUSINESS_SUCCESS,
+      payload: res
+    });
+  })
+    .catch(err => {
+      dispatch({
+        type: UPDATING_BUSINESS_FAILURE,
+        error: err
       });
     });
 };
