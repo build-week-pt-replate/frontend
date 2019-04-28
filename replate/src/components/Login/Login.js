@@ -40,10 +40,9 @@ class Login extends React.Component {
     return (
       <div className="login-container">
         <div className="login-wrapper">
-          <form className="login-form-wrapper">
+          <form className="login-form-wrapper" onSubmit={this.handleLogin}>
             <h2 className="login-title">Login to Replate</h2>
             <div className="div-login-inputs">
-              <form onSubmit={this.handleLogin} />
               <div className="input-title-div">
                 <label className="input-title-p" htmlFor="username">
                   USERNAME

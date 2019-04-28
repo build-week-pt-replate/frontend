@@ -10,11 +10,10 @@ import {
 const initialState = {
   account: null,
   isLoading: false,
-  error: null,
-  isLoggingIn: false
+  error: null
 };
 
-export default (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATING_BUSINESS_ACCOUNT_START:
       return {
@@ -56,3 +55,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default rootReducer;

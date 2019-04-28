@@ -1,0 +1,13 @@
+.signup-buttons {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.signup-box {
+  border: solid 1px black;
+  width: 30%;
+  display: block;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}

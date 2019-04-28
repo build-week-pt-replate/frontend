@@ -24,12 +24,15 @@ class VolunteerForm extends React.Component {
       ...this.state,
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   };
 
   addAccount = e => {
     e.preventDefault();
-    this.props.createVolunteerAccount(this.state);
+    const volunteer = {
+      ...this.state
+    };
+    console.log("did this work? addAccount");
+    this.props.createVolunteerAccount(volunteer);
     //After submit, reset state
     this.setState({
       firstName: "",
@@ -51,7 +54,7 @@ class VolunteerForm extends React.Component {
           <h2>Volunteer Sign Up</h2>
           <p>Thanks for your interest!</p>
         </div>
-        <form className="sign-up-form" onSubmit={this.state.addAccount}>
+        <form className="sign-up-form" onSubmit={this.addAccount}>
           <h2>Create Your Account</h2>
           <div className="input-field">
             <label htmlFor="firstName">First Name</label>

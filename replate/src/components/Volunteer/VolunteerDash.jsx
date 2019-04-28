@@ -1,6 +1,6 @@
 import React from "react";
 
-class VolunteerDash extends Component {
+class VolunteerDash extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,3 +20,5 @@ class VolunteerDash extends Component {
     );
   }
 }
+
+export default VolunteerDash;
