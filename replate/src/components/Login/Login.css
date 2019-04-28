@@ -56,14 +56,3 @@
   margin-top: 4%;
   margin-bottom: 2%;
 }
-
-.login-button {
-  border: solid 1px black;
-  background-color: #959595;
-  color: white;
-  border-radius: 10px;
-  font-size: 1rem;
-  width: 70px;
-  height: 2rem;
-  margin-top: 5%;
-}
