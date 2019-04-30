@@ -1,7 +1,7 @@
 import React from "react";
 // import { connect } from "react-redux";
 // import { login } from "../actions";
-import Button from "@material-ui/core/Button";
+import SignIn from "./SignIn";
 import Header from "../Header/Header";
 
 import "./Login.css";
@@ -42,7 +42,11 @@ class Login extends React.Component {
     return (
       <div>
         <Header />
-        <div className="login-container">
+        <SignIn
+          handleLogin={this.handleLogin}
+          changeHandler={this.changeHandler}
+        />
+        {/* <div className="login-container">
           <div className="login-wrapper">
             <form className="login-form-wrapper" onSubmit={this.handleLogin}>
               <h2 className="login-title">Login to Replate</h2>
@@ -81,7 +85,7 @@ class Login extends React.Component {
               </div>
             </form>
           </div>
-        </div>
+    </div> */}
       </div>
     );
   }
