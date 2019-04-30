@@ -4,12 +4,12 @@ class StepTwoForm extends Component {
 
   render() {
     const {
-      officeName,
-      officeStreet,
-      officeCity,
-      officeState,
-      officeZip,
-      officeEmail,
+      companyName,
+      street,
+      city,
+      state,
+      zip,
+      companyEmail,
     } = this.props.formData;
 
     return (
@@ -17,13 +17,13 @@ class StepTwoForm extends Component {
           <h2>Your business location</h2>
 
           <div>
-            <label htmlFor="officeName">Office Name</label>
+            <label htmlFor="companyName">Office Name</label>
             <input
-              id="officeName"
+              id="companyName"
               type="text"
-              name="officeName"
+              name="companyName"
               placeholder="Company Name"
-              value={officeName}
+              value={companyName}
               onChange={this.props.handleInputChange}
             />
           </div>
@@ -31,62 +31,62 @@ class StepTwoForm extends Component {
           <fieldset>
             <legend>Office address:</legend>
             <div>
-              <label htmlFor="officeStreet">Street</label>
+              <label htmlFor="street">Street</label>
               <input
-                id="officeStreet"
+                id="street"
                 type="text"
-                name="officeStreet"
+                name="street"
                 placeholder=" "
-                value={officeStreet}
+                value={street}
                 onChange={this.props.handleInputChange}
               />
             </div>
 
             <div>
-              <label htmlFor="officeCity">City</label>
+              <label htmlFor="city">City</label>
               <input
-                id="officeCity"
+                id="city"
                 type="text"
-                name="officeCity"
+                name="city"
                 placeholder=" "
-                value={officeCity}
+                value={city}
                 onChange={this.props.handleInputChange}
               />
             </div>
 
             <div>
-              <label htmlFor="officeState">State</label>
+              <label htmlFor="state">State</label>
               <input
-                id="officeState"
+                id="state"
                 type="text"
-                name="officeState"
+                name="state"
                 placeholder=" "
-                value={officeState}
+                value={state}
                 onChange={this.props.handleInputChange}
               />
             </div>
 
             <div>
-              <label htmlFor="officeZip">Zip code</label>
+              <label htmlFor="zip">Zip code</label>
               <input
-                id="officeZip"
+                id="zip"
                 type="number"
-                name="officeZip"
+                name="zip"
                 placeholder=" "
-                value={officeZip}
+                value={zip}
                 onChange={this.props.handleInputChange}
               />
             </div>
           </fieldset>
 
           <div>
-            <label htmlFor="officeEmail">Office E-mail (optional)</label>
+            <label htmlFor="companyEmail">Office E-mail (optional)</label>
             <input
-              id="officeEmail"
+              id="companyEmail"
               type="email"
-              name="officeEmail"
+              name="companyEmail"
               placeholder=" "
-              value={officeEmail}
+              value={companyEmail}
               onChange={this.props.handleInputChange}
             />
           </div>

@@ -95,22 +95,78 @@ export const CREATING_BUSINESS_ACCOUNT_FAILURE =
 export const createBusinessAccount = newAccount => dispatch => {
   dispatch({ type: CREATING_BUSINESS_ACCOUNT_START });
 
+  // const testUrl = 'http://demo7153249.mockable.io/business';
+  const testTwoUrl = 'http://www.mocky.io/v2/5cc6b773320000661ab94d80';
+  // const url = 'http://localhost:3500/auth/bus/register';
+
   const request = axios.post(
-    `http://localhost:3500/auth/bus/register`,
+    testTwoUrl,
     newAccount
   );
-
-  return request
-    .then(res => {
+  console.log('TEST-NEWACCOUNT::', newAccount);
+  return request.then(({data}) => {
+    console.log('POST::', data);
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
-        payload: res.data
+        payload: data
       });
     })
     .catch(err => {
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_FAILURE,
         payload: err
+      });
+    });
+};
+
+export const DELETING_BUSINESS_ACCOUNT_SUCCESS = "DELETING_BUSINESS_ACCOUNT_SUCCESS";
+export const DELETING_BUSINESS_ACCOUNT_FAILURE = "DELETING_BUSINESS_ACCOUNT_FAILURE";
+
+export const deleteBusiness = (businessId) => (dispatch) => {
+  const request = axios.delete(
+    `http://api/business/${businessId}`);
+
+  return request.then(res => {
+    dispatch({
+      type: DELETING_BUSINESS_ACCOUNT_SUCCESS,
+      payload: res
+    });
+  })
+    .catch(err => {
+      dispatch({
+        type: DELETING_BUSINESS_ACCOUNT_FAILURE,
+        error: err
+      });
+    });
+};
+
+export const UPDATING_BUSINESS = "UPDATING_BUSINESS";
+
+export const updatingBusiness = (businessId) => (dispatch) => {
+  dispatch({
+    type: UPDATING_BUSINESS,
+    payload: businessId
+  });
+};
+
+export const UPDATING_BUSINESS_SUCCESS = "UPDATING_BUSINESS_SUCCESS";
+export const UPDATING_BUSINESS_FAILURE = "UPDATING_BUSINESS_FAILURE";
+
+export const saveUpdatedBusiness = (updatedBusiness) => (dispatch) => {
+  const request = axios.put(
+    `http://api/business/${updatedBusiness.id}`, updatedBusiness);
+
+  return request.then((res) => {
+    console.log('UPDATE RESPONSE:', res);
+    dispatch({
+      type: UPDATING_BUSINESS_SUCCESS,
+      payload: res
+    });
+  })
+    .catch(err => {
+      dispatch({
+        type: UPDATING_BUSINESS_FAILURE,
+        error: err
       });
     });
 };
