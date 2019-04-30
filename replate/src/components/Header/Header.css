@@ -1,0 +1,10 @@
+.login-button {
+  text-decoration: none;
+  color: white;
+}
+
+.tool-bar {
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}

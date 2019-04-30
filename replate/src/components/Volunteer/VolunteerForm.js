@@ -12,9 +12,9 @@ class VolunteerForm extends React.Component {
       email: "",
       password: "",
       repeatPassword: "",
-      username: "",
       zipcode: "",
-      city: ""
+      city: "",
+      state: ""
     };
   }
 
@@ -41,9 +41,9 @@ class VolunteerForm extends React.Component {
       email: "",
       password: "",
       repeatPassword: "",
-      username: "",
       zipcode: "",
-      city: ""
+      city: "",
+      state: ""
     });
   };
 
@@ -97,6 +97,16 @@ class VolunteerForm extends React.Component {
             />
           </div>
           <div className="input-field">
+            <label htmlFor="state">State</label>
+            <input
+              id="state"
+              type="text"
+              name="state"
+              onChange={this.changeHandler}
+              value={this.state.state}
+            />
+          </div>
+          <div className="input-field">
             <label htmlFor="phone">Phone</label>
             <input
               id="phone"
@@ -114,16 +124,6 @@ class VolunteerForm extends React.Component {
               name="email"
               onChange={this.changeHandler}
               value={this.state.email}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              type="text"
-              name="username"
-              onChange={this.changeHandler}
-              value={this.state.username}
             />
           </div>
           <div className="input-field">
@@ -146,6 +146,7 @@ class VolunteerForm extends React.Component {
               value={this.state.repeatPassword}
             />
           </div>
+
           <button type="submit">Sign Up</button>
         </form>
       </div>
