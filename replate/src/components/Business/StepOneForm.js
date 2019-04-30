@@ -4,7 +4,7 @@ class StepOneForm extends Component {
 
   render() {
     const {
-      company,
+      companyName,
       phone,
       email,
       password,
@@ -14,13 +14,13 @@ class StepOneForm extends Component {
     return (
         <form onSubmit={this.props.updateStepNumber}>
           <h2>Create Your Account</h2>
-          <label htmlFor="company">Company Name</label>
+          <label htmlFor="companyName">Company Name</label>
           <input
-            id="company"
+            id="companyName"
             type="text"
-            name="company"
-            placeholder="Company Name"
-            value={company}
+            name="companyName"
+            placeholder="company name"
+            value={companyName}
             onChange={this.props.handleInputChange}
           />
           <label htmlFor="phone">Phone</label>
