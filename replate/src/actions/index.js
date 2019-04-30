@@ -95,16 +95,20 @@ export const CREATING_BUSINESS_ACCOUNT_FAILURE =
 export const createBusinessAccount = newAccount => dispatch => {
   dispatch({ type: CREATING_BUSINESS_ACCOUNT_START });
 
+  // const testUrl = 'http://demo7153249.mockable.io/business';
+  const testTwoUrl = 'http://www.mocky.io/v2/5cc6b773320000661ab94d80';
+  // const url = 'http://localhost:3500/auth/bus/register';
+
   const request = axios.post(
-    `http://localhost:3500/auth/bus/register`,
+    testTwoUrl,
     newAccount
   );
   console.log('TEST-NEWACCOUNT::', newAccount);
-  return request.then((res) => {
-    console.log('POST::', res);
+  return request.then(({data}) => {
+    console.log('POST::', data);
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
-        payload: res
+        payload: data
       });
     })
     .catch(err => {

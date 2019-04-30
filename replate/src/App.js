@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 // import PrivateRoute from "./components/PrivateRoute";
 // import VolunteerDash from "./components/Volunteer/VolunteerDash";
+import BusinessDash from "./components/Business/BusinessDash";
 import VolunteerForm from "./components/Volunteer/VolunteerForm";
 import SignUpFormContainer from "./components/Business/SignUpFormContainer";
 
@@ -16,13 +17,14 @@ function App() {
         <p>Replate</p>
         <Link to="/login">Login</Link>
         <Link to="/signup">Sign Up</Link>
-
-        <Route exact path="/signup/" component={SignUp} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup/volunteer" component={VolunteerForm} />
-        <Route path="/signup/business" component={SignUpFormContainer} />
-        {/* <Route path='/'/> */}
       </header>
+
+      <Route exact path="/signup/" component={SignUp} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup/volunteer" component={VolunteerForm} />
+      <Route path="/signup/business" component={SignUpFormContainer} />
+      {/* <Route path='/'/> */}
+      <Route path='/business/dashboard' component={BusinessDash}/>
     </div>
   );
 }
