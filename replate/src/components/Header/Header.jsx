@@ -5,45 +5,37 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 const styles = {
   root: {
     flexGrow: 1
-  },
-  grow: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
   }
 };
 
-function ButtonAppBar(props) {
+function SimpleAppBar(props) {
   const { classes } = props;
+
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Replate
+      <AppBar position="static" color="primary">
+        <Toolbar className="tool-bar">
+          <Typography variant="h6" color="inherit">
+            RePlate
           </Typography>
-          <Button color="inherit">
-            <Link className="link-router" to="/login">
-              Login
-            </Link>
-          </Button>
+          <Link className="login-button" to="/login">
+            <Button color="inherit">Login</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-ButtonAppBar.propTypes = {
+SimpleAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(SimpleAppBar);
