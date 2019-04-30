@@ -26,7 +26,6 @@ function App() {
       <Route path="/signup/volunteer" component={VolunteerForm} />
       <Route path="/login2" component={SignIn} />
       <Route path="/signup/business" component={SignUpFormContainer} />
-      {/* <Route path='/'/> */}
       <Route path="/business/dashboard" component={BusinessDash} />
       <Route path="/volunteer/dashboard" component={VolunteerDash} />
     </div>
