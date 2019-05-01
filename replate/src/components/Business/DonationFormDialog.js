@@ -106,6 +106,11 @@ export default class DonationFormDialog extends Component {
       <>
         <DialogContent>
           <DialogContentText>
+            Please verify your donation details!
+          </DialogContentText>
+        </DialogContent>
+        <DialogContent>
+          <DialogContentText>
             Location Name:  {locationName}
           </DialogContentText>
 
