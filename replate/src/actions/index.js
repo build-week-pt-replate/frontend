@@ -157,6 +157,39 @@ export const createBusinessAccount = newAccount => dispatch => {
     });
 };
 
+// Fetch Business Requests / Donations
+export const FETCH_BUSINESS_REQUESTS_START = "FETCH_BUSINESS_REQUESTS_START";
+export const FETCH_BUSINESS_REQUESTS_SUCCESS =
+  "FETCH_BUSINESS_REQUESTS_SUCCESS";
+export const FETCH_BUSINESS_REQUESTS_FAILURE =
+  "FETCH_BUSINESS_REQUESTS_FAILURE";
+
+export const fetchBusinessRequests = () => dispatch => {
+  dispatch({
+    type: FETCH_BUSINESS_REQUESTS_START
+  });
+
+  const url = "http://localhost:3500/api/request";
+  const request = axios.get(url);
+
+  return request
+    .then(res => {
+      console.log(res, res.data);
+      dispatch({
+        type: FETCH_BUSINESS_REQUESTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({
+        type: FETCH_BUSINESS_REQUESTS_FAILURE,
+        payload: err
+      });
+      return Promise.reject(err);
+    });
+};
+
 export const ADDING_DONATION_START =
   "ADDING_DONATION_START";
 export const ADDING_DONATION_SUCCESS =

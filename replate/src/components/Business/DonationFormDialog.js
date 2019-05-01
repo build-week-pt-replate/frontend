@@ -36,7 +36,7 @@ export default class DonationFormDialog extends Component {
           </DialogContentText>
           <TextField
             autoFocus
-            margin="dense"
+            margin="normal"
             id="locationName"
             name="locationName"
             label="Location Name"
@@ -46,7 +46,7 @@ export default class DonationFormDialog extends Component {
             fullWidth
           />
           <TextField
-            margin="dense"
+            margin="normal"
             id="date"
             name="date"
             label="Date"
@@ -56,7 +56,7 @@ export default class DonationFormDialog extends Component {
             fullWidth
           />
           <TextField
-            margin="dense"
+            margin="normal"
             id="time"
             name="time"
             label="Time"
@@ -66,23 +66,23 @@ export default class DonationFormDialog extends Component {
             fullWidth
           />
           <TextField
-            margin="dense"
+            margin="normal"
             id="foodDescription"
             name="foodDescription"
             label="Food Description"
             type="text"
-            multiline={true}
+            multiline
             value={foodDescription}
             onChange={handleInputChange}
             fullWidth
           />
           <TextField
-            margin="dense"
+            margin="normal"
             id="comment"
             name="comment"
             label="Additional Comments"
             type="text"
-            multiline={true}
+            multiline
             value={comment}
             onChange={handleInputChange}
             fullWidth
