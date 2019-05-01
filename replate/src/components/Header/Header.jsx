@@ -23,7 +23,9 @@ function SimpleAppBar(props) {
       <AppBar position="static" color="primary">
         <Toolbar className="tool-bar">
           <Typography variant="h6" color="inherit">
-            RePlate
+            <Link to="/" className="title">
+              RePlate
+            </Link>
           </Typography>
           <Link className="login-button" to="/login">
             <Button color="inherit">Login</Button>

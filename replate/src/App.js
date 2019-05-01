@@ -9,16 +9,12 @@ import VolunteerDash from "./components/Volunteer/VolunteerDash";
 import BusinessDash from "./components/Business/BusinessDash";
 import VolunteerForm from "./components/Volunteer/VolunteerForm";
 import SignUpFormContainer from "./components/Business/SignUpFormContainer";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Replate</p>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link>
-      </header>
-
+      <Route exact path="/" component={HomePage} />
       <Route exact path="/signup/" component={SignUp} />
       <Route path="/login" component={Login} />
       <Route path="/signup/volunteer" component={VolunteerForm} />
