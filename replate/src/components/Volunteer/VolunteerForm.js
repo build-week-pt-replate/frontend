@@ -29,22 +29,38 @@ class VolunteerForm extends React.Component {
   addAccount = e => {
     e.preventDefault();
     const volunteer = {
-      ...this.state
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      phone: this.state.phone,
+      email: this.state.email,
+      password: this.state.password,
+      zipcode: this.state.zipcode,
+      city: this.state.city,
+      state: this.state.state
     };
     console.log("did this work? addAccount");
-    this.props.createVolunteerAccount(volunteer);
-    //After submit, reset state
-    this.setState({
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
-      password: "",
-      repeatPassword: "",
-      zipcode: "",
-      city: "",
-      state: ""
-    });
+    //Checks to see if password and repeatPassword matches
+    if (this.state.password === this.state.repeatPassword) {
+      this.props.createVolunteerAccount(volunteer);
+      //After submit, reset state
+      this.setState({
+        firstName: "",
+        lastName: "",
+        phone: "",
+        email: "",
+        password: "",
+        repeatPassword: "",
+        zipcode: "",
+        city: "",
+        state: ""
+      });
+    } else {
+      this.setState({
+        password: "",
+        repeatPassword: ""
+      });
+      alert("Passwords did not match.");
+    }
   };
 
   render() {

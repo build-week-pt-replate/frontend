@@ -8,3 +8,8 @@
   align-content: center;
   align-items: center;
 }
+
+.title {
+  text-decoration: none;
+  color: white;
+}

@@ -12,8 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-
-import Header from "../Header/Header";
+import Switch from "@material-ui/core/Switch";
 
 const styles = theme => ({
   main: {
@@ -48,7 +47,7 @@ const styles = theme => ({
   }
 });
 
-function SignIn(props) {
+function LoginForm(props) {
   const { classes } = props;
 
   return (
@@ -86,6 +85,17 @@ function SignIn(props) {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={props.changeHandlerSwitch}
+                value={props.businessAccount}
+                color="primary"
+                name="businessAccount"
+              />
+            }
+            label="Business Account"
+          />
           <Button
             type="submit"
             fullWidth
@@ -101,8 +111,8 @@ function SignIn(props) {
   );
 }
 
-SignIn.propTypes = {
+LoginForm.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(LoginForm);

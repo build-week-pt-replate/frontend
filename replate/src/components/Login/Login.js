@@ -1,19 +1,18 @@
 import React from "react";
 // import { connect } from "react-redux";
 // import { login } from "../actions";
-import SignIn from "./SignIn";
+import LoginForm from "./LoginForm";
 import Header from "../Header/Header";
-
-import "./Login.css";
+import Button from "@material-ui/core/Button";
 
 class Login extends React.Component {
   state = {
     credentials: {
       username: "",
-      password: "",
+      password: ""
       //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
-      businessAccount: false
     },
+    businessAccount: true,
     //Will be used to tell if user is logged in (null = no login, not null = someones logged in )
     user: null
   };
@@ -29,6 +28,11 @@ class Login extends React.Component {
     });
   };
 
+  changeHandlerSwitch = e => {
+    this.setState({ businessAccount: !this.state.businessAccount });
+    console.log(e.target.value);
+  };
+
   // handleLogin = e => {
   //   e.preventDefault();
   //   this.props
@@ -42,50 +46,12 @@ class Login extends React.Component {
     return (
       <div>
         <Header />
-        <SignIn
+        <LoginForm
           handleLogin={this.handleLogin}
           changeHandler={this.changeHandler}
+          businessAccount={this.state.businessAccount}
+          changeHandlerSwitch={this.changeHandlerSwitch}
         />
-        {/* <div className="login-container">
-          <div className="login-wrapper">
-            <form className="login-form-wrapper" onSubmit={this.handleLogin}>
-              <h2 className="login-title">Login to Replate</h2>
-              <div className="div-login-inputs">
-                <div className="input-title-div">
-                  <label className="input-title-p" htmlFor="username">
-                    USERNAME
-                  </label>
-                  <input
-                    id="username"
-                    className="login-input"
-                    type="text"
-                    name="username"
-                    value={this.state.credentials.username}
-                    onChange={this.changeHandler}
-                  />
-                </div>
-
-                <div className="input-title-div">
-                  <label className="input-title-p" htmlFor="password">
-                    PASSWORD
-                  </label>
-                  <input
-                    className="login-input"
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={this.state.credentials.password}
-                    onChange={this.changeHandler}
-                  />
-
-                  <Button color="secondary" variant="contained">
-                    Log In
-                  </Button>
-                </div>
-              </div>
-            </form>
-          </div>
-    </div> */}
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import DashHeader from "../Header/DashHeader";
+import { connect } from "react-redux";
 
 class VolunteerDash extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class VolunteerDash extends React.Component {
         <div className="volunteer-dash">
           <div className="requests-box">
             <h3>Available Requests</h3>
+            {this.props.requests}
           </div>
           <div className="requests-box">
             <h3>Current Requests</h3>
@@ -24,5 +26,14 @@ class VolunteerDash extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    requests: state.requests,
+    account: state.volunteers,
+    fetchingData: state.fetchingData,
+    error: state.error
+  };
+};
 
 export default VolunteerDash;
