@@ -77,13 +77,24 @@ export const FETCH_VOLUNTEER_DATA_START = "FETCH_VOLUNTEER_DATA_START";
 export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_VOLUNTEER_DATA_SUCCESS";
 export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_VOLUNTEER_DATA_FAILURE";
 
-// export const fetchVolunteerData = () => dispatch => {
-//   dispatch({type: FETCH_VOLUNTEER_DATA_START});
-//   axios
-//     .get('')
-//     .then()
-//     .catch(err => )
-// }
+export const fetchVolunteerData = volunteerId => dispatch => {
+  dispatch({ type: FETCH_VOLUNTEER_DATA_START });
+  axios
+    .get(`http://localhost:3500/api/volunteer/${volunteerId}`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(res => {
+      console.log(res);
+      dispatch({ type: FETCH_VOLUNTEER_DATA_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err.response);
+      if (err.response.status === 403) {
+        localStorage.removeItem("token");
+      }
+      dispatch({ type: FETCH_VOLUNTEER_DATA_FAILURE, payload: err.response });
+    });
+};
 
 //Fetch Volunteer Requests Data
 export const FETCH_VOLUNTEER_REQUESTS_START = "FETCH_VOLUNTEER_REQUESTS_START";
