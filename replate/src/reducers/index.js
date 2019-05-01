@@ -5,6 +5,9 @@ import {
   CREATING_VOLUNTEER_ACCOUNT_START,
   CREATING_VOLUNTEER_ACCOUNT_SUCCESS,
   CREATING_VOLUNTEER_ACCOUNT_FAILURE,
+  ADDING_DONATION_START,
+  ADDING_DONATION_SUCCESS,
+  ADDING_DONATION_FAILURE,
   DELETING_BUSINESS_ACCOUNT_SUCCESS,
   DELETING_BUSINESS_ACCOUNT_FAILURE,
   UPDATING_BUSINESS,
@@ -14,6 +17,7 @@ import {
 
 const initialState = {
   account: null,
+  requests: [],
   isLoading: false,
   error: null,
   isBusinessInEditMode: null,
@@ -37,6 +41,24 @@ const rootReducer = (state = initialState, action) => {
         account: action.payload
       };
     case CREATING_BUSINESS_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    case ADDING_DONATION_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case ADDING_DONATION_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        requests: [...state.requests, action.payload]
+      };
+    case ADDING_DONATION_FAILURE:
       return {
         ...state,
         isLoading: false,
