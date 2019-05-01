@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
 
-import { addDonation } from '../../actions'
+import DashHeader from "../Header/DashHeader";
 import DonationFormDialog from './DonationFormDialog';
 import Button from '@material-ui/core/Button';
+import { addDonation } from '../../actions'
 import './BusinessDash.css';
 
 class BusinessDash extends React.Component {
@@ -77,6 +78,7 @@ class BusinessDash extends React.Component {
   render() {
     return (
       <div className="business-dash-container">
+        <DashHeader />
         <div className="business-title">
           <h2>Business Dashboard</h2>
         </div>

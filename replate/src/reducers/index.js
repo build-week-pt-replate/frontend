@@ -17,7 +17,6 @@ import {
 
 const initialState = {
   account: null,
-  requests: [],
   isLoading: false,
   error: null,
   isBusinessInEditMode: null,
