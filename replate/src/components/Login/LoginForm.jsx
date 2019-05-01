@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
+import Switch from "@material-ui/core/Switch";
 
 const styles = theme => ({
   main: {
@@ -83,6 +84,17 @@ function LoginForm(props) {
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
+          />
+          <FormControlLabel
+            control={
+              <Switch
+                onChange={props.changeHandlerSwitch}
+                value={props.businessAccount}
+                color="primary"
+                name="businessAccount"
+              />
+            }
+            label="Business Account"
           />
           <Button
             type="submit"

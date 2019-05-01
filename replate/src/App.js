@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
@@ -10,6 +10,7 @@ import BusinessDash from "./components/Business/BusinessDash";
 import VolunteerForm from "./components/Volunteer/VolunteerForm";
 import SignUpFormContainer from "./components/Business/SignUpFormContainer";
 import HomePage from "./components/HomePage/HomePage";
+import Header from "./components/Header/Header";
 
 function App() {
   return (

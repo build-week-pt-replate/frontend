@@ -3,15 +3,16 @@ import React from "react";
 // import { login } from "../actions";
 import LoginForm from "./LoginForm";
 import Header from "../Header/Header";
+import Button from "@material-ui/core/Button";
 
 class Login extends React.Component {
   state = {
     credentials: {
       username: "",
-      password: "",
+      password: ""
       //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
-      businessAccount: false
     },
+    businessAccount: true,
     //Will be used to tell if user is logged in (null = no login, not null = someones logged in )
     user: null
   };
@@ -25,6 +26,11 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
       }
     });
+  };
+
+  changeHandlerSwitch = e => {
+    this.setState({ businessAccount: !this.state.businessAccount });
+    console.log(e.target.value);
   };
 
   // handleLogin = e => {
@@ -43,6 +49,8 @@ class Login extends React.Component {
         <LoginForm
           handleLogin={this.handleLogin}
           changeHandler={this.changeHandler}
+          businessAccount={this.state.businessAccount}
+          changeHandlerSwitch={this.changeHandlerSwitch}
         />
       </div>
     );

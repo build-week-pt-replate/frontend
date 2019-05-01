@@ -16,6 +16,7 @@ class VolunteerDash extends React.Component {
         <div className="volunteer-dash">
           <div className="requests-box">
             <h3>Available Requests</h3>
+            {this.props.requests}
           </div>
           <div className="requests-box">
             <h3>Current Requests</h3>
@@ -28,8 +29,10 @@ class VolunteerDash extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    requests: this.state.requests,
-    volunteers: this.state.volunteers
+    requests: state.requests,
+    account: state.volunteers,
+    fetchingData: state.fetchingData,
+    error: state.error
   };
 };
 
