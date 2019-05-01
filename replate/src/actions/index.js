@@ -153,6 +153,7 @@ export const createBusinessAccount = newAccount => dispatch => {
         type: CREATING_BUSINESS_ACCOUNT_FAILURE,
         payload: err
       });
+      return Promise.reject(err);
     });
 };
 
@@ -185,6 +186,8 @@ export const addDonation = newDonation => dispatch => {
         type: ADDING_DONATION_FAILURE,
         payload: err
       });
+      // need this Promise in order to properly handle errors
+      return Promise.reject(err);
     });
 };
 
