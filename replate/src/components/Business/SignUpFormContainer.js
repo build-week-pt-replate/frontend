@@ -10,17 +10,17 @@ class SignUpFormContainer extends Component {
     super(props);
 
     this.state = {
-      company: '',
+      companyName: '',
       phone: '',
       email: '',
       password: '',
       repeatPassword: '',
-      companyName: '',
+      officeName: '',
       street: '',
       city: '',
       state: '',
       zip: '',
-      companyEmail: '',
+      officeEmail: '',
       stepNumber: 1,
     };
   }

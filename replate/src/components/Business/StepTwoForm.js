@@ -4,12 +4,12 @@ class StepTwoForm extends Component {
 
   render() {
     const {
-      companyName,
+      officeName,
       street,
       city,
       state,
       zip,
-      companyEmail,
+      officeEmail,
     } = this.props.formData;
 
     return (
@@ -17,13 +17,13 @@ class StepTwoForm extends Component {
           <h2>Your business location</h2>
 
           <div>
-            <label htmlFor="companyName">Office Name</label>
+            <label htmlFor="officeName">Office Name</label>
             <input
-              id="companyName"
+              id="officeName"
               type="text"
-              name="companyName"
-              placeholder="Company Name"
-              value={companyName}
+              name="officeName"
+              placeholder="office Name"
+              value={officeName}
               onChange={this.props.handleInputChange}
             />
           </div>
@@ -80,13 +80,13 @@ class StepTwoForm extends Component {
           </fieldset>
 
           <div>
-            <label htmlFor="companyEmail">Office E-mail (optional)</label>
+            <label htmlFor="officeEmail">Office E-mail (optional)</label>
             <input
-              id="companyEmail"
+              id="officeEmail"
               type="email"
-              name="companyEmail"
+              name="officeEmail"
               placeholder=" "
-              value={companyEmail}
+              value={officeEmail}
               onChange={this.props.handleInputChange}
             />
           </div>
