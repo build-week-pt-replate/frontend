@@ -15,6 +15,7 @@ export default class DonationFormDialog extends Component {
       isOpen,
       handleInputChange,
       updateStepNumber,
+      scheduleDonation,
       formDialogData: {
         locationName,
         date,
@@ -45,7 +46,6 @@ export default class DonationFormDialog extends Component {
             fullWidth
           />
           <TextField
-            autoFocus
             margin="dense"
             id="date"
             name="date"
@@ -56,7 +56,6 @@ export default class DonationFormDialog extends Component {
             fullWidth
           />
           <TextField
-            autoFocus
             margin="dense"
             id="time"
             name="time"
@@ -67,7 +66,6 @@ export default class DonationFormDialog extends Component {
             fullWidth
           />
           <TextField
-            autoFocus
             margin="dense"
             id="foodDescription"
             name="foodDescription"
@@ -79,7 +77,6 @@ export default class DonationFormDialog extends Component {
             fullWidth
           />
           <TextField
-            autoFocus
             margin="dense"
             id="comment"
             name="comment"
@@ -134,7 +131,7 @@ export default class DonationFormDialog extends Component {
             <Button onClick={onClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={()=>{}} color="primary">
+            <Button onClick={scheduleDonation} color="primary">
               Submit
             </Button>
           </DialogActions>

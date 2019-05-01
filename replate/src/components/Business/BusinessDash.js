@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
 
+import { addDonation } from '../../actions'
 import DonationFormDialog from './DonationFormDialog';
 import Button from '@material-ui/core/Button';
 import './BusinessDash.css';
@@ -10,6 +12,7 @@ class BusinessDash extends React.Component {
 
     this.defaultState = {
       open: false,
+      successful: false,
       locationName: '',
       date: '',
       time: '',
@@ -22,6 +25,7 @@ class BusinessDash extends React.Component {
   }
 
   componentDidMount() {
+    // fetch all the donation requests here
 
   }
 
@@ -44,6 +48,29 @@ class BusinessDash extends React.Component {
 
     this.setState({
       stepNumber: this.state.stepNumber + 1,
+    })
+  }
+
+  scheduleDonation = () => {
+    const {
+      open,
+      stepNumber,
+      isSuccessful,
+      ...newDonation
+    } = this.state;
+
+    this.props.addDonation(newDonation).then(()=>{
+
+      this.setState({
+        isSuccessful: true
+      })
+
+    }).catch(err => {
+      console.error(err);
+
+      this.setState({
+        isSuccessful: false
+      })
     })
   }
 
@@ -81,6 +108,7 @@ class BusinessDash extends React.Component {
                             handleInputChange={this.handleInputChange}
                             formDialogData={this.state}
                             updateStepNumber={this.updateStepNumber}
+                            scheduleDonation={this.scheduleDonation}
 
         />
 
@@ -89,4 +117,17 @@ class BusinessDash extends React.Component {
   }
 }
 
-export default BusinessDash;
+const mapStateToProps = ({requests, account, isLoading, error}) => ({
+  requests,
+  account,
+  isLoading,
+  error,
+});
+
+export default (
+  connect(
+    mapStateToProps,
+    { addDonation }
+  )(BusinessDash)
+);
+
