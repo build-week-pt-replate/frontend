@@ -8,14 +8,17 @@ class BusinessDash extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.defaultState = {
       open: false,
       locationName: '',
       date: '',
       time: '',
       foodDescription: '',
-      comment: ''
-    };
+      comment: '',
+      stepNumber: 1,
+    }
+
+    this.state = this.defaultState;
   }
 
   componentDidMount() {
@@ -33,8 +36,16 @@ class BusinessDash extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState(this.defaultState);
   };
+
+  updateStepNumber = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      stepNumber: this.state.stepNumber + 1,
+    })
+  }
 
   render() {
     return (
@@ -69,6 +80,7 @@ class BusinessDash extends React.Component {
                             isOpen={this.state.open}
                             handleInputChange={this.handleInputChange}
                             formDialogData={this.state}
+                            updateStepNumber={this.updateStepNumber}
 
         />
 
