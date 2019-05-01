@@ -4,7 +4,6 @@ import { Route, Link } from "react-router-dom";
 
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
-import SignIn from "./components/Login/SignIn";
 // import PrivateRoute from "./components/PrivateRoute";
 import VolunteerDash from "./components/Volunteer/VolunteerDash";
 import BusinessDash from "./components/Business/BusinessDash";

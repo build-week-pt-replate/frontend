@@ -77,6 +77,7 @@ export const FETCH_VOLUNTEER_DATA_START = "FETCH_VOLUNTEER_DATA_START";
 export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_VOLUNTEER_DATA_SUCCESS";
 export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_VOLUNTEER_DATA_FAILURE";
 
+//This will fetch the SPECIFIC volunteer when logging in
 export const fetchVolunteerData = volunteerId => dispatch => {
   dispatch({ type: FETCH_VOLUNTEER_DATA_START });
   axios

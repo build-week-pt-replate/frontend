@@ -13,8 +13,6 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-import Header from "../Header/Header";
-
 const styles = theme => ({
   main: {
     width: "auto",
@@ -48,7 +46,7 @@ const styles = theme => ({
   }
 });
 
-function SignIn(props) {
+function LoginForm(props) {
   const { classes } = props;
 
   return (
@@ -101,8 +99,8 @@ function SignIn(props) {
   );
 }
 
-SignIn.propTypes = {
+LoginForm.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(LoginForm);

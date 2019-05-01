@@ -1,10 +1,8 @@
 import React from "react";
 // import { connect } from "react-redux";
 // import { login } from "../actions";
-import SignIn from "./SignIn";
+import LoginForm from "./LoginForm";
 import Header from "../Header/Header";
-
-// import "./Login.css";
 
 class Login extends React.Component {
   state = {
@@ -42,7 +40,7 @@ class Login extends React.Component {
     return (
       <div>
         <Header />
-        <SignIn
+        <LoginForm
           handleLogin={this.handleLogin}
           changeHandler={this.changeHandler}
         />
