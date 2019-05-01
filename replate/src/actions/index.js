@@ -72,10 +72,10 @@ export const createVolunteerAccount = volunteer => dispatch => {
     });
 };
 
-//Fetch Volunteer Dashboard/Data?
-// export const FETCH_VOLUNTEER_DATA_START = "FETCH_VOLUNTEER_DATA_START";
-// export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_VOLUNTEER_DATA_SUCCESS";
-// export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_VOLUNTEER_DATA_FAILURE";
+// Fetch Volunteer Dashboard/Data?
+export const FETCH_VOLUNTEER_DATA_START = "FETCH_VOLUNTEER_DATA_START";
+export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_VOLUNTEER_DATA_SUCCESS";
+export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_VOLUNTEER_DATA_FAILURE";
 
 // export const fetchVolunteerData = () => dispatch => {
 //   dispatch({type: FETCH_VOLUNTEER_DATA_START});
@@ -84,6 +84,33 @@ export const createVolunteerAccount = volunteer => dispatch => {
 //     .then()
 //     .catch(err => )
 // }
+
+//Fetch Volunteer Requests Data
+export const FETCH_VOLUNTEER_REQUESTS_START = "FETCH_VOLUNTEER_REQUESTS_START";
+export const FETCH_VOLUNTEER_REQUESTS_SUCCESS =
+  "FETCH_VOLUNTEER_REQUESTS_SUCCESS";
+export const FETCH_VOLUNTEER_REQUESTS_FAILURE =
+  "FETCH_VOLUNTEER_REQUESTS_FAILURE";
+
+export const fetchVolunteerRequests = () => dispatch => {
+  dispatch({ type: FETCH_VOLUNTEER_REQUESTS_START });
+  axios
+    .get("http://localhost:3500/api/request")
+    .then(res => {
+      console.log(res, res.data);
+      dispatch({
+        type: FETCH_VOLUNTEER_REQUESTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({
+        type: FETCH_VOLUNTEER_REQUESTS_FAILURE,
+        payload: err
+      });
+    });
+};
 
 export const CREATING_BUSINESS_ACCOUNT_START =
   "CREATING_BUSINESS_ACCOUNT_START";
@@ -96,16 +123,14 @@ export const createBusinessAccount = newAccount => dispatch => {
   dispatch({ type: CREATING_BUSINESS_ACCOUNT_START });
 
   // const testUrl = 'http://demo7153249.mockable.io/business';
-  const testTwoUrl = 'http://www.mocky.io/v2/5cc6b773320000661ab94d80';
+  const testTwoUrl = "http://www.mocky.io/v2/5cc6b773320000661ab94d80";
   // const url = 'http://localhost:3500/auth/bus/register';
 
-  const request = axios.post(
-    testTwoUrl,
-    newAccount
-  );
-  console.log('TEST-NEWACCOUNT::', newAccount);
-  return request.then(({data}) => {
-    console.log('POST::', data);
+  const request = axios.post(testTwoUrl, newAccount);
+  console.log("TEST-NEWACCOUNT::", newAccount);
+  return request
+    .then(({ data }) => {
+      console.log("POST::", data);
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
         payload: data
@@ -119,19 +144,21 @@ export const createBusinessAccount = newAccount => dispatch => {
     });
 };
 
-export const DELETING_BUSINESS_ACCOUNT_SUCCESS = "DELETING_BUSINESS_ACCOUNT_SUCCESS";
-export const DELETING_BUSINESS_ACCOUNT_FAILURE = "DELETING_BUSINESS_ACCOUNT_FAILURE";
+export const DELETING_BUSINESS_ACCOUNT_SUCCESS =
+  "DELETING_BUSINESS_ACCOUNT_SUCCESS";
+export const DELETING_BUSINESS_ACCOUNT_FAILURE =
+  "DELETING_BUSINESS_ACCOUNT_FAILURE";
 
-export const deleteBusiness = (businessId) => (dispatch) => {
-  const request = axios.delete(
-    `http://api/business/${businessId}`);
+export const deleteBusiness = businessId => dispatch => {
+  const request = axios.delete(`http://api/business/${businessId}`);
 
-  return request.then(res => {
-    dispatch({
-      type: DELETING_BUSINESS_ACCOUNT_SUCCESS,
-      payload: res
-    });
-  })
+  return request
+    .then(res => {
+      dispatch({
+        type: DELETING_BUSINESS_ACCOUNT_SUCCESS,
+        payload: res
+      });
+    })
     .catch(err => {
       dispatch({
         type: DELETING_BUSINESS_ACCOUNT_FAILURE,
@@ -142,7 +169,7 @@ export const deleteBusiness = (businessId) => (dispatch) => {
 
 export const UPDATING_BUSINESS = "UPDATING_BUSINESS";
 
-export const updatingBusiness = (businessId) => (dispatch) => {
+export const updatingBusiness = businessId => dispatch => {
   dispatch({
     type: UPDATING_BUSINESS,
     payload: businessId
@@ -152,17 +179,20 @@ export const updatingBusiness = (businessId) => (dispatch) => {
 export const UPDATING_BUSINESS_SUCCESS = "UPDATING_BUSINESS_SUCCESS";
 export const UPDATING_BUSINESS_FAILURE = "UPDATING_BUSINESS_FAILURE";
 
-export const saveUpdatedBusiness = (updatedBusiness) => (dispatch) => {
+export const saveUpdatedBusiness = updatedBusiness => dispatch => {
   const request = axios.put(
-    `http://api/business/${updatedBusiness.id}`, updatedBusiness);
+    `http://api/business/${updatedBusiness.id}`,
+    updatedBusiness
+  );
 
-  return request.then((res) => {
-    console.log('UPDATE RESPONSE:', res);
-    dispatch({
-      type: UPDATING_BUSINESS_SUCCESS,
-      payload: res
-    });
-  })
+  return request
+    .then(res => {
+      console.log("UPDATE RESPONSE:", res);
+      dispatch({
+        type: UPDATING_BUSINESS_SUCCESS,
+        payload: res
+      });
+    })
     .catch(err => {
       dispatch({
         type: UPDATING_BUSINESS_FAILURE,

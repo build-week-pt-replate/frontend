@@ -17,14 +17,12 @@ function App() {
       <header className="App-header">
         <p>Replate</p>
         <Link to="/login">Login</Link>
-        <Link to="/login2">Login V2</Link>
         <Link to="/signup">Sign Up</Link>
       </header>
 
       <Route exact path="/signup/" component={SignUp} />
       <Route path="/login" component={Login} />
       <Route path="/signup/volunteer" component={VolunteerForm} />
-      <Route path="/login2" component={SignIn} />
       <Route path="/signup/business" component={SignUpFormContainer} />
       <Route path="/business/dashboard" component={BusinessDash} />
       <Route path="/volunteer/dashboard" component={VolunteerDash} />

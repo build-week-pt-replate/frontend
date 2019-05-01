@@ -4,7 +4,7 @@ import React from "react";
 import SignIn from "./SignIn";
 import Header from "../Header/Header";
 
-import "./Login.css";
+// import "./Login.css";
 
 class Login extends React.Component {
   state = {
@@ -46,46 +46,6 @@ class Login extends React.Component {
           handleLogin={this.handleLogin}
           changeHandler={this.changeHandler}
         />
-        {/* <div className="login-container">
-          <div className="login-wrapper">
-            <form className="login-form-wrapper" onSubmit={this.handleLogin}>
-              <h2 className="login-title">Login to Replate</h2>
-              <div className="div-login-inputs">
-                <div className="input-title-div">
-                  <label className="input-title-p" htmlFor="username">
-                    USERNAME
-                  </label>
-                  <input
-                    id="username"
-                    className="login-input"
-                    type="text"
-                    name="username"
-                    value={this.state.credentials.username}
-                    onChange={this.changeHandler}
-                  />
-                </div>
-
-                <div className="input-title-div">
-                  <label className="input-title-p" htmlFor="password">
-                    PASSWORD
-                  </label>
-                  <input
-                    className="login-input"
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={this.state.credentials.password}
-                    onChange={this.changeHandler}
-                  />
-
-                  <Button color="secondary" variant="contained">
-                    Log In
-                  </Button>
-                </div>
-              </div>
-            </form>
-          </div>
-    </div> */}
       </div>
     );
   }
