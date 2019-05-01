@@ -52,10 +52,10 @@ export const CREATING_VOLUNTEER_ACCOUNT_FAILURE =
 
 export const createVolunteerAccount = volunteer => dispatch => {
   dispatch({ type: CREATING_VOLUNTEER_ACCOUNT_START });
-  console.log("Hello this function worked");
+  console.log("Hello this function worked", volunteer);
 
   return axios
-    .post("localhost:3500/auth/vol/register", volunteer)
+    .post("http://localhost:3500/auth/vol/register", volunteer)
     .then(res => {
       console.log(res, res.data);
       dispatch({
