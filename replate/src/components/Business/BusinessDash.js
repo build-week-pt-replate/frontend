@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 
 import DashHeader from "../Header/DashHeader";
 import DonationFormDialog from './DonationFormDialog';
+import DonationRequests from './DonationRequests';
 import Button from '@material-ui/core/Button';
-import { addDonation } from '../../actions'
+import {
+  addDonation,
+  fetchBusinessRequests
+} from '../../actions';
+
 import './BusinessDash.css';
 
 class BusinessDash extends React.Component {
@@ -27,7 +32,7 @@ class BusinessDash extends React.Component {
 
   componentDidMount() {
     // fetch all the donation requests here
-
+    this.props.fetchBusinessRequests();
   }
 
   handleInputChange = event => {
@@ -105,6 +110,8 @@ class BusinessDash extends React.Component {
           <h3>Table Schedule Here</h3>
         </div>
 
+        <DonationRequests requests={this.props.requests}/>
+
         <DonationFormDialog onClose={this.handleClose}
                             isOpen={this.state.open}
                             handleInputChange={this.handleInputChange}
@@ -129,7 +136,10 @@ const mapStateToProps = ({requests, account, isLoading, error}) => ({
 export default (
   connect(
     mapStateToProps,
-    { addDonation }
+    {
+      addDonation,
+      fetchBusinessRequests
+    }
   )(BusinessDash)
 );
 
