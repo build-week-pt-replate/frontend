@@ -1,3 +1,16 @@
 .business-dash-container {
-    background-color: ivory;
+    background-color: whitesmoke;
+}
+
+.dash-content {
+    margin-left: 4%;
+}
+
+.business-title {
+    margin-top: 4%;
+    margin-bottom: 5%;
+}
+
+.donation-request-wrapper {
+    display: flex;
 }
