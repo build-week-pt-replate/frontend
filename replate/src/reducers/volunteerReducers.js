@@ -6,7 +6,6 @@ import {
   FETCH_VOLUNTEER_REQUESTS_START,
   FETCH_VOLUNTEER_REQUESTS_SUCCESS
 } from "../actions/index";
-import { CardActionArea } from "@material-ui/core";
 
 const initialState = {
   account: null,

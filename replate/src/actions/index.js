@@ -9,7 +9,7 @@ export const login = credentials => dispatch => {
   //If it's a business account
   if (credentials.businessAccount === true) {
     return axios
-      .post("http://localhost:3500/auth/bus/login", credentials)
+      .post("https://replate-be.herokuapp.com/auth/bus/login", credentials)
       .then(res => {
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data.payload);
@@ -26,7 +26,7 @@ export const login = credentials => dispatch => {
   } else {
     //If volunteer account businessAccount === false
     return axios
-      .post("http://localhost:3500/auth/vol/login", credentials)
+      .post("https://replate-be.herokuapp.com/auth/vol/login", credentials)
       .then(res => {
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data.payload);
@@ -55,7 +55,7 @@ export const createVolunteerAccount = volunteer => dispatch => {
   console.log("Hello this function worked", volunteer);
 
   return axios
-    .post("http://localhost:3500/auth/vol/register", volunteer)
+    .post("https://replate-be.herokuapp.com/auth/vol/register", volunteer)
     .then(res => {
       console.log(res, res.data);
       dispatch({
@@ -81,7 +81,7 @@ export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_VOLUNTEER_DATA_FAILURE";
 export const fetchVolunteerData = volunteerId => dispatch => {
   dispatch({ type: FETCH_VOLUNTEER_DATA_START });
   axios
-    .get(`http://localhost:3500/api/volunteer/${volunteerId}`, {
+    .get(`https://replate-be.herokuapp.com/api/volunteer/${volunteerId}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
@@ -107,7 +107,7 @@ export const FETCH_VOLUNTEER_REQUESTS_FAILURE =
 export const fetchVolunteerRequests = () => dispatch => {
   dispatch({ type: FETCH_VOLUNTEER_REQUESTS_START });
   axios
-    .get("http://localhost:3500/api/request")
+    .get("https://replate-be.herokuapp.com/api/request")
     .then(res => {
       console.log(res, res.data);
       dispatch({
@@ -134,12 +134,12 @@ export const CREATING_BUSINESS_ACCOUNT_FAILURE =
 export const createBusinessAccount = newAccount => dispatch => {
   dispatch({ type: CREATING_BUSINESS_ACCOUNT_START });
 
-  // const testUrl = 'http://demo7153249.mockable.io/business';
-  const testTwoUrl = "http://www.mocky.io/v2/5cc6b773320000661ab94d80";
   // const url = 'http://localhost:3500/auth/bus/register';
+  const url = "https://replate-be.herokuapp.com/auth/bus/register";
 
-  const request = axios.post(testTwoUrl, newAccount);
+  const request = axios.post(url, newAccount);
   console.log("TEST-NEWACCOUNT::", newAccount);
+
   return request
     .then(({ data }) => {
       console.log("POST::", data);
@@ -153,6 +153,72 @@ export const createBusinessAccount = newAccount => dispatch => {
         type: CREATING_BUSINESS_ACCOUNT_FAILURE,
         payload: err
       });
+      return Promise.reject(err);
+    });
+};
+
+// Fetch Business Requests / Donations
+export const FETCH_BUSINESS_REQUESTS_START = "FETCH_BUSINESS_REQUESTS_START";
+export const FETCH_BUSINESS_REQUESTS_SUCCESS =
+  "FETCH_BUSINESS_REQUESTS_SUCCESS";
+export const FETCH_BUSINESS_REQUESTS_FAILURE =
+  "FETCH_BUSINESS_REQUESTS_FAILURE";
+
+export const fetchBusinessRequests = () => dispatch => {
+  dispatch({
+    type: FETCH_BUSINESS_REQUESTS_START
+  });
+
+  const url = "http://localhost:3500/api/request";
+  const request = axios.get(url);
+
+  return request
+    .then(res => {
+      console.log(res, res.data);
+      dispatch({
+        type: FETCH_BUSINESS_REQUESTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({
+        type: FETCH_BUSINESS_REQUESTS_FAILURE,
+        payload: err
+      });
+      return Promise.reject(err);
+    });
+};
+
+export const ADDING_DONATION_START = "ADDING_DONATION_START";
+export const ADDING_DONATION_SUCCESS = "ADDING_DONATION_SUCCESS";
+export const ADDING_DONATION_FAILURE = "ADDING_DONATION_FAILURE";
+
+export const addDonation = newDonation => dispatch => {
+  dispatch({ type: ADDING_DONATION_START });
+
+  // const testUrl = 'http://demo7153249.mockable.io/business';
+  const testTwoUrl = "http://www.mocky.io/v2/5cc6b773320000661ab94d80";
+  // const url = 'localhost:3500/api/request';
+
+  const request = axios.post(testTwoUrl, newDonation);
+  console.log("TEST-DONATION::", newDonation);
+
+  return request
+    .then(({ data }) => {
+      console.log("DONATION-POST::", data);
+      dispatch({
+        type: ADDING_DONATION_SUCCESS,
+        payload: data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: ADDING_DONATION_FAILURE,
+        payload: err
+      });
+      // need this Promise in order to properly handle errors
+      return Promise.reject(err);
     });
 };
 

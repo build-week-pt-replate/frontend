@@ -12,7 +12,7 @@ class VolunteerForm extends React.Component {
       email: "",
       password: "",
       repeatPassword: "",
-      zipcode: "",
+      zip: "",
       city: "",
       state: ""
     };
@@ -34,7 +34,7 @@ class VolunteerForm extends React.Component {
       phone: this.state.phone,
       email: this.state.email,
       password: this.state.password,
-      zipcode: this.state.zipcode,
+      zip: this.state.zip,
       city: this.state.city,
       state: this.state.state
     };
@@ -103,13 +103,13 @@ class VolunteerForm extends React.Component {
             />
           </div>
           <div className="input-field">
-            <label htmlFor="zipcode">Zipcode</label>
+            <label htmlFor="zip">Zipcode</label>
             <input
-              id="zipcode"
+              id="zip"
               type="text"
-              name="zipcode"
+              name="zip"
               onChange={this.changeHandler}
-              value={this.state.zipcode}
+              value={this.state.zip}
             />
           </div>
           <div className="input-field">
