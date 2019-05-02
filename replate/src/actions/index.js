@@ -153,13 +153,79 @@ export const createBusinessAccount = newAccount => dispatch => {
         type: CREATING_BUSINESS_ACCOUNT_FAILURE,
         payload: err
       });
+      return Promise.reject(err);
     });
 };
 
-export const DELETING_BUSINESS_ACCOUNT_SUCCESS =
-  "DELETING_BUSINESS_ACCOUNT_SUCCESS";
-export const DELETING_BUSINESS_ACCOUNT_FAILURE =
-  "DELETING_BUSINESS_ACCOUNT_FAILURE";
+// Fetch Business Requests / Donations
+export const FETCH_BUSINESS_REQUESTS_START = "FETCH_BUSINESS_REQUESTS_START";
+export const FETCH_BUSINESS_REQUESTS_SUCCESS =
+  "FETCH_BUSINESS_REQUESTS_SUCCESS";
+export const FETCH_BUSINESS_REQUESTS_FAILURE =
+  "FETCH_BUSINESS_REQUESTS_FAILURE";
+
+export const fetchBusinessRequests = () => dispatch => {
+  dispatch({
+    type: FETCH_BUSINESS_REQUESTS_START
+  });
+
+  const url = "http://localhost:3500/api/request";
+  const request = axios.get(url);
+
+  return request
+    .then(res => {
+      console.log(res, res.data);
+      dispatch({
+        type: FETCH_BUSINESS_REQUESTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({
+        type: FETCH_BUSINESS_REQUESTS_FAILURE,
+        payload: err
+      });
+      return Promise.reject(err);
+    });
+};
+
+export const ADDING_DONATION_START =
+  "ADDING_DONATION_START";
+export const ADDING_DONATION_SUCCESS =
+  "ADDING_DONATION_SUCCESS";
+export const ADDING_DONATION_FAILURE =
+  "ADDING_DONATION_FAILURE";
+
+export const addDonation = newDonation => dispatch => {
+  dispatch({ type: ADDING_DONATION_START });
+
+  // const testUrl = 'http://demo7153249.mockable.io/business';
+  const testTwoUrl = 'http://www.mocky.io/v2/5cc6b773320000661ab94d80';
+  // const url = 'localhost:3500/api/request';
+
+  const request = axios.post(testTwoUrl, newDonation);
+  console.log('TEST-DONATION::', newDonation);
+
+  return request.then(({data}) => {
+    console.log('DONATION-POST::', data);
+    dispatch({
+      type: ADDING_DONATION_SUCCESS,
+      payload: data
+    });
+  })
+    .catch(err => {
+      dispatch({
+        type: ADDING_DONATION_FAILURE,
+        payload: err
+      });
+      // need this Promise in order to properly handle errors
+      return Promise.reject(err);
+    });
+};
+
+export const DELETING_BUSINESS_ACCOUNT_SUCCESS = "DELETING_BUSINESS_ACCOUNT_SUCCESS";
+export const DELETING_BUSINESS_ACCOUNT_FAILURE = "DELETING_BUSINESS_ACCOUNT_FAILURE";
 
 export const deleteBusiness = businessId => dispatch => {
   const request = axios.delete(`http://api/business/${businessId}`);

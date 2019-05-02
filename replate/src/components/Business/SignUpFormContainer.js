@@ -41,30 +41,41 @@ class SignUpFormContainer extends Component {
 
   addAccount = (event) => {
     event.preventDefault();
-    const newAccount = {
-      ...this.state,
+    const {
+      repeatPassword,
+      stepNumber,
+      ...newAccount
+    } = this.state;
+
+    if (this.state.password === repeatPassword) {
+      this.props.createBusinessAccount(newAccount).then(() => {
+
+        if (!this.props.error) {
+          this.setState({
+            company: '',
+            phone: '',
+            email: '',
+            password: '',
+            repeatPassword: '',
+            companyName: '',
+            street: '',
+            city: '',
+            state: '',
+            zip: '',
+            companyEmail: '',
+            stepNumber: 1,
+          })
+          // this.props.history.push("/business/:id/dashboard"); direct to dashboard
+        }
+      })
+    } else {
+      this.setState({
+        password: '',
+        repeatPassword: '',
+        stepNumber: 1
+      });
+      alert('Passwords did not match');
     }
-
-    this.props.createBusinessAccount(newAccount).then(() => {
-
-      if (!this.props.error) {
-        this.setState({
-          company: '',
-          phone: '',
-          email: '',
-          password: '',
-          repeatPassword: '',
-          companyName: '',
-          street: '',
-          city: '',
-          state: '',
-          zip: '',
-          companyEmail: '',
-          stepNumber: 1,
-        })
-        // this.props.history.push("/business/:id/dashboard"); direct to dashboard
-      }
-    })
   }
 
   render() {
