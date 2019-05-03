@@ -10,7 +10,9 @@ import {
   FETCH_VOLUNTEER_DATA_SUCCESS,
   FETCH_VOLUNTEER_REQUESTS_FAILURE,
   FETCH_VOLUNTEER_REQUESTS_START,
-  FETCH_VOLUNTEER_REQUESTS_SUCCESS
+  FETCH_VOLUNTEER_REQUESTS_SUCCESS,
+  LOGIN_START,
+  LOGIN_RESOLVED
 } from "../actions/index";
 
 const mockDataVolunteer = [
@@ -45,6 +47,22 @@ const mockDataVolunteer = [
     "volunteerId": 1,
     "created_at": "2019-04-30 03:26:56",
     "updated_at": "2019-04-30 03:26:56"
+  },
+  {
+    "id": 2,
+    "requestDate": "2019-04-27",
+    "requestTime": "10:30:00",
+    "locationName": "Hope Shelter",
+    "locationStreet": "110 Carolina Street",
+    "locationCity": "San Francisco",
+    "locationState": "TN",
+    "locationZip": "37902",
+    "foodDescription": "Boxed and canned items",
+    "comment": "",
+    "businessId": 3,
+    "volunteerId": 2,
+    "created_at": "2019-04-30 03:26:56",
+    "updated_at": "2019-04-30 03:26:56"
   }
 ]
 
@@ -61,6 +79,19 @@ const initialState = {
 
 const volunteerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN_START: {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
+    case LOGIN_RESOLVED: {
+      return {
+        ...state,
+        isLoading: false,
+        account: action.payload
+      }
+    }
     case CREATING_VOLUNTEER_ACCOUNT_START:
       return {
         ...state,
@@ -130,7 +161,11 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         error: "",
         fetchingData: false,
-        requests: mockDataVolunteer
+        requests: mockDataVolunteer.filter(request => {
+          if (state.account.city === request.locationCity) {
+            return request;
+          }
+        })
       };
     case FETCH_VOLUNTEER_REQUESTS_FAILURE:
       return {

@@ -1,12 +1,22 @@
 import React from 'react'
 import RequestCard from './RequestCard';
 
-const Requests = props => {
+import './RequestList.css'
+
+const RequestList = props => {
   return (
     <div className='available-requests-container'>
-      {props.requests.map(request => {
-        return <RequestCard request={request} key={request.id} />
-      })}
+      {props.requests
+        // .filter(request => {
+        //   if (props.account.city === request.locationCity) {
+        //     return request
+        //   }
+        // })
+        .map(request => {
+          return <RequestCard request={request} key={request.id} />
+        })}
     </div>
   )
 }
+
+export default RequestList

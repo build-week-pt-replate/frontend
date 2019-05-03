@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 class Login extends React.Component {
   state = {
     credentials: {
-      username: "",
+      email: "",
       password: ""
       //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
     },
@@ -62,9 +62,9 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ isLoading }) => {
   return {
-    isLoading: state.isLoading
+    isLoading
   };
 };
 

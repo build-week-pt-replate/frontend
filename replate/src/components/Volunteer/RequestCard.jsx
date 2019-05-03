@@ -26,7 +26,7 @@ const styles = {
 
 function RequestCard(props) {
   const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  // const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.card}>
@@ -35,14 +35,15 @@ function RequestCard(props) {
         <Typography variant="h5" component="h2">
           {props.request.locationName}
         </Typography>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.request.date} <br />
-          {props.request.time} <br />
-          {props.request.foodDescription}
+
+        <Typography component="p">
+          Address :{props.request.locationStreet}, {props.request.locationCity} <br />
+          Request Time:{props.request.requestTime} <br />
+          Food Description: {props.request.foodDescription}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Accept Request</Button>
+        <Button size="small" color="secondary">Accept Request</Button>
       </CardActions>
     </Card>
   );
