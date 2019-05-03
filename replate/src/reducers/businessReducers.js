@@ -12,7 +12,7 @@ import {
   UPDATING_BUSINESS_FAILURE,
   LOGIN_START,
   LOGIN_RESOLVED
-} from "../actions";
+} from "../actions/businessActions";
 
 const mockData = [
 
@@ -41,7 +41,7 @@ const initialState = {
   isBusinessInEditMode: null,
   isDeletingVolunteer: false,
   isDeletingBusiness: false,
-  requests: mockData,
+  requests: [],
   fetchingData: false
 };
 

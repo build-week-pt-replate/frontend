@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createBusinessAccount } from '../../actions';
+import { createBusinessAccount } from '../../actions/businessActions';
 
 import StepOneForm from './StepOneForm';
 import StepTwoForm from './StepTwoForm';
