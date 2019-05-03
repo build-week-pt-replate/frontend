@@ -18,6 +18,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isBusinessInEditMode: null,
+  isDeletingVolunteer: false,
   isDeletingBusiness: false,
   requests: [],
   fetchingData: false
@@ -41,6 +42,26 @@ const volunteerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
+        error: action.payload
+      };
+    case DELETING_VOLUNTEER_ACCOUNT_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case DELETING_VOLUNTEER_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isDeletingVolunteer: true,
+        error: null,
+        account: action.payload
+      };
+    case DELETING_VOLUNTEER_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isDeletingVolunteer: false,
         error: action.payload
       };
     case FETCH_VOLUNTEER_DATA_START:

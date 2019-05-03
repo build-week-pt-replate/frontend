@@ -87,7 +87,7 @@ export const deleteVolunteerAccount = volunteerId => dispatch => {
   return axios
     .delete(`https://replate-be.herokuapp.com/api/volunteer/${volunteerId}`)
     .then(res => {
-      console.log(res, res.data, 'This volunteer has been deleted');
+      console.log(res, res.data, "This volunteer has been deleted");
       dispatch({
         type: DELETING_VOLUNTEER_ACCOUNT_SUCCESS,
         payload: res
@@ -226,12 +226,9 @@ export const ADDING_DONATION_FAILURE = "ADDING_DONATION_FAILURE";
 
 export const addDonation = newDonation => dispatch => {
   dispatch({ type: ADDING_DONATION_START });
+  const url = "https://replate-be.herokuapp.com/api/request";
 
-  // const testUrl = 'http://demo7153249.mockable.io/business';
-  const testTwoUrl = "http://www.mocky.io/v2/5cc6b773320000661ab94d80";
-  // const url = 'localhost:3500/api/request';
-
-  const request = axios.post(testTwoUrl, newDonation);
+  const request = axios.post(url, newDonation);
   console.log("TEST-DONATION::", newDonation);
 
   return request
@@ -242,20 +239,7 @@ export const addDonation = newDonation => dispatch => {
         payload: data
       });
     })
-=======
-  const url = 'https://replate-be.herokuapp.com/api/request';
 
-  const request = axios.post(url, newDonation);
-  console.log('TEST-DONATION::', newDonation);
-
-  return request.then(({ data }) => {
-    console.log('DONATION-POST::', data);
-    dispatch({
-      type: ADDING_DONATION_SUCCESS,
-      payload: data
-    });
-  })
->>>>>>> a214e0f27cca3c244aece6f17504e62b68393485
     .catch(err => {
       dispatch({
         type: ADDING_DONATION_FAILURE,
