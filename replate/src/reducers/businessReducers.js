@@ -10,9 +10,12 @@ import {
   UPDATING_BUSINESS,
   UPDATING_BUSINESS_SUCCESS,
   UPDATING_BUSINESS_FAILURE,
+} from "../actions/businessActions";
+
+import {
   LOGIN_START,
   LOGIN_RESOLVED
-} from "../actions/businessActions";
+} from "../actions/index"
 
 const mockData = [
 
