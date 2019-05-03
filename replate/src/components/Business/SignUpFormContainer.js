@@ -65,7 +65,7 @@ class SignUpFormContainer extends Component {
             companyEmail: '',
             stepNumber: 1,
           })
-          // this.props.history.push("/business/:id/dashboard"); direct to dashboard
+          this.props.history.push("/business/dashboard");
         }
       })
     } else {

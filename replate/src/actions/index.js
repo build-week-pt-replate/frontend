@@ -168,11 +168,11 @@ export const createBusinessAccount = newAccount => dispatch => {
   const url = "https://replate-be.herokuapp.com/auth/bus/register";
 
   const request = axios.post(url, newAccount);
-  console.log("TEST-NEWACCOUNT::", newAccount);
+  console.log('TEST-NEWACCOUNT::', newAccount);
 
   return request
     .then(({ data }) => {
-      console.log("POST::", data);
+      console.log('POST::', data);
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
         payload: data
@@ -199,15 +199,22 @@ export const fetchBusinessRequests = () => dispatch => {
     type: FETCH_BUSINESS_REQUESTS_START
   });
 
-  const url = "http://localhost:3500/api/request";
-  const request = axios.get(url);
+  const token = localStorage.getItem('token');
+  console.log('TOKEN:', token);
+
+  const config = {
+    headers: {authorization: "bearer " + token}
+  };
+
+  const url = 'https://replate-be.herokuapp.com/api/request';
+  const request = axios.get(url, config);
 
   return request
-    .then(res => {
-      console.log(res, res.data);
+    .then(({ data }) => {
+      console.log('Fetching Requests:', data);
       dispatch({
         type: FETCH_BUSINESS_REQUESTS_SUCCESS,
-        payload: res.data
+        payload: data
       });
     })
     .catch(err => {
@@ -227,6 +234,7 @@ export const ADDING_DONATION_FAILURE = "ADDING_DONATION_FAILURE";
 export const addDonation = newDonation => dispatch => {
   dispatch({ type: ADDING_DONATION_START });
 
+<<<<<<< HEAD
   // const testUrl = 'http://demo7153249.mockable.io/business';
   const testTwoUrl = "http://www.mocky.io/v2/5cc6b773320000661ab94d80";
   // const url = 'localhost:3500/api/request';
@@ -242,6 +250,20 @@ export const addDonation = newDonation => dispatch => {
         payload: data
       });
     })
+=======
+  const url = 'https://replate-be.herokuapp.com/api/request';
+
+  const request = axios.post(url, newDonation);
+  console.log('TEST-DONATION::', newDonation);
+
+  return request.then(({ data }) => {
+    console.log('DONATION-POST::', data);
+    dispatch({
+      type: ADDING_DONATION_SUCCESS,
+      payload: data
+    });
+  })
+>>>>>>> a214e0f27cca3c244aece6f17504e62b68393485
     .catch(err => {
       dispatch({
         type: ADDING_DONATION_FAILURE,

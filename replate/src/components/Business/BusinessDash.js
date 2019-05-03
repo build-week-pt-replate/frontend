@@ -84,33 +84,35 @@ class BusinessDash extends React.Component {
     return (
       <div className="business-dash-container">
         <DashHeader />
-        <div className="business-title">
-          <h2>Business Dashboard</h2>
-        </div>
+        <div className="dash-content">
+          <div className="business-title">
+            <h2>Business Dashboard</h2>
+          </div>
 
-        <div className=" ">
-          <h3>Pick Up Schedule</h3>
-        </div>
+          <div className=" ">
+            <h3>Pick Up Schedule</h3>
+          </div>
 
-        <div className=" ">
-          <h3>Add Donation</h3>
-          <Button variant="outlined"
-                  color="primary"
-                  onClick={this.handleClickOpen}
-          >
-            Add
-          </Button>
-        </div>
+          <div className=" ">
+            <h3>Add Donation</h3>
+            <Button variant="outlined"
+                    color="primary"
+                    onClick={this.handleClickOpen}
+            >
+              Add
+            </Button>
+          </div>
 
-        <div className=" ">
-          <h3>Next Week's Schedule</h3>
-        </div>
+          <div className=" ">
+            <h3>Next Week's Schedule</h3>
+          </div>
 
-        <div className=" ">
-          <h3>Table Schedule Here</h3>
-        </div>
+          <div className=" ">
+            <h3>No Upcoming Pick up</h3>
+          </div>
 
-        <DonationRequests requests={this.props.requests}/>
+          <DonationRequests requests={this.props.requests}/>
+        </div>
 
         <DonationFormDialog onClose={this.handleClose}
                             isOpen={this.state.open}

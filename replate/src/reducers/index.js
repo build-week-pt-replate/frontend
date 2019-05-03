@@ -12,6 +12,26 @@ import {
   UPDATING_BUSINESS_FAILURE
 } from "../actions";
 
+const mockData = [
+
+  {
+    id: 1,
+    locationName: 'Burger King',
+    date: '2019-20-09',
+    time: '2:30pm',
+    foodDescription: 'a juicy burger',
+    comment: 'Hello there'
+  },
+  {
+    id: 2,
+    locationName: 'Papa Johns',
+    date: '2019-20-08',
+    time: '5:30pm',
+    foodDescription: 'a juicy pizza',
+    comment: 'Backdoor delivery'
+  },
+]
+
 const initialState = {
   account: null,
   isLoading: false,
@@ -19,7 +39,7 @@ const initialState = {
   isBusinessInEditMode: null,
   isDeletingVolunteer: false,
   isDeletingBusiness: false,
-  requests: [],
+  requests: mockData,
   fetchingData: false
 };
 
