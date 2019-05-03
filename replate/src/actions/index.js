@@ -28,12 +28,13 @@ export const login = credentials => dispatch => {
     return axios
       .post("https://replate-be.herokuapp.com/auth/vol/login", credentials)
       .then(res => {
+        console.log(res, res.data, credentials);
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data.payload);
         dispatch({ type: LOGIN_RESOLVED, payload: res.data.payload });
       })
       .catch(err => {
-        console.log("login err: ", err);
+        console.log("login err: ", err, credentials);
         //If login is unsuccessful due to wrong credentials remove from local
         if (err.response.status === 403) {
           localStorage.removeItem("token");

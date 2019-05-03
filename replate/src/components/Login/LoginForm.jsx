@@ -89,7 +89,7 @@ function LoginForm(props) {
             control={
               <Switch
                 onChange={props.changeHandlerSwitch}
-                value={props.businessAccount}
+                value={!props.businessAccount}
                 color="primary"
                 name="businessAccount"
               />

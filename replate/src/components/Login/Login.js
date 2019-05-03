@@ -1,6 +1,6 @@
 import React from "react";
-// import { connect } from "react-redux";
-// import { login } from "../actions";
+import { connect } from "react-redux";
+import { login } from "../../actions";
 import LoginForm from "./LoginForm";
 import Header from "../Header/Header";
 import Button from "@material-ui/core/Button";
@@ -12,9 +12,7 @@ class Login extends React.Component {
       password: ""
       //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
     },
-    businessAccount: true,
-    //Will be used to tell if user is logged in (null = no login, not null = someones logged in )
-    user: null
+    businessAccount: false
   };
 
   changeHandler = e => {
@@ -26,21 +24,28 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
       }
     });
+    console.log(this.state.businessAccount);
   };
 
   changeHandlerSwitch = e => {
-    this.setState({ businessAccount: !this.state.businessAccount });
+    this.setState({
+      businessAccount: !this.state.businessAccount
+    });
     console.log(e.target.value);
   };
 
-  // handleLogin = e => {
-  //   e.preventDefault();
-  //   this.props
-  //     //When credentials inputted into form and submitted, run the login action creator
-  //     .login(this.state.credentials)
-  //     //After successful login, send user to protected website
-  //     .then(() => this.props.history.push("/protected"));
-  // };
+  handleLogin = e => {
+    e.preventDefault();
+    this.props
+      //When credentials inputted into form and submitted, run the login action creator
+      .login(this.state.credentials)
+      //After successful login, send user to protected website
+      .then(() =>
+        this.state.businessAccount
+          ? this.props.history.push("/business/dashboard")
+          : this.props.history.push("/volunteer/dashboard")
+      );
+  };
 
   render() {
     return (
@@ -63,4 +68,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default Login;
+export default connect(
+  mapStateToProps,
+  { login }
+)(Login);
