@@ -28,7 +28,7 @@ export default class DonationFormDialog extends Component {
     const form = (
       <>
         <DialogTitle id="form-dialog-title">
-          Schedule New PickUp
+          Schedule New Pick Up
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
