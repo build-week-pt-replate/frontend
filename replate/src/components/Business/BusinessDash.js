@@ -81,6 +81,8 @@ class BusinessDash extends React.Component {
   }
 
   render() {
+    const {requests} = this.props;
+
     return (
       <div className="business-dash-container">
         <DashHeader />
@@ -107,11 +109,20 @@ class BusinessDash extends React.Component {
             <h3>Next Week's Schedule</h3>
           </div>
 
-          <div className=" ">
-            <h3>No Upcoming Pick up</h3>
-          </div>
+          {
+              requests.length !== 0  ?
+            (
+              <DonationRequests requests={requests}/>
+            )
 
-          <DonationRequests requests={this.props.requests}/>
+            :
+
+            (
+              <div className=" ">
+                <h3>No Upcoming Pick up</h3>
+              </div>
+            )
+          }
         </div>
 
         <DonationFormDialog onClose={this.handleClose}
