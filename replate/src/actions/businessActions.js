@@ -51,7 +51,7 @@ export const fetchBusinessRequests = () => dispatch => {
   console.log('TOKEN:', token);
 
   const config = {
-    headers: { Authorization: "bearer " + token }
+    headers: { Authorization: token }
   };
 
   const url = 'https://replate-be.herokuapp.com/api/request';
