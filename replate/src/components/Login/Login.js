@@ -9,11 +9,7 @@ class Login extends React.Component {
   state = {
     credentials: {
       email: "",
-<<<<<<< HEAD
-      password: ""
-=======
       password: "",
->>>>>>> a4bee782881b31d469f4790da322ec47daeed4f2
       //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
       businessAccount: false
     }
