@@ -1,7 +1,7 @@
 import React from 'react'
 import RequestCard from './RequestCard';
 
-const Requests = props => {
+const RequestList = props => {
   return (
     <div className='available-requests-container'>
       {props.requests.map(request => {
@@ -10,3 +10,5 @@ const Requests = props => {
     </div>
   )
 }
+
+export default RequestList

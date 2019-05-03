@@ -1,8 +1,8 @@
 import React from "react";
 import DashHeader from "../Header/DashHeader";
 import { connect } from "react-redux";
-
-import RequestList from './RequestsList'
+import { fetchVolunteerRequests } from '../../actions/index.js'
+import RequestList from './RequestList'
 
 class VolunteerDash extends React.Component {
   constructor(props) {
