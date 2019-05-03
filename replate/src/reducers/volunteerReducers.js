@@ -50,7 +50,21 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         error: "",
         fetchingData: false,
-        requests: action.payload.filter(request)
+        requests: action.payload.filter(request => {
+          if (request.city === account.city) {
+            return request;
+          }
+        })
       };
+    case FETCH_VOLUNTEER_REQUESTS_FAILURE:
+      return {
+        ...state,
+        fetchingData: false,
+        error: action.payload
+      };
+    default:
+      return state;
   }
 };
+
+export default volunteerReducer;
