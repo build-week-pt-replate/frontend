@@ -1,15 +1,11 @@
 import React from "react";
 import DashHeader from "../Header/DashHeader";
 import { connect } from "react-redux";
-<<<<<<< HEAD
 import {
   fetchVolunteerRequests,
   fetchVolunteerData
 } from '../../actions';
-
-=======
 import { fetchVolunteerRequests } from '../../actions/index.js'
->>>>>>> 36d6c9d716fa612b0dd2102542622ef6acfb5931
 import RequestList from './RequestList'
 
 class VolunteerDash extends React.Component {
