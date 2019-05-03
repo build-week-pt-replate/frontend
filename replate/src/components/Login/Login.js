@@ -8,11 +8,11 @@ import Button from "@material-ui/core/Button";
 class Login extends React.Component {
   state = {
     credentials: {
-      username: "",
-      password: ""
+      email: "",
+      password: "",
       //To determine if business account or volunteer (if false && credentials are valid login as volunteer)
-    },
-    businessAccount: false
+      businessAccount: false
+    }
   };
 
   changeHandler = e => {
@@ -24,12 +24,15 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
       }
     });
-    console.log(this.state.businessAccount);
+    // console.log(this.state.businessAccount);
   };
 
   changeHandlerSwitch = e => {
     this.setState({
-      businessAccount: !this.state.businessAccount
+      credentials: {
+        ...this.state.credentials,
+        businessAccount: !this.state.credentials.businessAccount,
+      }
     });
     console.log(e.target.value);
   };
@@ -41,7 +44,7 @@ class Login extends React.Component {
       .login(this.state.credentials)
       //After successful login, send user to protected website
       .then(() =>
-        this.state.businessAccount
+        this.state.credentials.businessAccount
           ? this.props.history.push("/business/dashboard")
           : this.props.history.push("/volunteer/dashboard")
       );
@@ -54,7 +57,7 @@ class Login extends React.Component {
         <LoginForm
           handleLogin={this.handleLogin}
           changeHandler={this.changeHandler}
-          businessAccount={this.state.businessAccount}
+          businessAccount={this.state.credentials.businessAccount}
           changeHandlerSwitch={this.changeHandlerSwitch}
         />
       </div>

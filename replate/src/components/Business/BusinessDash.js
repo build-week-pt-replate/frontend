@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import {
   addDonation,
   fetchBusinessRequests
-} from '../../actions';
+} from '../../actions/businessActions';
 
 import './BusinessDash.css';
 
@@ -95,7 +95,7 @@ class BusinessDash extends React.Component {
             <h3>Pick Up Schedule</h3>
           </div>
 
-          <div className=" ">
+          <div className="add-btn-wrapper">
             <h3>Add Donation</h3>
             <Button variant="outlined"
                     color="primary"
@@ -139,11 +139,11 @@ class BusinessDash extends React.Component {
   }
 }
 
-const mapStateToProps = ({requests, account, isLoading, error}) => ({
-  requests,
-  account,
-  isLoading,
-  error,
+const mapStateToProps = ({ businessReducers }) => ({
+  requests: businessReducers.requests,
+  account: businessReducers.account,
+  isLoading: businessReducers.isLoading,
+  error: businessReducers.error,
 });
 
 export default (

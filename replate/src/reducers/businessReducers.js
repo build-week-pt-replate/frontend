@@ -10,7 +10,7 @@ import {
   UPDATING_BUSINESS,
   UPDATING_BUSINESS_SUCCESS,
   UPDATING_BUSINESS_FAILURE
-} from "../actions";
+} from "../actions/businessActions";
 
 const mockData = [
 
@@ -39,7 +39,7 @@ const initialState = {
   isBusinessInEditMode: null,
   isDeletingVolunteer: false,
   isDeletingBusiness: false,
-  requests: mockData,
+  requests: [],
   fetchingData: false
 };
 
