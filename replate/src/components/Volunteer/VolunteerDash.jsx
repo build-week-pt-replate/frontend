@@ -5,7 +5,6 @@ import {
   fetchVolunteerRequests,
   fetchVolunteerData
 } from '../../actions';
-import { fetchVolunteerRequests } from '../../actions/index.js'
 import RequestList from './RequestList'
 
 class VolunteerDash extends React.Component {
