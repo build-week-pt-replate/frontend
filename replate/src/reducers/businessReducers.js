@@ -9,8 +9,13 @@ import {
   DELETING_BUSINESS_ACCOUNT_FAILURE,
   UPDATING_BUSINESS,
   UPDATING_BUSINESS_SUCCESS,
-  UPDATING_BUSINESS_FAILURE
+  UPDATING_BUSINESS_FAILURE,
 } from "../actions/businessActions";
+
+import {
+  LOGIN_START,
+  LOGIN_RESOLVED
+} from "../actions/index"
 
 const mockData = [
 
@@ -43,8 +48,21 @@ const initialState = {
   fetchingData: false
 };
 
-const rootReducer = (state = initialState, action) => {
+const businessReducers = (state = initialState, action) => {
   switch (action.type) {
+    case LOGIN_START: {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
+    case LOGIN_RESOLVED: {
+      return {
+        ...state,
+        isLoading: false,
+        account: action.payload
+      }
+    }
     case CREATING_BUSINESS_ACCOUNT_START:
       return {
         ...state,
@@ -117,4 +135,4 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export default rootReducer;
+export default businessReducers;

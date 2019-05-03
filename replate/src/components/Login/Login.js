@@ -65,9 +65,9 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ isLoading }) => {
   return {
-    isLoading: state.isLoading
+    isLoading
   };
 };
 

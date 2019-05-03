@@ -20,8 +20,8 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/signup/volunteer" component={VolunteerForm} />
       <Route path="/signup/business" component={SignUpFormContainer} />
-      <Route exact path="/business/dashboard" component={BusinessDash} />
-      <Route
+      <PrivateRoute exact path="/business/dashboard" component={BusinessDash} />
+      <PrivateRoute
         exact
         path="/volunteer/dashboard"
         component={VolunteerDash}

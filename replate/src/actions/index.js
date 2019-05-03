@@ -34,8 +34,9 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
       .then(res => {
         console.log(res, res.data, {email, password});
         //Creates a token in local storage if login is successful
-        localStorage.setItem("token", res.data.payload);
-        dispatch({ type: LOGIN_RESOLVED, payload: res.data.payload });
+        localStorage.setItem("token", res.data);
+        // fetchVolunteerData(res.data.id)
+        dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {
         console.log("login err: ", err, {email, password});
@@ -123,11 +124,11 @@ export const fetchVolunteerData = volunteerId => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-      console.log(res);
+      console.log(res, 'Did i make it to fetch success?');
       dispatch({ type: FETCH_VOLUNTEER_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response);
+      console.log(err.response, "You got an error");
       if (err.response.status === 403) {
         localStorage.removeItem("token");
       }

@@ -1,7 +1,10 @@
 import React from "react";
 import DashHeader from "../Header/DashHeader";
 import { connect } from "react-redux";
-import { fetchVolunteerRequests } from '../../actions/index.js'
+import {
+  fetchVolunteerRequests,
+  fetchVolunteerData
+} from '../../actions';
 import RequestList from './RequestList'
 
 class VolunteerDash extends React.Component {
@@ -11,8 +14,11 @@ class VolunteerDash extends React.Component {
   }
 
   componentDidMount() {
+    //Fetch volunteer data 
+    this.props.fetchVolunteerData(this.props.account.id)
     // fetch all requests
-    this.props.fetchVolunteerRequests();
+    console.log(this.props.account)
+    // this.props.fetchVolunteerRequests();
   }
 
   render() {
@@ -20,10 +26,11 @@ class VolunteerDash extends React.Component {
       <div className="dash-container">
         <DashHeader />
         <div className="volunteer-dash">
-          <h2>{this.props.account.name}'s Dashboard</h2>
+          {/* <h2>{this.props.account.name}'s Dashboard</h2> */}
+          <h2>Volunteer Dashboard</h2>
           <div className="requests-box">
             <h3>Available Requests</h3>
-            <RequestList requests={this.props.requests} />
+            <RequestList requests={this.props.requests} account={this.props.account} />
           </div>
           <div className="requests-box">
             <h3>Current Requests</h3>
@@ -36,11 +43,11 @@ class VolunteerDash extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    requests: state.requests,
-    account: state.volunteers,
-    fetchingData: state.fetchingData,
-    error: state.error
+    requests: state.volunteerReducers.requests,
+    account: state.volunteerReducers.account,
+    fetchingData: state.volunteerReducers.fetchingData,
+    error: state.volunteerReducers.error
   };
 };
 
-export default (connect(mapStateToProps, fetchVolunteerRequests)(VolunteerDash))
+export default connect(mapStateToProps, { fetchVolunteerRequests, fetchVolunteerData })(VolunteerDash)
