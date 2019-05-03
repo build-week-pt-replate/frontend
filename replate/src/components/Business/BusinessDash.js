@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from 'react-redux';
 
+import AddMUIcon from '../ButtonIcons/AddMUIcon';
 import DashHeader from "../Header/DashHeader";
 import DonationFormDialog from './DonationFormDialog';
 import DonationRequests from './DonationRequests';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import {
   addDonation,
   fetchBusinessRequests
@@ -87,26 +88,28 @@ class BusinessDash extends React.Component {
       <div className="business-dash-container">
         <DashHeader />
         <div className="dash-content">
-          <div className="business-title">
-            <h2>Business Dashboard</h2>
-          </div>
+          <div className="titles-wrapper">
+            <div className="business-title">
+              <h2>Business Dashboard</h2>
+            </div>
 
-          <div className=" ">
-            <h3>Pick Up Schedule</h3>
-          </div>
+            <div className=" ">
+              <h3>Pick Up Schedule</h3>
+            </div>
 
-          <div className="add-btn-wrapper">
-            <h3>Add Donation</h3>
-            <Button variant="outlined"
-                    color="primary"
-                    onClick={this.handleClickOpen}
-            >
-              Add
-            </Button>
-          </div>
+            <div className="add-btn-wrapper">
+              <h3 className="h-3-add-donation">Add Donation</h3>
+              <AddMUIcon variant="outlined"
+                      color="primary"
+                      onClick={this.handleClickOpen}
+              >
 
-          <div className=" ">
-            <h3>Next Week's Schedule</h3>
+              </AddMUIcon>
+            </div>
+
+            <div className=" ">
+              <h3>Next Week's Schedule</h3>
+            </div>
           </div>
 
           {

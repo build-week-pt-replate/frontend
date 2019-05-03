@@ -1,9 +1,13 @@
 .business-dash-container {
-    background-color: whitesmoke;
+    /*background-color: whitesmoke;*/
 }
 
 .dash-content {
-    margin-left: 4%;
+    /*margin-left: 4%;*/
+}
+
+.titles-wrapper {
+    margin-left: 20px;
 }
 
 .business-title {
@@ -15,8 +19,15 @@
     display: flex;
 }
 
+.h-3-add-donation {
+    margin-top: 24px;
+    margin-right: 20px;
+}
+
 .donation-request-wrapper {
     display: flex;
+    flex-flow: wrap;
+    margin: 0 auto;
 }
 
 ul {
