@@ -32,11 +32,7 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
     return axios
       .post("https://replate-be.herokuapp.com/auth/vol/login", {email, password})
       .then(res => {
-<<<<<<< HEAD
-        console.log('This is your data', res, res.data, res.data.id);
-=======
         console.log(res, res.data, {email, password});
->>>>>>> a4bee782881b31d469f4790da322ec47daeed4f2
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data);
         // fetchVolunteerData(res.data.id)
