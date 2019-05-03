@@ -1,4 +1,10 @@
 import {
+  CREATING_VOLUNTEER_ACCOUNT_START,
+  CREATING_VOLUNTEER_ACCOUNT_SUCCESS,
+  CREATING_VOLUNTEER_ACCOUNT_FAILURE,
+  DELETING_VOLUNTEER_ACCOUNT_START,
+  DELETING_VOLUNTEER_ACCOUNT_SUCCESS,
+  DELETING_VOLUNTEER_ACCOUNT_FAILURE,
   FETCH_VOLUNTEER_DATA_FAILURE,
   FETCH_VOLUNTEER_DATA_START,
   FETCH_VOLUNTEER_DATA_SUCCESS,
@@ -19,6 +25,24 @@ const initialState = {
 
 const volunteerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CREATING_VOLUNTEER_ACCOUNT_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case CREATING_VOLUNTEER_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        account: action.payload
+      };
+    case CREATING_VOLUNTEER_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
     case FETCH_VOLUNTEER_DATA_START:
       return {
         ...state,

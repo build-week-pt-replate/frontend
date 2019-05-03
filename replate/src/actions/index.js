@@ -73,6 +73,35 @@ export const createVolunteerAccount = volunteer => dispatch => {
     });
 };
 
+export const DELETING_VOLUNTEER_ACCOUNT_START =
+  "DELETING_VOLUNTEER_ACCOUNT_START";
+export const DELETING_VOLUNTEER_ACCOUNT_SUCCESS =
+  "DELETING_VOLUNTEER_ACCOUNT_SUCCESS";
+export const DELETING_VOLUNTEER_ACCOUNT_FAILURE =
+  "DELETING_VOLUNTEER_ACCOUNT_FAILURE";
+
+export const createVolunteerAccount = volunteerId => dispatch => {
+  dispatch({ type: DELETING_VOLUNTEER_ACCOUNT_START });
+  console.log("Hello this function worked", volunteer);
+
+  return axios
+    .delete(`https://replate-be.herokuapp.com/api/volunteer/${volunteerId}`)
+    .then(res => {
+      console.log(res, res.data);
+      dispatch({
+        type: DELETING_VOLUNTEER_ACCOUNT_SUCCESS,
+        payload: res
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: DELETING_VOLUNTEER_ACCOUNT_FAILURE,
+        payload: err
+      });
+    });
+};
+
 // Fetch Volunteer Dashboard/Data?
 export const FETCH_VOLUNTEER_DATA_START = "FETCH_VOLUNTEER_DATA_START";
 export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_VOLUNTEER_DATA_SUCCESS";

@@ -2,9 +2,6 @@ import {
   CREATING_BUSINESS_ACCOUNT_START,
   CREATING_BUSINESS_ACCOUNT_SUCCESS,
   CREATING_BUSINESS_ACCOUNT_FAILURE,
-  CREATING_VOLUNTEER_ACCOUNT_START,
-  CREATING_VOLUNTEER_ACCOUNT_SUCCESS,
-  CREATING_VOLUNTEER_ACCOUNT_FAILURE,
   ADDING_DONATION_START,
   ADDING_DONATION_SUCCESS,
   ADDING_DONATION_FAILURE,
@@ -20,6 +17,7 @@ const initialState = {
   isLoading: false,
   error: null,
   isBusinessInEditMode: null,
+  isDeletingVolunteer: false,
   isDeletingBusiness: false,
   requests: [],
   fetchingData: false
@@ -48,7 +46,7 @@ const rootReducer = (state = initialState, action) => {
     case ADDING_DONATION_START:
       return {
         ...state,
-        isLoading: true,
+        isLoading: true
       };
     case ADDING_DONATION_SUCCESS:
       return {
@@ -93,24 +91,7 @@ const rootReducer = (state = initialState, action) => {
         isDeletingBusiness: false,
         error: action.payload
       };
-    case CREATING_VOLUNTEER_ACCOUNT_START:
-      return {
-        ...state,
-        isLoading: true
-      };
-    case CREATING_VOLUNTEER_ACCOUNT_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        error: null,
-        account: action.payload
-      };
-    case CREATING_VOLUNTEER_ACCOUNT_FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
-      };
+
     default:
       return state;
   }
