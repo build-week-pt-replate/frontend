@@ -80,14 +80,14 @@ export const DELETING_VOLUNTEER_ACCOUNT_SUCCESS =
 export const DELETING_VOLUNTEER_ACCOUNT_FAILURE =
   "DELETING_VOLUNTEER_ACCOUNT_FAILURE";
 
-export const createVolunteerAccount = volunteerId => dispatch => {
+export const deleteVolunteerAccount = volunteerId => dispatch => {
   dispatch({ type: DELETING_VOLUNTEER_ACCOUNT_START });
-  console.log("Hello this function worked", volunteer);
+  console.log("This volunteer's id is:", volunteerId);
 
   return axios
     .delete(`https://replate-be.herokuapp.com/api/volunteer/${volunteerId}`)
     .then(res => {
-      console.log(res, res.data);
+      console.log(res, res.data, 'This volunteer has been deleted');
       dispatch({
         type: DELETING_VOLUNTEER_ACCOUNT_SUCCESS,
         payload: res
@@ -168,11 +168,11 @@ export const createBusinessAccount = newAccount => dispatch => {
   const url = "https://replate-be.herokuapp.com/auth/bus/register";
 
   const request = axios.post(url, newAccount);
-  console.log('TEST-NEWACCOUNT::', newAccount);
+  console.log("TEST-NEWACCOUNT::", newAccount);
 
   return request
     .then(({ data }) => {
-      console.log('POST::', data);
+      console.log("POST::", data);
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
         payload: data
@@ -199,22 +199,15 @@ export const fetchBusinessRequests = () => dispatch => {
     type: FETCH_BUSINESS_REQUESTS_START
   });
 
-  const token = localStorage.getItem('token');
-  console.log('TOKEN:', token);
-
-  const config = {
-    headers: {authorization: "bearer " + token}
-  };
-
-  const url = 'https://replate-be.herokuapp.com/api/request';
-  const request = axios.get(url, config);
+  const url = "http://localhost:3500/api/request";
+  const request = axios.get(url);
 
   return request
-    .then(({ data }) => {
-      console.log('Fetching Requests:', data);
+    .then(res => {
+      console.log(res, res.data);
       dispatch({
         type: FETCH_BUSINESS_REQUESTS_SUCCESS,
-        payload: data
+        payload: res.data
       });
     })
     .catch(err => {
@@ -234,7 +227,6 @@ export const ADDING_DONATION_FAILURE = "ADDING_DONATION_FAILURE";
 export const addDonation = newDonation => dispatch => {
   dispatch({ type: ADDING_DONATION_START });
 
-<<<<<<< HEAD
   // const testUrl = 'http://demo7153249.mockable.io/business';
   const testTwoUrl = "http://www.mocky.io/v2/5cc6b773320000661ab94d80";
   // const url = 'localhost:3500/api/request';
