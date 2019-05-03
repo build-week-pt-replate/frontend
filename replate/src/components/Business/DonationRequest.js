@@ -4,10 +4,18 @@ const DonationRequest = props => {
   return (
     // get day of the week by converting date
     <ul>
-      <li>{props.request.locationName}</li>
-      <li>{props.request.date}</li>
-      <li>{props.request.time}</li>
-      <li>{props.request.foodDescription}</li>
+      <li className='location-name'>
+        {props.request.locationName}
+      </li>
+      <li>
+        Date: {props.request.date}
+      </li>
+      <li>
+        Time: {props.request.time}
+      </li>
+      <li>
+        Food Description: {props.request.foodDescription}
+      </li>
     </ul>
   );
 };
