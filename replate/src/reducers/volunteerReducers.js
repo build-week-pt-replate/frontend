@@ -13,6 +13,25 @@ import {
   FETCH_VOLUNTEER_REQUESTS_SUCCESS
 } from "../actions/index";
 
+const mockData = [
+  {
+    id: 1,
+    locationName: "Burger King",
+    date: "2019-20-09",
+    time: "2:30pm",
+    foodDescription: "a juicy burger",
+    comment: "Hello there"
+  },
+  {
+    id: 2,
+    locationName: "Papa Johns",
+    date: "2019-20-08",
+    time: "5:30pm",
+    foodDescription: "a juicy pizza",
+    comment: "Backdoor delivery"
+  }
+]
+
 const initialState = {
   account: null,
   isLoading: false,
@@ -95,11 +114,7 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         error: "",
         fetchingData: false,
-        requests: action.payload.filter(request => {
-          if (request.city === account.city) {
-            return request;
-          }
-        })
+        requests: action.payload
       };
     case FETCH_VOLUNTEER_REQUESTS_FAILURE:
       return {
