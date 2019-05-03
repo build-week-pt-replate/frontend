@@ -1,4 +1,10 @@
 import {
+  CREATING_VOLUNTEER_ACCOUNT_START,
+  CREATING_VOLUNTEER_ACCOUNT_SUCCESS,
+  CREATING_VOLUNTEER_ACCOUNT_FAILURE,
+  DELETING_VOLUNTEER_ACCOUNT_START,
+  DELETING_VOLUNTEER_ACCOUNT_SUCCESS,
+  DELETING_VOLUNTEER_ACCOUNT_FAILURE,
   FETCH_VOLUNTEER_DATA_FAILURE,
   FETCH_VOLUNTEER_DATA_START,
   FETCH_VOLUNTEER_DATA_SUCCESS,
@@ -6,20 +12,93 @@ import {
   FETCH_VOLUNTEER_REQUESTS_START,
   FETCH_VOLUNTEER_REQUESTS_SUCCESS
 } from "../actions/index";
-import { CardActionArea } from "@material-ui/core";
+
+const mockDataVolunteer = [
+  {
+    "id": 1,
+    "requestDate": "2019-04-24",
+    "requestTime": "11:00:00",
+    "locationName": "Hunger First",
+    "locationStreet": "111 Kenwood Rd",
+    "locationCity": "Knoxville",
+    "locationState": "TN",
+    "locationZip": "37902",
+    "foodDescription": "Various canned food items",
+    "comment": "Can be picked up anytime before 2pm",
+    "businessId": 1,
+    "volunteerId": null,
+    "created_at": "2019-04-30 03:26:56",
+    "updated_at": "2019-04-30 03:26:56"
+  },
+  {
+    "id": 2,
+    "requestDate": "2019-04-27",
+    "requestTime": "10:30:00",
+    "locationName": "Hope Shelter",
+    "locationStreet": "110 Carolina Street",
+    "locationCity": "Knoxville",
+    "locationState": "TN",
+    "locationZip": "37902",
+    "foodDescription": "Boxed and canned items",
+    "comment": "",
+    "businessId": 2,
+    "volunteerId": 1,
+    "created_at": "2019-04-30 03:26:56",
+    "updated_at": "2019-04-30 03:26:56"
+  }
+]
 
 const initialState = {
   account: null,
   isLoading: false,
   error: null,
   isBusinessInEditMode: null,
+  isDeletingVolunteer: false,
   isDeletingBusiness: false,
-  requests: [],
+  requests: mockDataVolunteer,
   fetchingData: false
 };
 
 const volunteerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case CREATING_VOLUNTEER_ACCOUNT_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case CREATING_VOLUNTEER_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        account: action.payload
+      };
+    case CREATING_VOLUNTEER_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    case DELETING_VOLUNTEER_ACCOUNT_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case DELETING_VOLUNTEER_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isDeletingVolunteer: true,
+        error: null,
+        account: action.payload
+      };
+    case DELETING_VOLUNTEER_ACCOUNT_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        isDeletingVolunteer: false,
+        error: action.payload
+      };
     case FETCH_VOLUNTEER_DATA_START:
       return {
         ...state,
@@ -51,7 +130,17 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         error: "",
         fetchingData: false,
-        requests: action.payload.filter(request)
+        requests: mockDataVolunteer
       };
+    case FETCH_VOLUNTEER_REQUESTS_FAILURE:
+      return {
+        ...state,
+        fetchingData: false,
+        error: action.payload
+      };
+    default:
+      return state;
   }
 };
+
+export default volunteerReducer;

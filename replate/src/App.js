@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
-// import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import VolunteerDash from "./components/Volunteer/VolunteerDash";
 import BusinessDash from "./components/Business/BusinessDash";
 import VolunteerForm from "./components/Volunteer/VolunteerForm";
@@ -20,8 +20,12 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/signup/volunteer" component={VolunteerForm} />
       <Route path="/signup/business" component={SignUpFormContainer} />
-      <Route path="/business/dashboard" component={BusinessDash} />
-      <Route path="/volunteer/dashboard" component={VolunteerDash} />
+      <Route exact path="/business/dashboard" component={BusinessDash} />
+      <Route
+        exact
+        path="/volunteer/dashboard"
+        component={VolunteerDash}
+      />
     </div>
   );
 }

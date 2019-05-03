@@ -9,7 +9,7 @@ export const login = credentials => dispatch => {
   //If it's a business account
   if (credentials.businessAccount === true) {
     return axios
-      .post("http://localhost:3500/auth/bus/login", credentials)
+      .post("https://replate-be.herokuapp.com/auth/bus/login", credentials)
       .then(res => {
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data.payload);
@@ -26,14 +26,15 @@ export const login = credentials => dispatch => {
   } else {
     //If volunteer account businessAccount === false
     return axios
-      .post("http://localhost:3500/auth/vol/login", credentials)
+      .post("https://replate-be.herokuapp.com/auth/vol/login", credentials)
       .then(res => {
+        console.log(res, res.data, credentials);
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data.payload);
         dispatch({ type: LOGIN_RESOLVED, payload: res.data.payload });
       })
       .catch(err => {
-        console.log("login err: ", err);
+        console.log("login err: ", err, credentials);
         //If login is unsuccessful due to wrong credentials remove from local
         if (err.response.status === 403) {
           localStorage.removeItem("token");
@@ -55,7 +56,7 @@ export const createVolunteerAccount = volunteer => dispatch => {
   console.log("Hello this function worked", volunteer);
 
   return axios
-    .post("http://localhost:3500/auth/vol/register", volunteer)
+    .post("https://replate-be.herokuapp.com/auth/vol/register", volunteer)
     .then(res => {
       console.log(res, res.data);
       dispatch({
@@ -72,6 +73,35 @@ export const createVolunteerAccount = volunteer => dispatch => {
     });
 };
 
+export const DELETING_VOLUNTEER_ACCOUNT_START =
+  "DELETING_VOLUNTEER_ACCOUNT_START";
+export const DELETING_VOLUNTEER_ACCOUNT_SUCCESS =
+  "DELETING_VOLUNTEER_ACCOUNT_SUCCESS";
+export const DELETING_VOLUNTEER_ACCOUNT_FAILURE =
+  "DELETING_VOLUNTEER_ACCOUNT_FAILURE";
+
+export const deleteVolunteerAccount = volunteerId => dispatch => {
+  dispatch({ type: DELETING_VOLUNTEER_ACCOUNT_START });
+  console.log("This volunteer's id is:", volunteerId);
+
+  return axios
+    .delete(`https://replate-be.herokuapp.com/api/volunteer/${volunteerId}`)
+    .then(res => {
+      console.log(res, res.data, "This volunteer has been deleted");
+      dispatch({
+        type: DELETING_VOLUNTEER_ACCOUNT_SUCCESS,
+        payload: res
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: DELETING_VOLUNTEER_ACCOUNT_FAILURE,
+        payload: err
+      });
+    });
+};
+
 // Fetch Volunteer Dashboard/Data?
 export const FETCH_VOLUNTEER_DATA_START = "FETCH_VOLUNTEER_DATA_START";
 export const FETCH_VOLUNTEER_DATA_SUCCESS = "FETCH_VOLUNTEER_DATA_SUCCESS";
@@ -81,7 +111,7 @@ export const FETCH_VOLUNTEER_DATA_FAILURE = "FETCH_VOLUNTEER_DATA_FAILURE";
 export const fetchVolunteerData = volunteerId => dispatch => {
   dispatch({ type: FETCH_VOLUNTEER_DATA_START });
   axios
-    .get(`http://localhost:3500/api/volunteer/${volunteerId}`, {
+    .get(`https://replate-be.herokuapp.com/api/volunteer/${volunteerId}`, {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
@@ -107,7 +137,7 @@ export const FETCH_VOLUNTEER_REQUESTS_FAILURE =
 export const fetchVolunteerRequests = () => dispatch => {
   dispatch({ type: FETCH_VOLUNTEER_REQUESTS_START });
   axios
-    .get("http://localhost:3500/api/request")
+    .get("https://replate-be.herokuapp.com/api/request")
     .then(res => {
       console.log(res, res.data);
       dispatch({
@@ -135,14 +165,14 @@ export const createBusinessAccount = newAccount => dispatch => {
   dispatch({ type: CREATING_BUSINESS_ACCOUNT_START });
 
   // const url = 'http://localhost:3500/auth/bus/register';
-  const url = 'https://replate-be.herokuapp.com/auth/bus/register';
+  const url = "https://replate-be.herokuapp.com/auth/bus/register";
 
   const request = axios.post(url, newAccount);
-  console.log('TEST-NEWACCOUNT::', newAccount);
+  console.log("TEST-NEWACCOUNT::", newAccount);
 
   return request
     .then(({ data }) => {
-      console.log('POST::', data);
+      console.log("POST::", data);
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
         payload: data
@@ -169,22 +199,15 @@ export const fetchBusinessRequests = () => dispatch => {
     type: FETCH_BUSINESS_REQUESTS_START
   });
 
-  const token = localStorage.getItem('token');
-  console.log('TOKEN:', token);
-
-  const config = {
-    headers: {authorization: "bearer " + token}
-  };
-
-  const url = 'https://replate-be.herokuapp.com/api/request';
-  const request = axios.get(url, config);
+  const url = "http://localhost:3500/api/request";
+  const request = axios.get(url);
 
   return request
-    .then(({ data }) => {
-      console.log('Fetching Requests:', data);
+    .then(res => {
+      console.log(res, res.data);
       dispatch({
         type: FETCH_BUSINESS_REQUESTS_SUCCESS,
-        payload: data
+        payload: res.data
       });
     })
     .catch(err => {
@@ -197,28 +220,26 @@ export const fetchBusinessRequests = () => dispatch => {
     });
 };
 
-export const ADDING_DONATION_START =
-  "ADDING_DONATION_START";
-export const ADDING_DONATION_SUCCESS =
-  "ADDING_DONATION_SUCCESS";
-export const ADDING_DONATION_FAILURE =
-  "ADDING_DONATION_FAILURE";
+export const ADDING_DONATION_START = "ADDING_DONATION_START";
+export const ADDING_DONATION_SUCCESS = "ADDING_DONATION_SUCCESS";
+export const ADDING_DONATION_FAILURE = "ADDING_DONATION_FAILURE";
 
 export const addDonation = newDonation => dispatch => {
   dispatch({ type: ADDING_DONATION_START });
-
-  const url = 'https://replate-be.herokuapp.com/api/request';
+  const url = "https://replate-be.herokuapp.com/api/request";
 
   const request = axios.post(url, newDonation);
-  console.log('TEST-DONATION::', newDonation);
+  console.log("TEST-DONATION::", newDonation);
 
-  return request.then(({ data }) => {
-    console.log('DONATION-POST::', data);
-    dispatch({
-      type: ADDING_DONATION_SUCCESS,
-      payload: data
-    });
-  })
+  return request
+    .then(({ data }) => {
+      console.log("DONATION-POST::", data);
+      dispatch({
+        type: ADDING_DONATION_SUCCESS,
+        payload: data
+      });
+    })
+
     .catch(err => {
       dispatch({
         type: ADDING_DONATION_FAILURE,
@@ -229,8 +250,10 @@ export const addDonation = newDonation => dispatch => {
     });
 };
 
-export const DELETING_BUSINESS_ACCOUNT_SUCCESS = "DELETING_BUSINESS_ACCOUNT_SUCCESS";
-export const DELETING_BUSINESS_ACCOUNT_FAILURE = "DELETING_BUSINESS_ACCOUNT_FAILURE";
+export const DELETING_BUSINESS_ACCOUNT_SUCCESS =
+  "DELETING_BUSINESS_ACCOUNT_SUCCESS";
+export const DELETING_BUSINESS_ACCOUNT_FAILURE =
+  "DELETING_BUSINESS_ACCOUNT_FAILURE";
 
 export const deleteBusiness = businessId => dispatch => {
   const request = axios.delete(`http://api/business/${businessId}`);
