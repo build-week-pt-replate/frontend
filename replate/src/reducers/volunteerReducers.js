@@ -161,11 +161,12 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         error: "",
         fetchingData: false,
-        requests: mockDataVolunteer.filter(request => {
-          if (state.account.city === request.locationCity) {
-            return request;
-          }
-        })
+        requests: mockDataVolunteer
+        // .filter(request => {
+        //   if (state.account.city === request.locationCity) {
+        //     return request;
+        //   }
+        // })
       };
     case FETCH_VOLUNTEER_REQUESTS_FAILURE:
       return {

@@ -16,10 +16,10 @@ class VolunteerDash extends React.Component {
 
   componentDidMount() {
     //Fetch volunteer data 
-    this.props.fetchVolunteerData(this.props.account.id)
+    // this.props.fetchVolunteerData(this.props.account.id)
     // fetch all requests
     // console.log(this.props.account)
-    this.props.fetchVolunteerRequests();
+    // this.props.fetchVolunteerRequests();
   }
 
   render() {
@@ -27,8 +27,9 @@ class VolunteerDash extends React.Component {
       <div className="dash-container">
         <DashHeader />
         <div className="volunteer-dash">
-          {/* <h2>{this.props.account.name}'s Dashboard</h2> */}
-          <h2>Volunteer Dashboard</h2>
+          <h2>{this.props.account.name}'s Dashboard</h2>
+          {/* <h2>Volunteer Dashboard</h2> */}
+          <h3>City:{this.props.account.city}</h3>
           <div className="requests-box">
             <h3>Available Requests</h3>
             <RequestList requests={this.props.requests} account={this.props.account} />
