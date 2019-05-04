@@ -64,7 +64,7 @@ class VolunteerDash extends React.Component {
   render() {
     return (
       <div className="dash-container">
-        <DashHeader />
+        <DashHeader history={this.props.history} />
         <div className="volunteer-dash">
           <h2>{this.props.account.firstName}'s Dashboard</h2>
           {/* <h2>Volunteer Dashboard</h2> */}

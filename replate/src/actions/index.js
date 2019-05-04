@@ -12,10 +12,14 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
       .post("https://replate-be.herokuapp.com/auth/bus/login", { email, password })
       .then(res => {
         //Creates a token in local storage if login is successful
+<<<<<<< HEAD
 
         console.log('RES', res);
 
         localStorage.setItem("token", res.data);
+=======
+        localStorage.setItem("token", res.data.token);
+>>>>>>> 58841a56c21d51c80f2b7afbe2b2d47b342b43f4
         dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {
