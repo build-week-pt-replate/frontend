@@ -29,9 +29,8 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
     return axios
       .post("https://replate-be.herokuapp.com/auth/vol/login", { email, password })
       .then(res => {
-        console.log(res, res.data, { email, password });
         //Creates a token in local storage if login is successful
-        localStorage.setItem("token", res.data);
+        localStorage.setItem("token", res.data.token);
         dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {

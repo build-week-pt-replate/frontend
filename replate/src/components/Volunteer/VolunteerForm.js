@@ -165,11 +165,9 @@ class VolunteerForm extends React.Component {
                 value={this.state.repeatPassword}
               />
             </div>
-
             <button type="submit">Sign Up</button>
           </form>
         </div>
-        );
       </div>
     );
   }
