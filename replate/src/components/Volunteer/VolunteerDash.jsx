@@ -23,9 +23,7 @@ class VolunteerDash extends React.Component {
   componentDidMount() {
     //Fetch volunteer data
     this.props.fetchVolunteerData(localStorage.getItem('id'))
-    console.log(this.props.account.id)
     // fetch all requests
-    console.log(this.props.account)
     // this.props.fetchVolunteerRequests();
   }
 
@@ -66,20 +64,26 @@ class VolunteerDash extends React.Component {
   render() {
     return (
       <div className="dash-container">
-        <DashHeader history={this.props.history} />
-        <div className="volunteer-dash">
-          <h2>{this.props.account.firstName}'s Dashboard</h2>
-          {/* <h2>Volunteer Dashboard</h2> */}
-          <h3>City:{this.props.account.city}</h3>
-          <div className="requests-box">
-            <h3>Available Requests</h3>
-            <RequestList requests={this.props.requests} account={this.props.account} updatedRequest={this.updatedRequest} saveRequest={this.saveRequest} />
-          </div>
-          <div className="requests-box">
-            <h3>Current Requests</h3>
-            <VolunteerRequestList requests={this.props.requests} account={this.props.account} />
+      {this.props.account ? (
+        <div>
+          <DashHeader history={this.props.history} />
+          <div className="volunteer-dash">
+            <h2>{this.props.account.firstName}'s Dashboard</h2>
+            {/* <h2>Volunteer Dashboard</h2> */}
+            <h3>City:{this.props.account.city}</h3>
+            <div className="requests-box">
+              <h3>Available Requests</h3>
+              <RequestList requests={this.props.requests} account={this.props.account} updatedRequest={this.updatedRequest} saveRequest={this.saveRequest} />
+            </div>
+            <div className="requests-box">
+              <h3>Current Requests</h3>
+              <VolunteerRequestList requests={this.props.requests} account={this.props.account} />
+            </div>
           </div>
         </div>
+      ) : (
+        <h3>Loading</h3>
+      )}
       </div>
     );
   }
