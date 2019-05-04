@@ -14,14 +14,16 @@ class VolunteerDash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      account: this.props.account,
       updatedRequest: null
     }
 
   }
 
   componentDidMount() {
-    //Fetch volunteer data 
-    // this.props.fetchVolunteerData(this.props.account.id)
+    //Fetch volunteer data
+    this.props.fetchVolunteerData(localStorage.getItem('id'))
+    console.log(this.props.account.id)
     // fetch all requests
     console.log(this.props.account)
     // this.props.fetchVolunteerRequests();
