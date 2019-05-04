@@ -8,7 +8,7 @@ const VolunteerRequestList = props => {
     <div className='available-requests-container'>
       {props.requests
         .filter(request => {
-          if (props.account.id === request.id) {
+          if (props.account.id === request.volunteerId) {
             return request;
           }
         })

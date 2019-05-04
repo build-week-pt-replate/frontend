@@ -7,6 +7,7 @@ import {
 } from '../../actions';
 
 import RequestList from './RequestList'
+import VolunteerRequestList from './VolunteerRequestList'
 
 class VolunteerDash extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class VolunteerDash extends React.Component {
       <div className="dash-container">
         <DashHeader />
         <div className="volunteer-dash">
-          <h2>{this.props.account.name}'s Dashboard</h2>
+          <h2>{this.props.account.firstName}'s Dashboard</h2>
           {/* <h2>Volunteer Dashboard</h2> */}
           <h3>City:{this.props.account.city}</h3>
           <div className="requests-box">
@@ -36,6 +37,7 @@ class VolunteerDash extends React.Component {
           </div>
           <div className="requests-box">
             <h3>Current Requests</h3>
+            <VolunteerRequestList requests={this.props.requests} account={this.props.account} />
           </div>
         </div>
       </div>
