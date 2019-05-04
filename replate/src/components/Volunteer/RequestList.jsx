@@ -14,7 +14,7 @@ const RequestList = props => {
           }
         })
         .map(request => {
-          return <RequestCard request={request} key={request.id} />
+          return <RequestCard request={request} key={request.id} account={props.account} updatedRequest={props.updatedRequest} saveRequest={props.saveRequest} />
         })}
     </div>
   )

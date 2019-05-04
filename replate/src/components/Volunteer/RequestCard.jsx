@@ -43,7 +43,10 @@ function RequestCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="secondary">{props.request.volunteerId !== null ? 'Remove Request' : 'Accept Request'}</Button>
+        <Button size="small" color="secondary" value={props.request} onClick={() => {
+          props.saveRequest(props.request)
+        }
+        }>{props.request.volunteerId !== null ? 'Remove Request' : 'Accept Request'}</Button>
       </CardActions>
     </Card>
   );

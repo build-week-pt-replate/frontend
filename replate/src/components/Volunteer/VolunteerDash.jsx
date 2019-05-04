@@ -3,7 +3,8 @@ import DashHeader from "../Header/DashHeader";
 import { connect } from "react-redux";
 import {
   fetchVolunteerRequests,
-  fetchVolunteerData
+  fetchVolunteerData,
+  // acceptVolunteerRequest
 } from '../../actions';
 
 import RequestList from './RequestList'
@@ -12,6 +13,9 @@ import VolunteerRequestList from './VolunteerRequestList'
 class VolunteerDash extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      updatedRequest: null
+    }
 
   }
 
@@ -23,6 +27,40 @@ class VolunteerDash extends React.Component {
     // this.props.fetchVolunteerRequests();
   }
 
+  saveRequest = request => {
+    this.setState({
+      updatedRequest: {
+        request
+      }
+    })
+    console.log(this.state.updatedRequest)
+  }
+
+  // saveRequest = e => {
+  //   //Changes the state/tracks the value of the friendPost whatever is being inputed on the form
+  //   let values = e.target.value
+  //   this.setState({
+  //     updatedRequest: {
+  //       ...this.state.updatedRequest,
+  //       //Since on the inputs theres a "name" value it can be used as a key to change
+  //       //All the inputs dynamically instead of creating a handler for all of em
+  //       values
+  //     }
+  //   });
+  //   console.log(this.state.updatedRequest)
+  // };
+
+  // acceptRequest = () => {
+  //   let updatedRequest = {
+  //     ...this.state.upd
+  //   }
+
+
+
+  //   acceptVolunteerRequest(updatedRequest)
+  // }
+
+
   render() {
     return (
       <div className="dash-container">
@@ -33,7 +71,7 @@ class VolunteerDash extends React.Component {
           <h3>City:{this.props.account.city}</h3>
           <div className="requests-box">
             <h3>Available Requests</h3>
-            <RequestList requests={this.props.requests} account={this.props.account} />
+            <RequestList requests={this.props.requests} account={this.props.account} updatedRequest={this.updatedRequest} saveRequest={this.saveRequest} />
           </div>
           <div className="requests-box">
             <h3>Current Requests</h3>
