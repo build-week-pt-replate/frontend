@@ -9,7 +9,7 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
   //If it's a business account
   if (businessAccount) {
     return axios
-      .post("https://replate-be.herokuapp.com/auth/bus/login", {email, password})
+      .post("https://replate-be.herokuapp.com/auth/bus/login", { email, password })
       .then(res => {
         //Creates a token in local storage if login is successful
 
@@ -30,16 +30,15 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
   } else {
     //If volunteer account businessAccount === false
     return axios
-      .post("https://replate-be.herokuapp.com/auth/vol/login", {email, password})
+      .post("https://replate-be.herokuapp.com/auth/vol/login", { email, password })
       .then(res => {
-        console.log(res, res.data, {email, password});
+        console.log(res, res.data, { email, password });
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data);
-        // fetchVolunteerData(res.data.id)
         dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {
-        console.log("login err: ", err, {email, password});
+        console.log("login err: ", err, { email, password });
         //If login is unsuccessful due to wrong credentials remove from local
         if (err.response.status === 403) {
           localStorage.removeItem("token");
