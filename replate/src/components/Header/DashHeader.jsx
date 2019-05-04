@@ -5,7 +5,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-
 import { Link } from "react-router-dom";
 import "./Header.css";
 
@@ -16,11 +15,10 @@ const styles = {
 };
 
 function DashHeader(props) {
-  const { classes } = props;
-
+  const { classes, history } = props;
   const logout = async () => {
     await localStorage.clear()
-    props.history.push("/login")
+    history.push("/login")
   }
 
   return (
