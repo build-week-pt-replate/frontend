@@ -16,7 +16,7 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
         console.log('RES', res);
 
         localStorage.setItem("token", res.data.payload);
-        dispatch({ type: LOGIN_RESOLVED, payload: res.data.payload });
+        dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {
         console.log("login err: ", err);
