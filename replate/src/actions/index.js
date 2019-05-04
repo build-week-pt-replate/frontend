@@ -38,7 +38,7 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
         dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {
-        console.log("login err: ", err, { email, password });
+        console.log("login err: ", err, {email, password});
         //If login is unsuccessful due to wrong credentials remove from local
         if (err.response.status === 403) {
           localStorage.removeItem("token");

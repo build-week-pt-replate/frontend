@@ -3,7 +3,7 @@ import RequestCard from './RequestCard';
 
 import './RequestList.css'
 
-const RequestList = props => {
+const VolunteerRequestList = props => {
   return (
     <div className='available-requests-container'>
       {props.requests
@@ -19,4 +19,4 @@ const RequestList = props => {
   )
 }
 
-export default RequestList
+export default VolunteerRequestList

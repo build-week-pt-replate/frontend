@@ -5,6 +5,7 @@ import {
   fetchVolunteerRequests,
   fetchVolunteerData
 } from '../../actions';
+
 import RequestList from './RequestList'
 
 class VolunteerDash extends React.Component {
@@ -17,8 +18,8 @@ class VolunteerDash extends React.Component {
     //Fetch volunteer data 
     this.props.fetchVolunteerData(this.props.account.id)
     // fetch all requests
-    console.log(this.props.account)
-    // this.props.fetchVolunteerRequests();
+    // console.log(this.props.account)
+    this.props.fetchVolunteerRequests();
   }
 
   render() {
@@ -45,6 +46,7 @@ const mapStateToProps = state => {
   return {
     requests: state.volunteerReducers.requests,
     account: state.volunteerReducers.account,
+    isLoading: state.volunteerReducers.isLoading,
     fetchingData: state.volunteerReducers.fetchingData,
     error: state.volunteerReducers.error
   };
