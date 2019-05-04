@@ -48,8 +48,8 @@ const DonationRequest = (props) => {
         </Typography>
 
         <Typography component="p">
-          Date: {props.request.date} <br />
-          Request Time: {props.request.time} <br />
+          Date: {props.request.requestDate} <br />
+          Request Time: {props.request.requestTime} <br />
           Food Description: {props.request.foodDescription}
         </Typography>
       </CardContent>

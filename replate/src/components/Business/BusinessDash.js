@@ -8,7 +8,8 @@ import DonationRequests from './DonationRequests';
 // import Button from '@material-ui/core/Button';
 import {
   addDonation,
-  fetchBusinessRequests
+  fetchBusinessRequests,
+  fetchBusinessData
 } from '../../actions/businessActions';
 
 import './BusinessDash.css';
@@ -32,6 +33,10 @@ class BusinessDash extends React.Component {
   }
 
   componentDidMount() {
+    const businessId = localStorage.getItem('id')
+    this.props.fetchBusinessData(businessId);
+
+    console.log('ACCOUNT Name:', this.props.account)
     // fetch all the donation requests here
     this.props.fetchBusinessRequests();
   }
@@ -82,50 +87,61 @@ class BusinessDash extends React.Component {
   }
 
   render() {
-    const {requests} = this.props;
+    const {requests, account} = this.props;
+
     return (
       <div className="business-dash-container">
         <DashHeader history={this.props.history}/>
-        <div className="dash-content">
-          <div className="titles-wrapper">
-            <div className="business-title">
-              <h2>Business Dashboard</h2>
-            </div>
+        {
+          account ?
 
-            <div className=" ">
-              <h3>Pick Up Schedule</h3>
-            </div>
-
-            <div className="add-btn-wrapper">
-              <h3 className="h-3-add-donation">Add Donation</h3>
-              <AddMUIcon variant="outlined"
-                      color="primary"
-                      onClick={this.handleClickOpen}
-              >
-
-              </AddMUIcon>
-            </div>
-
-            <div className=" ">
-              <h3>Next Week's Schedule</h3>
-            </div>
-          </div>
-
-          {
-              requests.length !== 0  ?
             (
-              <DonationRequests requests={requests}/>
+              <div className="dash-content">
+                <div className="titles-wrapper">
+                  <div className="business-title">
+                    <h2>{account.companyName}'s Dashboard</h2>
+                  </div>
+
+                  <div className=" ">
+                    <h3>Pick Up Schedule</h3>
+                  </div>
+
+                  <div className="add-btn-wrapper">
+                    <h3 className="h-3-add-donation">Add Donation</h3>
+                    <AddMUIcon variant="outlined"
+                               color="primary"
+                               onClick={this.handleClickOpen}
+                    >
+
+                    </AddMUIcon>
+                  </div>
+
+                  <div className=" ">
+                    <h3>Next Week's Schedule</h3>
+                  </div>
+                </div>
+
+                {
+                  requests.length !== 0  ?
+                    (
+                      <DonationRequests requests={requests}/>
+                    )
+
+                    :
+
+                    (
+                      <div className=" ">
+                        <h3>No Upcoming Pick up</h3>
+                      </div>
+                    )
+                }
+              </div>
             )
 
             :
 
-            (
-              <div className=" ">
-                <h3>No Upcoming Pick up</h3>
-              </div>
-            )
-          }
-        </div>
+            <h2>Loading...</h2>
+        }
 
         <DonationFormDialog onClose={this.handleClose}
                             isOpen={this.state.open}
@@ -153,7 +169,8 @@ export default (
     mapStateToProps,
     {
       addDonation,
-      fetchBusinessRequests
+      fetchBusinessRequests,
+      fetchBusinessData
     }
   )(BusinessDash)
 );

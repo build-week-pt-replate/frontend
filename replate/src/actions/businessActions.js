@@ -77,6 +77,44 @@ export const fetchBusinessRequests = () => dispatch => {
     });
 };
 
+export const FETCH_BUSINESS_DATA_START = "FETCH_BUSINESS_DATA_START";
+export const FETCH_BUSINESS_DATA_SUCCESS = "FETCH_BUSINESS_DATA_SUCCESS";
+export const FETCH_BUSINESS_DATA_FAILURE = "FETCH_BUSINESS_DATA_FAILURE";
+
+export const fetchBusinessData = businessId => dispatch => {
+  dispatch({ type: FETCH_BUSINESS_DATA_START });
+
+  const token = localStorage.getItem('token');
+  console.log('TOKEN:', token);
+
+  const config = {
+    headers: { Authorization: token }
+  };
+
+  const url = `https://replate-be.herokuapp.com/api/business/${businessId}`;
+  const request = axios.get(url, config);
+
+    return request
+      .then(({data}) => {
+        console.log('IN-ACTION-FETCH-DATA', data)
+        dispatch({
+        type: FETCH_BUSINESS_DATA_SUCCESS,
+        payload: data
+      });
+    })
+    .catch(err => {
+      console.log(err.response);
+      if (err.response.status === 403) {
+        localStorage.removeItem("token");
+      }
+      dispatch({
+        type: FETCH_BUSINESS_DATA_FAILURE,
+        payload: err.response
+      });
+      return Promise.reject(err);
+    });
+};
+
 export const ADDING_DONATION_START = "ADDING_DONATION_START";
 export const ADDING_DONATION_SUCCESS = "ADDING_DONATION_SUCCESS";
 export const ADDING_DONATION_FAILURE = "ADDING_DONATION_FAILURE";
@@ -85,7 +123,14 @@ export const addDonation = newDonation => dispatch => {
   dispatch({ type: ADDING_DONATION_START });
   const url = "https://replate-be.herokuapp.com/api/request";
 
-  const request = axios.post(url, newDonation);
+  const token = localStorage.getItem('token');
+  console.log('TOKEN:', token);
+
+  const config = {
+    headers: { Authorization: token }
+  };
+
+  const request = axios.post(url, newDonation, config);
   console.log("TEST-DONATION::", newDonation);
 
   return request
@@ -113,13 +158,22 @@ export const DELETING_BUSINESS_ACCOUNT_FAILURE =
   "DELETING_BUSINESS_ACCOUNT_FAILURE";
 
 export const deleteBusiness = businessId => dispatch => {
-  const request = axios.delete(`http://api/business/${businessId}`);
+  const token = localStorage.getItem('token');
+  console.log('TOKEN:', token);
+
+  const config = {
+    headers: { Authorization: token }
+  };
+
+  const url = `https://replate-be.herokuapp.com/api/business/${businessId}`;
+
+  const request = axios.delete(url, config);
 
   return request
-    .then(res => {
+    .then(({data}) => {
       dispatch({
         type: DELETING_BUSINESS_ACCOUNT_SUCCESS,
-        payload: res
+        payload: data
       });
     })
     .catch(err => {
@@ -144,17 +198,23 @@ export const UPDATING_BUSINESS_SUCCESS = "UPDATING_BUSINESS_SUCCESS";
 export const UPDATING_BUSINESS_FAILURE = "UPDATING_BUSINESS_FAILURE";
 
 export const saveUpdatedBusiness = updatedBusiness => dispatch => {
-  const request = axios.put(
-    `http://api/business/${updatedBusiness.id}`,
-    updatedBusiness
-  );
+  const token = localStorage.getItem('token');
+  console.log('TOKEN:', token);
+
+  const config = {
+    headers: { Authorization: token }
+  };
+
+  const url = `https://replate-be.herokuapp.com/api/business/${updatedBusiness.id}`;
+
+  const request = axios.put(url, updatedBusiness, config);
 
   return request
-    .then(res => {
-      console.log("UPDATE RESPONSE:", res);
+    .then(({data}) => {
+      console.log("UPDATE RESPONSE:", data);
       dispatch({
         type: UPDATING_BUSINESS_SUCCESS,
-        payload: res
+        payload: data
       });
     })
     .catch(err => {
