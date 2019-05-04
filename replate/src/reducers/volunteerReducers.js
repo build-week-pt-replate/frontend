@@ -49,7 +49,7 @@ const mockDataVolunteer = [
     "updated_at": "2019-04-30 03:26:56"
   },
   {
-    "id": 2,
+    "id": 3,
     "requestDate": "2019-04-27",
     "requestTime": "10:30:00",
     "locationName": "Hope Shelter",
@@ -161,11 +161,12 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         error: "",
         fetchingData: false,
-        requests: mockDataVolunteer.filter(request => {
-          if (state.account.city === request.locationCity) {
-            return request;
-          }
-        })
+        requests: mockDataVolunteer
+        // .filter(request => {
+        //   if (state.account.city === request.locationCity) {
+        //     return request;
+        //   }
+        // })
       };
     case FETCH_VOLUNTEER_REQUESTS_FAILURE:
       return {

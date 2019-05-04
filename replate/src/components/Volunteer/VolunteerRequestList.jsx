@@ -3,14 +3,13 @@ import RequestCard from './RequestCard';
 
 import './RequestList.css'
 
-const RequestList = props => {
+const VolunteerRequestList = props => {
   return (
     <div className='available-requests-container'>
       {props.requests
         .filter(request => {
-          //Checks if the requests is in volunteer city and has not been taken
-          if (props.account.city === request.locationCity && request.volunteerId === null) {
-            return request
+          if (props.account.id === request.volunteerId) {
+            return request;
           }
         })
         .map(request => {
@@ -20,4 +19,4 @@ const RequestList = props => {
   )
 }
 
-export default RequestList
+export default VolunteerRequestList
