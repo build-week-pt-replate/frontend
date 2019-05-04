@@ -19,7 +19,7 @@ class VolunteerDash extends React.Component {
     //Fetch volunteer data 
     // this.props.fetchVolunteerData(this.props.account.id)
     // fetch all requests
-    // console.log(this.props.account)
+    console.log(this.props.account)
     // this.props.fetchVolunteerRequests();
   }
 

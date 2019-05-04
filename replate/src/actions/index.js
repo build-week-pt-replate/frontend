@@ -15,8 +15,8 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
 
         console.log('RES', res);
 
-        localStorage.setItem("token", res.data.payload);
-        dispatch({ type: LOGIN_RESOLVED, payload: res.data.payload });
+        localStorage.setItem("token", res.data);
+        dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {
         console.log("login err: ", err);
@@ -171,6 +171,21 @@ export const ACCEPT_VOLUNTEER_REQUESTS_SUCCESS =
 export const ACCEPT_VOLUNTEER_REQUESTS_FAILURE =
   "ACCEPT_VOLUNTEER_REQUESTS_FAILURE";
 
-export const addVolunteerRequests = requestId => dispatch => {
-
+export const acceptVolunteerRequest = volunteerRequest => dispatch => {
+  dispatch({ type: ACCEPT_VOLUNTEER_REQUESTS_START });
+  axios
+    .put(`https://replate-be.herokuapp.com/api/request/${volunteerRequest.id}`, volunteerRequest)
+    .then(res => {
+      dispatch({
+        type: ACCEPT_VOLUNTEER_REQUESTS_SUCCESS,
+        payload: res
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: ACCEPT_VOLUNTEER_REQUESTS_FAILURE,
+        error: err
+      });
+      return Promise.reject(err);
+    })
 }
