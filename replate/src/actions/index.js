@@ -12,10 +12,7 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
       .post("https://replate-be.herokuapp.com/auth/bus/login", { email, password })
       .then(res => {
         //Creates a token in local storage if login is successful
-
-        console.log('RES', res);
-
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.token);
         dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {

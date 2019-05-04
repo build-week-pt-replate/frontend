@@ -5,7 +5,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-
 import { Link } from "react-router-dom";
 import "./Header.css";
 
@@ -15,8 +14,12 @@ const styles = {
   }
 };
 
-function SimpleAppBar(props) {
-  const { classes } = props;
+function DashHeader(props) {
+  const { classes, history } = props;
+  const logout = async () => {
+    await localStorage.clear()
+    history.push("/login")
+  }
 
   return (
     <div className={classes.root}>
@@ -26,7 +29,7 @@ function SimpleAppBar(props) {
             RePlate
           </Typography>
           {/* <Link className="login-button" to="/login"> */}
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" onClick={logout}>Logout</Button>
           {/* </Link> */}
         </Toolbar>
       </AppBar>
@@ -34,8 +37,8 @@ function SimpleAppBar(props) {
   );
 }
 
-SimpleAppBar.propTypes = {
+DashHeader.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SimpleAppBar);
+export default withStyles(styles)(DashHeader);

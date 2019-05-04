@@ -83,10 +83,9 @@ class BusinessDash extends React.Component {
 
   render() {
     const {requests} = this.props;
-
     return (
       <div className="business-dash-container">
-        <DashHeader />
+        <DashHeader history={this.props.history}/>
         <div className="dash-content">
           <div className="titles-wrapper">
             <div className="business-title">
