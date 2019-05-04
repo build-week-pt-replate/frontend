@@ -2,6 +2,12 @@ import {
   CREATING_BUSINESS_ACCOUNT_START,
   CREATING_BUSINESS_ACCOUNT_SUCCESS,
   CREATING_BUSINESS_ACCOUNT_FAILURE,
+  FETCH_BUSINESS_DATA_START,
+  FETCH_BUSINESS_DATA_SUCCESS,
+  FETCH_BUSINESS_DATA_FAILURE,
+  FETCH_BUSINESS_REQUESTS_START,
+  FETCH_BUSINESS_REQUESTS_SUCCESS,
+  FETCH_BUSINESS_REQUESTS_FAILURE,
   ADDING_DONATION_START,
   ADDING_DONATION_SUCCESS,
   ADDING_DONATION_FAILURE,
@@ -17,73 +23,73 @@ import {
   LOGIN_RESOLVED
 } from "../actions/index"
 
-const mockData = [
-
-  {
-    id: 1,
-    locationName: 'Burger King',
-    date: '2019-20-09',
-    time: '2:30pm',
-    foodDescription: 'a juicy burger',
-    comment: 'Hello there'
-  },
-  {
-    id: 2,
-    locationName: 'Papa Johns',
-    date: '2019-20-08',
-    time: '5:30pm',
-    foodDescription: 'a juicy pizza',
-    comment: 'Backdoor delivery'
-  },
-  {
-    id: 3,
-    locationName: 'Papa Johns',
-    date: '2019-20-08',
-    time: '5:30pm',
-    foodDescription: 'a juicy pizza',
-    comment: 'Backdoor delivery'
-  },
-  {
-    id: 4,
-    locationName: 'Papa Johns',
-    date: '2019-20-08',
-    time: '5:30pm',
-    foodDescription: 'a juicy pizza',
-    comment: 'Backdoor delivery'
-  },
-  {
-    id: 5,
-    locationName: 'Papa Johns',
-    date: '2019-20-08',
-    time: '5:30pm',
-    foodDescription: 'a juicy pizza',
-    comment: 'Backdoor delivery'
-  },
-  {
-    id: 6,
-    locationName: 'Papa Johns',
-    date: '2019-20-08',
-    time: '5:30pm',
-    foodDescription: 'a juicy pizza',
-    comment: 'Backdoor delivery'
-  },
-  {
-    id: 7,
-    locationName: 'Papa Johns',
-    date: '2019-20-08',
-    time: '5:30pm',
-    foodDescription: 'a juicy pizza',
-    comment: 'Backdoor delivery'
-  },
-  {
-    id: 8,
-    locationName: 'Papa Johns',
-    date: '2019-20-08',
-    time: '5:30pm',
-    foodDescription: 'a juicy pizza',
-    comment: 'Backdoor delivery'
-  },
-]
+// const mockData = [
+//
+//   {
+//     id: 1,
+//     locationName: 'Burger King',
+//     date: '2019-20-09',
+//     time: '2:30pm',
+//     foodDescription: 'a juicy burger',
+//     comment: 'Hello there'
+//   },
+//   {
+//     id: 2,
+//     locationName: 'Papa Johns',
+//     date: '2019-20-08',
+//     time: '5:30pm',
+//     foodDescription: 'a juicy pizza',
+//     comment: 'Backdoor delivery'
+//   },
+//   {
+//     id: 3,
+//     locationName: 'Papa Johns',
+//     date: '2019-20-08',
+//     time: '5:30pm',
+//     foodDescription: 'a juicy pizza',
+//     comment: 'Backdoor delivery'
+//   },
+//   {
+//     id: 4,
+//     locationName: 'Papa Johns',
+//     date: '2019-20-08',
+//     time: '5:30pm',
+//     foodDescription: 'a juicy pizza',
+//     comment: 'Backdoor delivery'
+//   },
+//   {
+//     id: 5,
+//     locationName: 'Papa Johns',
+//     date: '2019-20-08',
+//     time: '5:30pm',
+//     foodDescription: 'a juicy pizza',
+//     comment: 'Backdoor delivery'
+//   },
+//   {
+//     id: 6,
+//     locationName: 'Papa Johns',
+//     date: '2019-20-08',
+//     time: '5:30pm',
+//     foodDescription: 'a juicy pizza',
+//     comment: 'Backdoor delivery'
+//   },
+//   {
+//     id: 7,
+//     locationName: 'Papa Johns',
+//     date: '2019-20-08',
+//     time: '5:30pm',
+//     foodDescription: 'a juicy pizza',
+//     comment: 'Backdoor delivery'
+//   },
+//   {
+//     id: 8,
+//     locationName: 'Papa Johns',
+//     date: '2019-20-08',
+//     time: '5:30pm',
+//     foodDescription: 'a juicy pizza',
+//     comment: 'Backdoor delivery'
+//   },
+// ]
 
 const initialState = {
   account: null,
@@ -92,7 +98,7 @@ const initialState = {
   isBusinessInEditMode: null,
   isDeletingVolunteer: false,
   isDeletingBusiness: false,
-  requests: mockData,
+  requests: [],
   fetchingData: false
 };
 
@@ -127,6 +133,44 @@ const businessReducers = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
+        error: action.payload
+      };
+    case FETCH_BUSINESS_DATA_START:
+      return {
+        ...state,
+        error: null,
+        fetchingData: true
+      };
+    case FETCH_BUSINESS_DATA_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        fetchingData: false,
+        account: action.payload
+      };
+    case FETCH_BUSINESS_DATA_FAILURE:
+      return {
+        ...state,
+        fetchingData: false,
+        error: action.payload
+      };
+    case FETCH_BUSINESS_REQUESTS_START:
+      return {
+        ...state,
+        error: null,
+        fetchingData: true
+      };
+    case FETCH_BUSINESS_REQUESTS_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        fetchingData: false,
+        requests: action.payload
+      };
+    case FETCH_BUSINESS_REQUESTS_FAILURE:
+      return {
+        ...state,
+        fetchingData: false,
         error: action.payload
       };
     case ADDING_DONATION_START:
