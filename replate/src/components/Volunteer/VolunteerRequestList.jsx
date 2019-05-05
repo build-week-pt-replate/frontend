@@ -1,22 +1,28 @@
-import React from 'react'
-import RequestCard from './RequestCard';
+import React from "react";
+import RequestCard from "./RequestCard";
 
-import './RequestList.css'
+import "./RequestList.css";
 
 const VolunteerRequestList = props => {
   return (
-    <div className='available-requests-container'>
+    <div className="available-requests-container">
       {props.requests
         .filter(request => {
-          if (props.account.id === request.volunteerId) {
+          if (localStorage.getItem("id") === request.volunteerId) {
             return request;
           }
         })
         .map(request => {
-          return <RequestCard request={request} key={request.id} />
+          return (
+            <RequestCard
+              request={request}
+              key={request.id}
+              removeRequest={props.removeRequest}
+            />
+          );
         })}
     </div>
-  )
-}
+  );
+};
 
-export default VolunteerRequestList
+export default VolunteerRequestList;

@@ -1,7 +1,7 @@
-import React from 'react'
-import RequestCard from './RequestCard';
+import React from "react";
+import RequestCard from "./RequestCard";
 
-import './RequestList.css'
+import "./RequestList.css";
 
 const RequestList = props => {
   return (
@@ -9,12 +9,20 @@ const RequestList = props => {
       {props.requests.map(request => {
           //Checks if the requests is in volunteer city and has not been taken
           if (props.account.city === request.locationCity && request.volunteerId === null) {
-            return <RequestCard request={request} key={request.id} />
+            return (
+              <RequestCard
+              request={request}
+              key={request.id}
+              account={props.account}
+              acceptRequest={props.acceptRequest}
+              removeRequest={props.removeRequest}
+            />
+            )
           }
         }
       )}
     </div>
-  )
-}
+  );
+};
 
-export default RequestList
+export default RequestList;

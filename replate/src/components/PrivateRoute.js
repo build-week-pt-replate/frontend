@@ -12,11 +12,11 @@ const PrivateRoute = ({ component: Component, ...theRest }) => {
     <Route
       //The rest of the props
       {...theRest}
-      render={(props) => {
+      render={props => {
         //Check if token is there, if true return the component
         //In this case the DashBoard component
         if (localStorage.getItem("token")) {
-          return <Component {...props}/>;
+          return <Component {...props} />;
         } else {
           //If the token isn't there redirects you to login page
           console.log("Wrong credentials, redirecting you to login");

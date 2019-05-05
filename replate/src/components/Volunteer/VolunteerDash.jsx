@@ -3,43 +3,84 @@ import DashHeader from "../Header/DashHeader";
 import { connect } from "react-redux";
 import {
   fetchVolunteerRequests,
-  fetchVolunteerData
-} from '../../actions';
+  fetchVolunteerData,
+  acceptVolunteerRequest
+} from "../../actions";
 
-import RequestList from './RequestList'
-import VolunteerRequestList from './VolunteerRequestList'
+import RequestList from "./RequestList";
+import VolunteerRequestList from "./VolunteerRequestList";
 
 class VolunteerDash extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      account: this.props.account,
+      updatedRequest: null
+    };
   }
 
   componentDidMount() {
-    //Fetch volunteer data 
-    // this.props.fetchVolunteerData(this.props.account.id)
+    //Fetch volunteer data
+    this.props.fetchVolunteerData(localStorage.getItem("id"));
     // fetch all requests
-    // console.log(this.props.account)
     // this.props.fetchVolunteerRequests();
   }
+
+  acceptRequest = request => {
+    console.log(request);
+    let newRequest = request;
+    console.log(newRequest);
+    newRequest.volunteerId = localStorage.getItem("id");
+    this.setState({
+      updatedRequest: newRequest
+    });
+    console.log("After first set", this.state.updatedRequest);
+    acceptVolunteerRequest(this.state.updatedRequest);
+  };
+
+  removeRequest = request => {
+    console.log(request);
+    let newRequest = request;
+    console.log(newRequest);
+    newRequest.volunteerId = null;
+    this.setState({
+      updatedRequest: newRequest
+    });
+    console.log("After first set", this.state.updatedRequest);
+  };
 
   render() {
     return (
       <div className="dash-container">
-        <DashHeader history={this.props.history} />
-        <div className="volunteer-dash">
-          <h2>{this.props.account.firstName}'s Dashboard</h2>
-          {/* <h2>Volunteer Dashboard</h2> */}
-          <h3>City:{this.props.account.city}</h3>
-          <div className="requests-box">
-            <h3>Available Requests</h3>
-            <RequestList requests={this.props.requests} account={this.props.account} />
+        {this.props.account ? (
+          <div>
+            <DashHeader history={this.props.history} />
+            <div className="volunteer-dash">
+              <h2>{this.props.account.firstName}'s Dashboard</h2>
+              {/* <h2>Volunteer Dashboard</h2> */}
+              <h3>City:{this.props.account.city}</h3>
+              <div className="requests-box">
+                <h3>Available Requests</h3>
+                <RequestList
+                  requests={this.props.requests}
+                  account={this.props.account}
+                  acceptRequest={this.acceptRequest}
+                  removeRequest={this.removeRequest}
+                />
+              </div>
+              <div className="requests-box">
+                <h3>Current Requests</h3>
+                <VolunteerRequestList
+                  requests={this.props.requests}
+                  account={this.props.account}
+                  removeRequest={this.removeRequest}
+                />
+              </div>
+            </div>
           </div>
-          <div className="requests-box">
-            <h3>Current Requests</h3>
-            <VolunteerRequestList requests={this.props.requests} account={this.props.account} />
-          </div>
-        </div>
+        ) : (
+          <h3>Loading</h3>
+        )}
       </div>
     );
   }
@@ -55,4 +96,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchVolunteerRequests, fetchVolunteerData })(VolunteerDash)
+export default connect(
+  mapStateToProps,
+  { fetchVolunteerRequests, fetchVolunteerData }
+)(VolunteerDash);
