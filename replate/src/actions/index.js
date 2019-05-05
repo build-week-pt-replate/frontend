@@ -218,7 +218,7 @@ export const acceptVolunteerRequest = volunteerRequest => dispatch => {
     .then(res => {
       dispatch({
         type: ACCEPT_VOLUNTEER_REQUESTS_SUCCESS,
-        payload: res
+        payload: res.data
       });
     })
     .catch(err => {
@@ -256,7 +256,7 @@ export const removeVolunteerRequest = volunteerRequest => dispatch => {
     .then(res => {
       dispatch({
         type: REMOVE_VOLUNTEER_REQUESTS_SUCCESS,
-        payload: res
+        payload: res.data
       });
     })
     .catch(err => {

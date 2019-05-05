@@ -12,91 +12,97 @@ import {
   FETCH_VOLUNTEER_REQUESTS_START,
   FETCH_VOLUNTEER_REQUESTS_SUCCESS,
   LOGIN_START,
-  LOGIN_RESOLVED
+  LOGIN_RESOLVED,
+  ACCEPT_VOLUNTEER_REQUESTS_START,
+  ACCEPT_VOLUNTEER_REQUESTS_FAILURE,
+  ACCEPT_VOLUNTEER_REQUESTS_SUCCESS,
+  REMOVE_VOLUNTEER_REQUESTS_START,
+  REMOVE_VOLUNTEER_REQUESTS_FAILURE,
+  REMOVE_VOLUNTEER_REQUESTS_SUCCESS
 } from "../actions/index";
 
 const mockDataVolunteer = [
   {
-    "id": 1,
-    "requestDate": "2019-04-24",
-    "requestTime": "11:00:00",
-    "locationName": "Hunger First",
-    "locationStreet": "111 Kenwood Rd",
-    "locationCity": "Knoxville",
-    "locationState": "TN",
-    "locationZip": "37902",
-    "foodDescription": "Various canned food items",
-    "comment": "Can be picked up anytime before 2pm",
-    "businessId": 1,
-    "volunteerId": null,
-    "created_at": "2019-04-30 03:26:56",
-    "updated_at": "2019-04-30 03:26:56"
+    id: 1,
+    requestDate: "2019-04-24",
+    requestTime: "11:00:00",
+    locationName: "Hunger First",
+    locationStreet: "111 Kenwood Rd",
+    locationCity: "Knoxville",
+    locationState: "TN",
+    locationZip: "37902",
+    foodDescription: "Various canned food items",
+    comment: "Can be picked up anytime before 2pm",
+    businessId: 1,
+    volunteerId: null,
+    created_at: "2019-04-30 03:26:56",
+    updated_at: "2019-04-30 03:26:56"
   },
   {
-    "id": 2,
-    "requestDate": "2019-04-27",
-    "requestTime": "10:30:00",
-    "locationName": "Hope Shelter",
-    "locationStreet": "110 Carolina Street",
-    "locationCity": "Knoxville",
-    "locationState": "TN",
-    "locationZip": "37902",
-    "foodDescription": "Boxed and canned items",
-    "comment": "",
-    "businessId": 2,
-    "volunteerId": 1,
-    "created_at": "2019-04-30 03:26:56",
-    "updated_at": "2019-04-30 03:26:56"
+    id: 2,
+    requestDate: "2019-04-27",
+    requestTime: "10:30:00",
+    locationName: "Hope Shelter",
+    locationStreet: "110 Carolina Street",
+    locationCity: "Knoxville",
+    locationState: "TN",
+    locationZip: "37902",
+    foodDescription: "Boxed and canned items",
+    comment: "",
+    businessId: 2,
+    volunteerId: 1,
+    created_at: "2019-04-30 03:26:56",
+    updated_at: "2019-04-30 03:26:56"
   },
   {
-    "id": 3,
-    "requestDate": "2019-04-27",
-    "requestTime": "10:30:00",
-    "locationName": "Hope Shelter",
-    "locationStreet": "110 Carolina Street",
-    "locationCity": "San Francisco",
-    "locationState": "TN",
-    "locationZip": "37902",
-    "foodDescription": "Boxed and canned items",
-    "comment": "",
-    "businessId": 3,
-    "volunteerId": null,
-    "created_at": "2019-04-30 03:26:56",
-    "updated_at": "2019-04-30 03:26:56"
+    id: 3,
+    requestDate: "2019-04-27",
+    requestTime: "10:30:00",
+    locationName: "Hope Shelter",
+    locationStreet: "110 Carolina Street",
+    locationCity: "San Francisco",
+    locationState: "TN",
+    locationZip: "37902",
+    foodDescription: "Boxed and canned items",
+    comment: "",
+    businessId: 3,
+    volunteerId: null,
+    created_at: "2019-04-30 03:26:56",
+    updated_at: "2019-04-30 03:26:56"
   },
   {
-    "id": 4,
-    "requestDate": "2019-04-27",
-    "requestTime": "10:30:00",
-    "locationName": "Hope Shelter",
-    "locationStreet": "110 Carolina Street",
-    "locationCity": "San Francisco",
-    "locationState": "TN",
-    "locationZip": "37902",
-    "foodDescription": "Boxed and canned items",
-    "comment": "",
-    "businessId": 7,
-    "volunteerId": null,
-    "created_at": "2019-04-30 03:26:56",
-    "updated_at": "2019-04-30 03:26:56"
+    id: 4,
+    requestDate: "2019-04-27",
+    requestTime: "10:30:00",
+    locationName: "Hope Shelter",
+    locationStreet: "110 Carolina Street",
+    locationCity: "San Francisco",
+    locationState: "TN",
+    locationZip: "37902",
+    foodDescription: "Boxed and canned items",
+    comment: "",
+    businessId: 7,
+    volunteerId: null,
+    created_at: "2019-04-30 03:26:56",
+    updated_at: "2019-04-30 03:26:56"
   },
   {
-    "id": 5,
-    "requestDate": "2019-04-27",
-    "requestTime": "10:30:00",
-    "locationName": "Hope Shelter",
-    "locationStreet": "110 Carolina Street",
-    "locationCity": "San Francisco",
-    "locationState": "TN",
-    "locationZip": "37902",
-    "foodDescription": "Boxed and canned items",
-    "comment": "",
-    "businessId": 9,
-    "volunteerId": null,
-    "created_at": "2019-04-30 03:26:56",
-    "updated_at": "2019-04-30 03:26:56"
-  },
-]
+    id: 5,
+    requestDate: "2019-04-27",
+    requestTime: "10:30:00",
+    locationName: "Hope Shelter",
+    locationStreet: "110 Carolina Street",
+    locationCity: "San Francisco",
+    locationState: "TN",
+    locationZip: "37902",
+    foodDescription: "Boxed and canned items",
+    comment: "",
+    businessId: 9,
+    volunteerId: null,
+    created_at: "2019-04-30 03:26:56",
+    updated_at: "2019-04-30 03:26:56"
+  }
+];
 
 const initialState = {
   account: null,
@@ -115,14 +121,14 @@ const volunteerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true
-      }
+      };
     }
     case LOGIN_RESOLVED: {
       return {
         ...state,
         isLoading: false,
         account: action.payload
-      }
+      };
     }
     case CREATING_VOLUNTEER_ACCOUNT_START:
       return {
@@ -194,16 +200,28 @@ const volunteerReducer = (state = initialState, action) => {
         error: "",
         fetchingData: false,
         requests: mockDataVolunteer
-        // .filter(request => {
-        //   if (state.account.city === request.locationCity) {
-        //     return request;
-        //   }
-        // })
       };
     case FETCH_VOLUNTEER_REQUESTS_FAILURE:
       return {
         ...state,
         fetchingData: false,
+        error: action.payload
+      };
+    case ACCEPT_VOLUNTEER_REQUESTS_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case ACCEPT_VOLUNTEER_REQUESTS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        requests: action.payload
+      };
+    case ACCEPT_VOLUNTEER_REQUESTS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
         error: action.payload
       };
     default:
