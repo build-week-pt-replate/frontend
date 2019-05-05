@@ -230,7 +230,7 @@ export const acceptVolunteerRequest = volunteerRequest => dispatch => {
     });
 };
 
-// //Accept Volunteer Request
+// //Remove Volunteer Request
 export const REMOVE_VOLUNTEER_REQUESTS_START =
   "REMOVE_VOLUNTEER_REQUESTS_START";
 export const REMOVE_VOLUNTEER_REQUESTS_SUCCESS =

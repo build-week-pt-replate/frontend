@@ -98,5 +98,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchVolunteerRequests, fetchVolunteerData }
+  { fetchVolunteerRequests, fetchVolunteerData, acceptVolunteerRequest }
 )(VolunteerDash);
