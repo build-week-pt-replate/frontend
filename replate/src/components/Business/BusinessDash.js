@@ -21,17 +21,17 @@ class BusinessDash extends React.Component {
     this.defaultState = {
       open: false,
       isSuccessful: false,
-      locationName: "",
-      locationStreet: "",
-      locationCity: "",
-      locationState: "",
-      locationZip: "",
-      date: "",
-      time: "",
-      foodDescription: "",
-      comment: "",
-      stepNumber: 1
-    };
+      locationName: '',
+      locationStreet: '',
+      locationCity: '',
+      locationState: '',
+      locationZip: '',
+      requestDate: '',
+      requestTime: '',
+      foodDescription: '',
+      comment: '',
+      stepNumber: 1,
+    }
 
     this.state = this.defaultState;
   }

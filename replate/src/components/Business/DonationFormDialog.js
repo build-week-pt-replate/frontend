@@ -22,8 +22,8 @@ export default class DonationFormDialog extends Component {
         locationCity,
         locationState,
         locationZip,
-        date,
-        time,
+        requestDate,
+        requestTime,
         foodDescription,
         comment,
         stepNumber
@@ -91,21 +91,21 @@ export default class DonationFormDialog extends Component {
           />
           <TextField
             margin="normal"
-            id="date"
-            name="date"
+            id="requestDate"
+            name="requestDate"
             label="Date"
             type="date"
-            value={date}
+            value={requestDate}
             onChange={handleInputChange}
             fullWidth
           />
           <TextField
             margin="normal"
-            id="time"
-            name="time"
+            id="requestTime"
+            name="requestTime"
             label="Time"
             type="time"
-            value={time}
+            value={requestTime}
             onChange={handleInputChange}
             fullWidth
           />
@@ -172,11 +172,11 @@ export default class DonationFormDialog extends Component {
           </DialogContentText>
 
           <DialogContentText>
-            Pick Up Date:  {date}
+            Pick Up Date:  {requestDate}
           </DialogContentText>
 
           <DialogContentText>
-            Pick Up Time:  {time}
+            Pick Up Time:  {requestTime}
           </DialogContentText>
 
           <DialogContentText>

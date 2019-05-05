@@ -5,28 +5,22 @@ import "./RequestList.css";
 
 const RequestList = props => {
   return (
-    <div className="available-requests-container">
-      {props.requests
-        .filter(request => {
+    <div className='available-requests-container'>
+      {props.requests.map(request => {
           //Checks if the requests is in volunteer city and has not been taken
-          if (
-            props.account.city === request.locationCity &&
-            request.volunteerId === null
-          ) {
-            return request;
-          }
-        })
-        .map(request => {
-          return (
-            <RequestCard
+          if (props.account.city === request.locationCity && request.volunteerId === null) {
+            return (
+              <RequestCard
               request={request}
               key={request.id}
               account={props.account}
               acceptRequest={props.acceptRequest}
               removeRequest={props.removeRequest}
             />
-          );
-        })}
+            )
+          }
+        }
+      )}
     </div>
   );
 };
