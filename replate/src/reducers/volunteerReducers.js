@@ -224,6 +224,23 @@ const volunteerReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload
       };
+    case REMOVE_VOLUNTEER_REQUESTS_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case REMOVE_VOLUNTEER_REQUESTS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        requests: action.payload
+      };
+    case REMOVE_VOLUNTEER_REQUESTS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
     default:
       return state;
   }
