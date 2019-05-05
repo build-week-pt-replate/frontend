@@ -26,8 +26,8 @@ class BusinessDash extends React.Component {
       locationCity: '',
       locationState: '',
       locationZip: '',
-      date: '',
-      time: '',
+      requestDate: '',
+      requestTime: '',
       foodDescription: '',
       comment: '',
       stepNumber: 1,
@@ -74,6 +74,7 @@ class BusinessDash extends React.Component {
       isSuccessful,
       ...newDonation
     } = this.state;
+    console.log('new', newDonation)
 
     this.props.addDonation(newDonation).then(()=>{
 
