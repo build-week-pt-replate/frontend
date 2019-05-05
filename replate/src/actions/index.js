@@ -267,3 +267,41 @@ export const removeVolunteerRequest = volunteerRequest => dispatch => {
       return Promise.reject(err);
     });
 };
+
+// //Remove Volunteer Request
+export const COMPLETE_VOLUNTEER_REQUESTS_START =
+  "COMPLETE_VOLUNTEER_REQUESTS_START";
+export const COMPLETE_VOLUNTEER_REQUESTS_SUCCESS =
+  "COMPLETE_VOLUNTEER_REQUESTS_SUCCESS";
+export const COMPLETE_VOLUNTEER_REQUESTS_FAILURE =
+  "COMPLETE_VOLUNTEER_REQUESTS_FAILURE";
+
+export const completeVolunteerRequest = requestId => dispatch => {
+  dispatch({ type: COMPLETE_VOLUNTEER_REQUESTS_START });
+
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: token }
+  };
+
+  axios
+    .put(
+      `https://replate-be.herokuapp.com/api/request/${requestId}`,
+      config
+    )
+    .then(res => {
+      dispatch({
+        type: COMPLETE_VOLUNTEER_REQUESTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: COMPLETE_VOLUNTEER_REQUESTS_FAILURE,
+        error: err
+      });
+      return Promise.reject(err);
+    });
+};
+
