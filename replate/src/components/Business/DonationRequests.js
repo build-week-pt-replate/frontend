@@ -18,6 +18,7 @@ const DonationRequests = props => {
         return <DonationRequest key={request.id}
                                 request={request}
                                 imagePath={imagePath}
+                                deleteDonation={props.deleteDonation}
         />
       })}
     </div>

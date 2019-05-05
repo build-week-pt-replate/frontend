@@ -146,9 +146,9 @@ export default class DonationFormDialog extends Component {
     const confirmationView = (
       <>
         <DialogContent>
-          <DialogContentText>
-            Please verify your donation details!
-          </DialogContentText>
+          <DialogTitle>
+            Please verify your donation details
+          </DialogTitle>
         </DialogContent>
         <DialogContent>
           <DialogContentText>

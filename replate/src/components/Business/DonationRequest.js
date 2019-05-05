@@ -31,7 +31,7 @@ const styles = {
 };
 
 const DonationRequest = (props) => {
-  const { classes, imagePath } = props;
+  const { classes, imagePath, deleteDonation } = props;
 
   return (
     <Card className={classes.card}>
@@ -54,7 +54,12 @@ const DonationRequest = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">Remove</Button>
+        <Button size="small"
+                color="primary"
+                onClick={() => {deleteDonation(props.request.id)}}
+        >
+          Remove
+        </Button>
       </CardActions>
     </Card>
   );

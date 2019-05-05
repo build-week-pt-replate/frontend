@@ -185,6 +185,39 @@ export const deleteBusiness = businessId => dispatch => {
     });
 };
 
+export const DELETING_BUSINESS_REQUEST_SUCCESS =
+  "DELETING_BUSINESS_REQUEST_SUCCESS";
+export const DELETING_BUSINESS_REQUEST_FAILURE =
+  "DELETING_BUSINESS_REQUEST_FAILURE";
+
+export const deleteBusinessRequest = requestId => dispatch => {
+  const token = localStorage.getItem('token');
+  console.log('TOKEN:', token);
+
+  const config = {
+    headers: { Authorization: token }
+  };
+
+  const url = `https://replate-be.herokuapp.com/api/request/${requestId}`;
+
+  const request = axios.delete(url, config);
+
+  return request
+    .then(({data}) => {
+      dispatch({
+        type: DELETING_BUSINESS_REQUEST_SUCCESS,
+        payload: data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: DELETING_BUSINESS_REQUEST_FAILURE,
+        error: err
+      });
+      return Promise.reject(err);
+    });
+};
+
 export const UPDATING_BUSINESS = "UPDATING_BUSINESS";
 
 export const updatingBusiness = businessId => dispatch => {
