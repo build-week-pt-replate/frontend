@@ -11,6 +11,8 @@ import {
   ADDING_DONATION_START,
   ADDING_DONATION_SUCCESS,
   ADDING_DONATION_FAILURE,
+  DELETING_BUSINESS_REQUEST_SUCCESS,
+  DELETING_BUSINESS_REQUEST_FAILURE,
   DELETING_BUSINESS_ACCOUNT_SUCCESS,
   DELETING_BUSINESS_ACCOUNT_FAILURE,
   UPDATING_BUSINESS,
@@ -96,8 +98,8 @@ const initialState = {
   isLoading: false,
   error: null,
   isBusinessInEditMode: null,
-  isDeletingVolunteer: false,
   isDeletingBusiness: false,
+  isDeletingRequest: false,
   requests: [],
   fetchingData: false
 };
@@ -206,6 +208,19 @@ const businessReducers = (state = initialState, action) => {
     case UPDATING_BUSINESS_FAILURE:
       return {
         ...state,
+        error: action.payload
+      };
+    case DELETING_BUSINESS_REQUEST_SUCCESS:
+      return {
+        ...state,
+        isDeletingRequest: true,
+        error: null,
+        requests: [...state.requests, action.payload]
+      };
+    case DELETING_BUSINESS_REQUEST_FAILURE:
+      return {
+        ...state,
+        isDeletingRequest: false,
         error: action.payload
       };
     case DELETING_BUSINESS_ACCOUNT_SUCCESS:
