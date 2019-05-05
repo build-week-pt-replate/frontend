@@ -3,8 +3,8 @@ import DashHeader from "../Header/DashHeader";
 import { connect } from "react-redux";
 import {
   fetchVolunteerRequests,
-  fetchVolunteerData
-  // acceptVolunteerRequest
+  fetchVolunteerData,
+  acceptVolunteerRequest
 } from "../../actions";
 
 import RequestList from "./RequestList";
@@ -35,6 +35,7 @@ class VolunteerDash extends React.Component {
       updatedRequest: newRequest
     });
     console.log("After first set", this.state.updatedRequest);
+    acceptVolunteerRequest(this.state.updatedRequest);
   };
 
   removeRequest = request => {
