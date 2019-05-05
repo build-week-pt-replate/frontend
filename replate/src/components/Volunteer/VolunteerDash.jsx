@@ -3,12 +3,12 @@ import DashHeader from "../Header/DashHeader";
 import { connect } from "react-redux";
 import {
   fetchVolunteerRequests,
-  fetchVolunteerData,
+  fetchVolunteerData
   // acceptVolunteerRequest
-} from '../../actions';
+} from "../../actions";
 
-import RequestList from './RequestList'
-import VolunteerRequestList from './VolunteerRequestList'
+import RequestList from "./RequestList";
+import VolunteerRequestList from "./VolunteerRequestList";
 
 class VolunteerDash extends React.Component {
   constructor(props) {
@@ -16,74 +16,70 @@ class VolunteerDash extends React.Component {
     this.state = {
       account: this.props.account,
       updatedRequest: null
-    }
-
+    };
   }
 
   componentDidMount() {
     //Fetch volunteer data
-    this.props.fetchVolunteerData(localStorage.getItem('id'))
+    this.props.fetchVolunteerData(localStorage.getItem("id"));
     // fetch all requests
     // this.props.fetchVolunteerRequests();
   }
 
-  saveRequest = request => {
+  acceptRequest = request => {
+    console.log(request);
+    let newRequest = request;
+    console.log(newRequest);
+    newRequest.volunteerId = localStorage.getItem("id");
     this.setState({
-      updatedRequest: {
-        request
-      }
-    })
-    console.log(this.state.updatedRequest)
-  }
+      updatedRequest: newRequest
+    });
+    console.log("After first set", this.state.updatedRequest);
+  };
 
-  // saveRequest = e => {
-  //   //Changes the state/tracks the value of the friendPost whatever is being inputed on the form
-  //   let values = e.target.value
-  //   this.setState({
-  //     updatedRequest: {
-  //       ...this.state.updatedRequest,
-  //       //Since on the inputs theres a "name" value it can be used as a key to change
-  //       //All the inputs dynamically instead of creating a handler for all of em
-  //       values
-  //     }
-  //   });
-  //   console.log(this.state.updatedRequest)
-  // };
-
-  // acceptRequest = () => {
-  //   let updatedRequest = {
-  //     ...this.state.upd
-  //   }
-
-
-
-  //   acceptVolunteerRequest(updatedRequest)
-  // }
-
+  removeRequest = request => {
+    console.log(request);
+    let newRequest = request;
+    console.log(newRequest);
+    newRequest.volunteerId = null;
+    this.setState({
+      updatedRequest: newRequest
+    });
+    console.log("After first set", this.state.updatedRequest);
+  };
 
   render() {
     return (
       <div className="dash-container">
-      {this.props.account ? (
-        <div>
-          <DashHeader history={this.props.history} />
-          <div className="volunteer-dash">
-            <h2>{this.props.account.firstName}'s Dashboard</h2>
-            {/* <h2>Volunteer Dashboard</h2> */}
-            <h3>City:{this.props.account.city}</h3>
-            <div className="requests-box">
-              <h3>Available Requests</h3>
-              <RequestList requests={this.props.requests} account={this.props.account} updatedRequest={this.updatedRequest} saveRequest={this.saveRequest} />
-            </div>
-            <div className="requests-box">
-              <h3>Current Requests</h3>
-              <VolunteerRequestList requests={this.props.requests} account={this.props.account} />
+        {this.props.account ? (
+          <div>
+            <DashHeader history={this.props.history} />
+            <div className="volunteer-dash">
+              <h2>{this.props.account.firstName}'s Dashboard</h2>
+              {/* <h2>Volunteer Dashboard</h2> */}
+              <h3>City:{this.props.account.city}</h3>
+              <div className="requests-box">
+                <h3>Available Requests</h3>
+                <RequestList
+                  requests={this.props.requests}
+                  account={this.props.account}
+                  acceptRequest={this.acceptRequest}
+                  removeRequest={this.removeRequest}
+                />
+              </div>
+              <div className="requests-box">
+                <h3>Current Requests</h3>
+                <VolunteerRequestList
+                  requests={this.props.requests}
+                  account={this.props.account}
+                  removeRequest={this.removeRequest}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <h3>Loading</h3>
-      )}
+        ) : (
+          <h3>Loading</h3>
+        )}
       </div>
     );
   }
@@ -99,4 +95,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { fetchVolunteerRequests, fetchVolunteerData })(VolunteerDash)
+export default connect(
+  mapStateToProps,
+  { fetchVolunteerRequests, fetchVolunteerData }
+)(VolunteerDash);
