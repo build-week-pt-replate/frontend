@@ -7,6 +7,8 @@ import {
   acceptVolunteerRequest
 } from "../../actions";
 
+import './VolunteerDash.css'
+
 import RequestList from "./RequestList";
 import VolunteerRequestList from "./VolunteerRequestList";
 
@@ -56,11 +58,11 @@ class VolunteerDash extends React.Component {
           <div>
             <DashHeader history={this.props.history} />
             <div className="volunteer-dash">
-              <h2>{this.props.account.firstName}'s Dashboard</h2>
+              <h2 className='dashboard-titles'>{this.props.account.firstName}'s Dashboard</h2>
               {/* <h2>Volunteer Dashboard</h2> */}
-              <h3>City: {this.props.account.city}</h3>
+              <h3 className='dashboard-titles'>City: {this.props.account.city}</h3>
               <div className="requests-box">
-                <h3>Available Requests</h3>
+                <h3 className='dashboard-titles'>Available Requests</h3>
                 <RequestList
                   requests={this.props.requests}
                   account={this.props.account}
@@ -69,7 +71,7 @@ class VolunteerDash extends React.Component {
                 />
               </div>
               <div className="requests-box">
-                <h3>Current Requests</h3>
+                <h3 className='dashboard-titles'>Current Requests</h3>
                 <VolunteerRequestList
                   requests={this.props.requests}
                   account={this.props.account}

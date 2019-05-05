@@ -19,7 +19,7 @@ function Header(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root}`}>
       <AppBar position="static" color="primary">
         <Toolbar className="tool-bar">
           <Typography variant="h6" color="inherit">

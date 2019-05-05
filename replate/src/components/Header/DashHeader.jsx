@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import "./Header.css";
+import "./DashHeader.css";
 
 const styles = {
   root: {
@@ -22,7 +22,7 @@ function DashHeader(props) {
   }
 
   return (
-    <div className={classes.root}>
+    <div className={`${classes.root} header`}>
       <AppBar position="static" color="primary">
         <Toolbar className="tool-bar">
           <Typography variant="h6" color="inherit">
