@@ -18,7 +18,10 @@ import {
   ACCEPT_VOLUNTEER_REQUESTS_SUCCESS,
   REMOVE_VOLUNTEER_REQUESTS_START,
   REMOVE_VOLUNTEER_REQUESTS_FAILURE,
-  REMOVE_VOLUNTEER_REQUESTS_SUCCESS
+  REMOVE_VOLUNTEER_REQUESTS_SUCCESS,
+  COMPLETE_VOLUNTEER_REQUESTS_START,
+  COMPLETE_VOLUNTEER_REQUESTS_SUCCESS,
+  COMPLETE_VOLUNTEER_REQUESTS_FAILURE
 } from "../actions/index";
 
 const mockDataVolunteer = [
@@ -112,7 +115,7 @@ const initialState = {
   isDeletingVolunteer: false,
   isDeletingBusiness: false,
   requests: mockDataVolunteer,
-  fetchingData: false
+  fetchingData: false,
 };
 
 const volunteerReducer = (state = initialState, action) => {
@@ -236,6 +239,24 @@ const volunteerReducer = (state = initialState, action) => {
         requests: action.payload
       };
     case REMOVE_VOLUNTEER_REQUESTS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    case COMPLETE_VOLUNTEER_REQUESTS_START:
+      return {
+        ...state,
+        isLoading: true
+      };
+    case COMPLETE_VOLUNTEER_REQUESTS_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        account: action.payload
+      };
+    case COMPLETE_VOLUNTEER_REQUESTS_FAILURE:
       return {
         ...state,
         isLoading: false,
