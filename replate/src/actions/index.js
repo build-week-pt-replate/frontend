@@ -32,10 +32,7 @@ export const login = ({ email, password, businessAccount }) => dispatch => {
       .then(res => {
         //Creates a token in local storage if login is successful
         localStorage.setItem("token", res.data.token);
-<<<<<<< HEAD
-        localStorage.setItem('id', res.data.id)
-=======
->>>>>>> abf5914af7f4869893cbd24ae81f823089faf20a
+        localStorage.setItem('id', res.data.id);
         dispatch({ type: LOGIN_RESOLVED, payload: res.data });
       })
       .catch(err => {
