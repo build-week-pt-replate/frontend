@@ -18,6 +18,10 @@ export default class DonationFormDialog extends Component {
       scheduleDonation,
       formDialogData: {
         locationName,
+        locationStreet,
+        locationCity,
+        locationState,
+        locationZip,
         date,
         time,
         foodDescription,
@@ -42,6 +46,46 @@ export default class DonationFormDialog extends Component {
             label="Location Name"
             type="text"
             value={locationName}
+            onChange={handleInputChange}
+            fullWidth
+          />
+          <TextField
+            margin="normal"
+            id="locationStreet"
+            name="locationStreet"
+            label="Street"
+            type="text"
+            value={locationStreet}
+            onChange={handleInputChange}
+            fullWidth
+          />
+          <TextField
+            margin="normal"
+            id="locationCity"
+            name="locationCity"
+            label="City"
+            type="text"
+            value={locationCity}
+            onChange={handleInputChange}
+            fullWidth
+          />
+          <TextField
+            margin="normal"
+            id="locationState"
+            name="locationState"
+            label="State"
+            type="text"
+            value={locationState}
+            onChange={handleInputChange}
+            fullWidth
+          />
+          <TextField
+            margin="normal"
+            id="locationZip"
+            name="locationZip"
+            label="Zip"
+            type="text"
+            value={locationZip}
             onChange={handleInputChange}
             fullWidth
           />
@@ -109,6 +153,22 @@ export default class DonationFormDialog extends Component {
         <DialogContent>
           <DialogContentText>
             Location Name:  {locationName}
+          </DialogContentText>
+
+          <DialogContentText>
+            Street:  {locationStreet}
+          </DialogContentText>
+
+          <DialogContentText>
+            City:  {locationCity}
+          </DialogContentText>
+
+          <DialogContentText>
+            State:  {locationState}
+          </DialogContentText>
+
+          <DialogContentText>
+            Zip:  {locationZip}
           </DialogContentText>
 
           <DialogContentText>
