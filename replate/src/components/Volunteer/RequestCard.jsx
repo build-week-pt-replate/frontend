@@ -6,6 +6,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import DeleteMUIcon from '../ButtonIcons/DeleteMUIcon'
+
 
 const styles = {
   card: {
@@ -29,7 +31,7 @@ function RequestCard(props) {
   // const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.card}>
+    <Card className={`${classes.card} card-container`}>
       <CardContent>
         <Typography variant="h5" component="h2">
           {props.request.locationName}
@@ -43,20 +45,35 @@ function RequestCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button
-          size="small"
-          color="secondary"
-          value={props.request}
-          onClick={() => {
-            props.request.volunteerId !== null
-              ? props.removeRequest(props.request)
-              : props.acceptRequest(props.request);
-          }}
-        >
-          {props.request.volunteerId !== null
-            ? "Remove Request"
-            : "Accept Request"}
-        </Button>
+        <div className='button-container'>
+          <Button
+            size="small"
+            color="secondary"
+            value={props.request}
+            onClick={() => {
+              props.request.volunteerId !== null
+                ? props.removeRequest(props.request)
+                : props.acceptRequest(props.request);
+            }}
+          >
+            {props.request.volunteerId !== null
+              ? "Complete"
+              : "Accept"}
+          </Button>
+
+          <Button
+            size="small"
+            color="secondary"
+            value={props.request}
+            onClick={() => {
+              props.removeRequest(props.request)
+            }}
+          >
+            {props.request.volunteerId !== null
+              ? "Cancel"
+              : null}
+          </Button>
+        </div>
       </CardActions>
     </Card>
   );

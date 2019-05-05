@@ -58,7 +58,7 @@ class VolunteerDash extends React.Component {
             <div className="volunteer-dash">
               <h2>{this.props.account.firstName}'s Dashboard</h2>
               {/* <h2>Volunteer Dashboard</h2> */}
-              <h3>City:{this.props.account.city}</h3>
+              <h3>City: {this.props.account.city}</h3>
               <div className="requests-box">
                 <h3>Available Requests</h3>
                 <RequestList
@@ -79,8 +79,8 @@ class VolunteerDash extends React.Component {
             </div>
           </div>
         ) : (
-          <h3>Loading</h3>
-        )}
+            <h3>Loading</h3>
+          )}
       </div>
     );
   }
