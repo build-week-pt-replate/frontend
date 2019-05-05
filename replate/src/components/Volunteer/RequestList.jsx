@@ -6,16 +6,13 @@ import './RequestList.css'
 const RequestList = props => {
   return (
     <div className='available-requests-container'>
-      {props.requests
-        .filter(request => {
+      {props.requests.map(request => {
           //Checks if the requests is in volunteer city and has not been taken
           if (props.account.city === request.locationCity && request.volunteerId === null) {
-            return request
+            return <RequestCard request={request} key={request.id} />
           }
-        })
-        .map(request => {
-          return <RequestCard request={request} key={request.id} />
-        })}
+        }
+      )}
     </div>
   )
 }
