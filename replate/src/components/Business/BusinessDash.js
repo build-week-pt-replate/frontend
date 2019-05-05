@@ -20,8 +20,12 @@ class BusinessDash extends React.Component {
 
     this.defaultState = {
       open: false,
-      successful: false,
+      isSuccessful: false,
       locationName: '',
+      locationStreet: '',
+      locationCity: '',
+      locationState: '',
+      locationZip: '',
       date: '',
       time: '',
       foodDescription: '',
