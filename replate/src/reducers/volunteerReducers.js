@@ -115,7 +115,7 @@ const initialState = {
   isDeletingVolunteer: false,
   isDeletingBusiness: false,
   requests: mockDataVolunteer,
-  fetchingData: false,
+  fetchingData: false
 };
 
 const volunteerReducer = (state = initialState, action) => {

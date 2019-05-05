@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 import {
   fetchVolunteerRequests,
   fetchVolunteerData,
-  acceptVolunteerRequest
+  acceptVolunteerRequest,
+  completeVolunteerRequest,
+  removeVolunteerRequest
 } from "../../actions";
 
-import './VolunteerDash.css'
+import "./VolunteerDash.css";
 
 import RequestList from "./RequestList";
 import VolunteerRequestList from "./VolunteerRequestList";
@@ -37,7 +39,7 @@ class VolunteerDash extends React.Component {
       updatedRequest: newRequest
     });
     console.log("After first set", this.state.updatedRequest);
-    acceptVolunteerRequest(this.state.updatedRequest);
+    this.props.acceptVolunteerRequest(this.state.updatedRequest);
   };
 
   removeRequest = request => {
@@ -49,6 +51,12 @@ class VolunteerDash extends React.Component {
       updatedRequest: newRequest
     });
     console.log("After first set", this.state.updatedRequest);
+    this.props.removeVolunteerRequest(this.state.updatedRequest);
+  };
+
+  completeRequest = request => {
+    console.log(request);
+    this.props.completeVolunteerRequest(request.id);
   };
 
   render() {
@@ -58,11 +66,15 @@ class VolunteerDash extends React.Component {
           <div>
             <DashHeader history={this.props.history} />
             <div className="volunteer-dash">
-              <h2 className='dashboard-titles'>{this.props.account.firstName}'s Dashboard</h2>
+              <h2 className="dashboard-titles">
+                {this.props.account.firstName}'s Dashboard
+              </h2>
               {/* <h2>Volunteer Dashboard</h2> */}
-              <h3 className='dashboard-titles'>City: {this.props.account.city}</h3>
+              <h3 className="dashboard-titles">
+                City: {this.props.account.city}
+              </h3>
               <div className="requests-box">
-                <h3 className='dashboard-titles'>Available Requests</h3>
+                <h3 className="dashboard-titles">Available Requests</h3>
                 <RequestList
                   requests={this.props.requests}
                   account={this.props.account}
@@ -71,18 +83,19 @@ class VolunteerDash extends React.Component {
                 />
               </div>
               <div className="requests-box">
-                <h3 className='dashboard-titles'>Current Requests</h3>
+                <h3 className="dashboard-titles">Current Requests</h3>
                 <VolunteerRequestList
                   requests={this.props.requests}
                   account={this.props.account}
                   removeRequest={this.removeRequest}
+                  completeRequest={this.completeRequest}
                 />
               </div>
             </div>
           </div>
         ) : (
-            <h3>Loading</h3>
-          )}
+          <h3>Loading</h3>
+        )}
       </div>
     );
   }
@@ -100,5 +113,11 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchVolunteerRequests, fetchVolunteerData, acceptVolunteerRequest }
+  {
+    fetchVolunteerRequests,
+    fetchVolunteerData,
+    acceptVolunteerRequest,
+    completeVolunteerRequest,
+    removeVolunteerRequest
+  }
 )(VolunteerDash);
