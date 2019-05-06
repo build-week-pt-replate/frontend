@@ -266,7 +266,7 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: null,
-        requests: [...state.requests, action.payload]
+        requests: state.requests.filter(req => req.id !== Number(action.payload))
       };
     case COMPLETE_VOLUNTEER_REQUESTS_FAILURE:
       return {
