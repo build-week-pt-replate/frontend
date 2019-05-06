@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createBusinessAccount } from '../../actions/businessActions';
+import Header from "../Header/Header";
 
 import StepOneForm from './StepOneForm';
 import StepTwoForm from './StepTwoForm';
@@ -31,9 +32,7 @@ class SignUpFormContainer extends Component {
     });
   };
 
-  updateStepNumber = (event) => {
-    event.preventDefault();
-
+  updateStepNumber = () => {
     this.setState({
       stepNumber: this.state.stepNumber + 1,
     })
@@ -81,9 +80,9 @@ class SignUpFormContainer extends Component {
   render() {
     return (
       <div className="signup-form-wrapper">
+        <Header />
         <div className="sign-up-title">
-          <h2>Donor Sign Up</h2>
-          <p>Thanks for your interest!</p>
+          <h3>Thanks for your interest!</h3>
         </div>
 
         {

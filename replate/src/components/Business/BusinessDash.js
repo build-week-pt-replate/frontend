@@ -41,11 +41,10 @@ class BusinessDash extends React.Component {
   componentDidMount() {
     const businessId = localStorage.getItem('id')
     this.setState({ businessId: businessId })
-    this.props.fetchBusinessData(businessId);
-
-    console.log('ACCOUNT Name:', this.props.account)
-    // fetch all the donation requests here
-    this.props.fetchBusinessRequests(businessId);
+    if (businessId) {
+      this.props.fetchBusinessData(businessId);
+      this.props.fetchBusinessRequests(businessId);
+    }
   }
 
   handleInputChange = event => {
@@ -82,6 +81,7 @@ class BusinessDash extends React.Component {
       .addDonation({businessId: this.props.account.id, ...newDonation})
       .then(() => {
         this.setState({
+          ...this.defaultState,
           isSuccessful: true
         });
       })
@@ -111,25 +111,23 @@ class BusinessDash extends React.Component {
             (
               <div className="dash-content">
                 <div className="titles-wrapper">
-                  <div className="business-title">
-                    <h2>{account.companyName}'s Dashboard</h2>
+                  <div className="top-dash-wrapper">
+                    <div className="business-title">
+                      <h2>{account.companyName}'s Dashboard</h2>
+                    </div>
+
+                    <div className="add-btn-wrapper">
+                      <h3 className="h-3-add-donation">Add Donation</h3>
+                      <AddMUIcon
+                        variant="outlined"
+                        color="primary"
+                        onClick={this.handleClickOpen}
+                      />
+                    </div>
                   </div>
 
                   <div className=" ">
                     <h3>Pick Up Schedule</h3>
-                  </div>
-
-            <div className="add-btn-wrapper">
-              <h3 className="h-3-add-donation">Add Donation</h3>
-              <AddMUIcon
-                variant="outlined"
-                color="primary"
-                onClick={this.handleClickOpen}
-              />
-            </div>
-
-                  <div className=" ">
-                    <h3>Next Week's Schedule</h3>
                   </div>
                 </div>
 
