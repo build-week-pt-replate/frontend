@@ -57,29 +57,39 @@ const RequestCard = props => {
       </CardContent>
       <CardActions>
         <div className="button-container">
-          <Button
-            size="small"
-            color="secondary"
-            // value={props.request}
-            onClick={() => {
-              props.request.volunteerId !== null
-                ? props.completeRequest(props.request)
-                : props.acceptRequest(props.request);
-            }}
-          >
-            {props.request.volunteerId !== null ? "Complete" : "Accept"}
-          </Button>
-
-          <Button
-            size="small"
-            color="secondary"
-            // value={props.request}
-            onClick={() => {
-              props.removeRequest(props.request);
-            }}
-          >
-            {props.request.volunteerId !== null ? "Cancel" : ""}
-          </Button>
+          {props.completed === false ? (
+            <Button
+              size="small"
+              color="secondary"
+              // value={props.request}
+              onClick={() => {
+                props.request.volunteerId !== null
+                  ? props.completeRequest(props.request)
+                  : props.acceptRequest(props.request);
+              }}
+            >
+              {props.request.volunteerId !== null ? "Complete" : "Accept"}
+            </Button>
+          ) : (
+            <Button size="small" color="secondary">
+              Completed
+            </Button>
+          )}
+          Hi
+          {props.completed === false ? (
+            <Button
+              size="small"
+              color="secondary"
+              // value={props.request}
+              onClick={() => {
+                props.removeRequest(props.request);
+              }}
+            >
+              {props.request.volunteerId !== null ? "Cancel" : ""}
+            </Button>
+          ) : (
+            ""
+          )}
         </div>
       </CardActions>
     </Card>
