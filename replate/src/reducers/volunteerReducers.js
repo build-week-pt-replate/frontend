@@ -219,7 +219,13 @@ const volunteerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        requests: action.payload
+        requests: state.requests.map(request => {
+          if (request.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return request
+          }
+        })
       };
     case ACCEPT_VOLUNTEER_REQUESTS_FAILURE:
       return {
@@ -236,7 +242,13 @@ const volunteerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        requests: action.payload
+        requests: state.requests.map(request => {
+          if (request.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return request
+          }
+        })
       };
     case REMOVE_VOLUNTEER_REQUESTS_FAILURE:
       return {
@@ -254,7 +266,7 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: null,
-        account: action.payload
+        requests: [...state.requests, action.payload]
       };
     case COMPLETE_VOLUNTEER_REQUESTS_FAILURE:
       return {

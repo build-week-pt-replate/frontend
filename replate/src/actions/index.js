@@ -268,7 +268,7 @@ export const removeVolunteerRequest = volunteerRequest => dispatch => {
     });
 };
 
-// //Remove Volunteer Request
+// Complete Volunteer Request
 export const COMPLETE_VOLUNTEER_REQUESTS_START =
   "COMPLETE_VOLUNTEER_REQUESTS_START";
 export const COMPLETE_VOLUNTEER_REQUESTS_SUCCESS =
@@ -286,7 +286,7 @@ export const completeVolunteerRequest = requestId => dispatch => {
   };
 
   axios
-    .put(`https://replate-be.herokuapp.com/api/request/${requestId}`, config)
+    .delete(`https://replate-be.herokuapp.com/api/request/${requestId}`, config)
     .then(res => {
       dispatch({
         type: COMPLETE_VOLUNTEER_REQUESTS_SUCCESS,
