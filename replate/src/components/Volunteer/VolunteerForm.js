@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createVolunteerAccount } from "../../actions";
 import Header from "../Header/Header";
+import VForm2 from './VForm2'
 
 class VolunteerForm extends React.Component {
   constructor(props) {
@@ -69,10 +70,7 @@ class VolunteerForm extends React.Component {
       <div className="volunteer-form-container">
         <Header />
         <div className="sign-up-wrapper">
-          <div className="sign-up-title">
-            <h2>Volunteer Sign Up</h2>
-            <p>Thanks for your interest!</p>
-          </div>
+          <VForm2 />
           <form className="sign-up-form" onSubmit={this.addAccount}>
             <h2>Create Your Account</h2>
             <div className="input-field">

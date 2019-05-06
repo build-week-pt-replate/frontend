@@ -10,7 +10,6 @@ import BusinessDash from "./components/Business/BusinessDash";
 import VolunteerForm from "./components/Volunteer/VolunteerForm";
 import SignUpFormContainer from "./components/Business/SignUpFormContainer";
 import HomePage from "./components/HomePage/HomePage";
-import Header from "./components/Header/Header";
 
 function App() {
   return (
@@ -20,11 +19,7 @@ function App() {
       <Route path="/login" component={Login} />
       <Route path="/signup/volunteer" component={VolunteerForm} />
       <Route path="/signup/business" component={SignUpFormContainer} />
-      <PrivateRoute 
-        exact 
-        path="/business/dashboard" 
-        component={BusinessDash}
-      />
+      <PrivateRoute exact path="/business/dashboard" component={BusinessDash} />
       <PrivateRoute
         exact
         path="/volunteer/dashboard"

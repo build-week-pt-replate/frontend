@@ -148,8 +148,8 @@ export const fetchVolunteerData = volunteerId => dispatch => {
       dispatch({ type: FETCH_VOLUNTEER_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response, "You got an error");
-      if (err.response.status === 403) {
+      console.log(err.status, "You got an error");
+      if (err.status === 403) {
         localStorage.removeItem("token");
       }
       dispatch({ type: FETCH_VOLUNTEER_DATA_FAILURE, payload: err.response });
@@ -230,7 +230,7 @@ export const acceptVolunteerRequest = volunteerRequest => dispatch => {
     });
 };
 
-// //Accept Volunteer Request
+// //Remove Volunteer Request
 export const REMOVE_VOLUNTEER_REQUESTS_START =
   "REMOVE_VOLUNTEER_REQUESTS_START";
 export const REMOVE_VOLUNTEER_REQUESTS_SUCCESS =
@@ -262,6 +262,40 @@ export const removeVolunteerRequest = volunteerRequest => dispatch => {
     .catch(err => {
       dispatch({
         type: REMOVE_VOLUNTEER_REQUESTS_FAILURE,
+        error: err
+      });
+      return Promise.reject(err);
+    });
+};
+
+// Complete Volunteer Request
+export const COMPLETE_VOLUNTEER_REQUESTS_START =
+  "COMPLETE_VOLUNTEER_REQUESTS_START";
+export const COMPLETE_VOLUNTEER_REQUESTS_SUCCESS =
+  "COMPLETE_VOLUNTEER_REQUESTS_SUCCESS";
+export const COMPLETE_VOLUNTEER_REQUESTS_FAILURE =
+  "COMPLETE_VOLUNTEER_REQUESTS_FAILURE";
+
+export const completeVolunteerRequest = requestId => dispatch => {
+  dispatch({ type: COMPLETE_VOLUNTEER_REQUESTS_START });
+
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: { Authorization: token }
+  };
+
+  axios
+    .delete(`https://replate-be.herokuapp.com/api/request/${requestId}`, config)
+    .then(res => {
+      dispatch({
+        type: COMPLETE_VOLUNTEER_REQUESTS_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: COMPLETE_VOLUNTEER_REQUESTS_FAILURE,
         error: err
       });
       return Promise.reject(err);
