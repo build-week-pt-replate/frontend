@@ -24,13 +24,6 @@ class SignUp extends React.Component {
               <p>I want to receive donations</p>
             </Link>
           </Paper>
-
-          <Paper className="paper-component">
-            <Link to="/signup/nonprofit" className="signup-box">
-              <h2>I'm a nonprofit</h2>
-              <p>I want to receive donations</p>
-            </Link>
-          </Paper>
         </div>
       </div>
     );

@@ -60,6 +60,7 @@ class VolunteerDash extends React.Component {
     // });
     console.log("After first setState", newRequest);
     this.props.removeVolunteerRequest(newRequest);
+    window.alert("You have removed the request from your list");
   };
 
   completeRequest = request => {
@@ -68,6 +69,7 @@ class VolunteerDash extends React.Component {
       completedRequests: [...prevState.completedRequests, request]
     }));
     this.props.completeVolunteerRequest(request.id);
+    window.alert("You have completed the request!");
   };
 
   render() {
