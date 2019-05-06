@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import Avatar from "@material-ui/core/Avatar";
+// import PropTypes from "prop-types";
+// import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import FormControl from "@material-ui/core/FormControl";
@@ -8,7 +8,7 @@ import FormControl from "@material-ui/core/FormControl";
 // import Checkbox from "@material-ui/core/Checkbox";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -54,7 +54,6 @@ function VForm2(props) {
     <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
-
         <Typography component="h1" variant="h5">
           <strong>Volunteer Signup</strong>
         </Typography>
@@ -85,7 +84,7 @@ function VForm2(props) {
             <InputLabel htmlFor="repeatPassword">Repeat Password</InputLabel>
             <Input
               name="repeatPassword"
-              type="repeatPassword"
+              type="password"
               id="repeatPassword"
               autoComplete="current-password"
               onChange={props.changeHandler}
@@ -113,8 +112,6 @@ function VForm2(props) {
               onChange={props.changeHandler}
             />
           </FormControl>
-
-
 
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="phone">Phone</InputLabel>
@@ -159,7 +156,6 @@ function VForm2(props) {
               onChange={props.changeHandler}
             />
           </FormControl>
-
 
           <Button
             type="submit"

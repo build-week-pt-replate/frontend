@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { login } from "../../actions";
 import LoginForm from "./LoginForm";
 import Header from "../Header/Header";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 class Login extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class Login extends React.Component {
     this.setState({
       credentials: {
         ...this.state.credentials,
-        businessAccount: !this.state.credentials.businessAccount,
+        businessAccount: !this.state.credentials.businessAccount
       }
     });
     console.log(e.target.value);

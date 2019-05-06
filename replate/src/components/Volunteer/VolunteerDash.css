@@ -1,3 +1,12 @@
 .dashboard-titles {
-  margin-left: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.dash-title-city {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: flex-end;
 }

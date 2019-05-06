@@ -77,13 +77,15 @@ class VolunteerDash extends React.Component {
           <div>
             <DashHeader history={this.props.history} />
             <div className="volunteer-dash">
-              <h2 className="dashboard-titles">
-                {this.props.account.firstName}'s Dashboard
-              </h2>
-              {/* <h2>Volunteer Dashboard</h2> */}
-              <h3 className="dashboard-titles">
-                City: {this.props.account.city}
-              </h3>
+              <div className="dash-title-city">
+                <h2 className="dashboard-titles">
+                  {this.props.account.firstName}'s Dashboard
+                </h2>
+                <h3 className="dashboard-titles">
+                  City: {this.props.account.city}
+                </h3>
+              </div>
+
               <div className="requests-box">
                 <h3 className="dashboard-titles">Available Requests</h3>
                 <RequestList
@@ -105,7 +107,6 @@ class VolunteerDash extends React.Component {
                   completed={false}
                 />
               </div>
-
               <div className="requests-box">
                 <h3 className="dashboard-titles">Completed Requests</h3>
                 <div className="available-requests-container">
