@@ -75,7 +75,7 @@ const RequestCard = props => {
               Completed
             </Button>
           )}
-
+          Hi
           {props.completed === false ? (
             <Button
               size="small"
