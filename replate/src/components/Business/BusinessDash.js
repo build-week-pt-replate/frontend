@@ -126,7 +126,7 @@ class BusinessDash extends React.Component {
                     </div>
                   </div>
 
-                  <div className=" ">
+                  <div className="text-center">
                     <h3>Pick Up Schedule</h3>
                   </div>
                 </div>
