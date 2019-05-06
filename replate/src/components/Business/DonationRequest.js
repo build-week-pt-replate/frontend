@@ -12,6 +12,8 @@ const styles = {
   card: {
     minWidth: 275,
     marginLeft: 26,
+    marginTop: 20,
+    marginBottom: 26
   },
   bullet: {
     display: 'inline-block',
