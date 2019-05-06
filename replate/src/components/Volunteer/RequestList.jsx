@@ -10,6 +10,7 @@ import food4 from "../../images/food4.jpeg";
 const foodArray = [food1, food2, food3, food4];
 
 const RequestList = props => {
+  console.log(props.requests, "Everytime props.requests is called");
   return (
     <div className="available-requests-container">
       {props.requests.map((request, index) => {

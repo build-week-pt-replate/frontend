@@ -41,25 +41,25 @@ class VolunteerDash extends React.Component {
     //   this.resetRequestState()
     // );
     console.log("After first setState", newRequest);
-    this.props.acceptVolunteerRequest(this.state.newRequest);
+    this.props.acceptVolunteerRequest(newRequest);
   };
 
-  resetRequestState = () => {
-    this.setState({
-      updatedRequest: null
-    });
-  };
+  // resetRequestState = () => {
+  //   this.setState({
+  //     updatedRequest: null
+  //   });
+  // };
 
   removeRequest = request => {
     console.log(request);
     let newRequest = request;
-    console.log(newRequest);
+    // console.log(newRequest);
     newRequest.volunteerId = null;
-    this.setState({
-      updatedRequest: newRequest
-    });
-    console.log("After first set", this.state.updatedRequest);
-    // this.props.removeVolunteerRequest(this.state.updatedRequest);
+    // this.setState({
+    //   updatedRequest: newRequest
+    // });
+    console.log("After first setState", newRequest);
+    this.props.removeVolunteerRequest(newRequest);
   };
 
   completeRequest = request => {
@@ -102,8 +102,8 @@ class VolunteerDash extends React.Component {
             </div>
           </div>
         ) : (
-          <h3>Loading</h3>
-        )}
+            <h3>Loading</h3>
+          )}
       </div>
     );
   }

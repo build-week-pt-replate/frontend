@@ -78,7 +78,7 @@ const RequestCard = props => {
               props.removeRequest(props.request);
             }}
           >
-            {props.request.volunteerId !== null ? "Cancel" : null}
+            {props.request.volunteerId !== null ? "Cancel" : ""}
           </Button>
         </div>
       </CardActions>
@@ -86,8 +86,8 @@ const RequestCard = props => {
   );
 };
 
-RequestCard.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+// RequestCard.propTypes = {
+//   classes: PropTypes.object.isRequired
+// };
 
 export default withStyles(styles)(RequestCard);
