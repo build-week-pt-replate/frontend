@@ -60,7 +60,7 @@ const RequestCard = props => {
           <Button
             size="small"
             color="secondary"
-            value={props.request}
+            // value={props.request}
             onClick={() => {
               props.request.volunteerId !== null
                 ? props.completeRequest(props.request)
@@ -73,7 +73,7 @@ const RequestCard = props => {
           <Button
             size="small"
             color="secondary"
-            value={props.request}
+            // value={props.request}
             onClick={() => {
               props.removeRequest(props.request);
             }}

@@ -27,19 +27,27 @@ class VolunteerDash extends React.Component {
     //Fetch volunteer data
     this.props.fetchVolunteerData(localStorage.getItem("id"));
     // fetch all requests
-    // this.props.fetchVolunteerRequests();
+    this.props.fetchVolunteerRequests();
   }
 
   acceptRequest = request => {
-    console.log(request);
+    console.log("Before id is changed", request);
     let newRequest = request;
-    console.log(newRequest);
-    newRequest.volunteerId = localStorage.getItem("id");
+    newRequest.volunteerId = Number(localStorage.getItem("id"));
+    // this.setState(
+    //   {
+    //     updatedRequest: newRequest
+    //   },
+    //   this.resetRequestState()
+    // );
+    console.log("After first setState", newRequest);
+    this.props.acceptVolunteerRequest(this.state.newRequest);
+  };
+
+  resetRequestState = () => {
     this.setState({
-      updatedRequest: newRequest
+      updatedRequest: null
     });
-    console.log("After first set", this.state.updatedRequest);
-    this.props.acceptVolunteerRequest(this.state.updatedRequest);
   };
 
   removeRequest = request => {
@@ -51,12 +59,12 @@ class VolunteerDash extends React.Component {
       updatedRequest: newRequest
     });
     console.log("After first set", this.state.updatedRequest);
-    this.props.removeVolunteerRequest(this.state.updatedRequest);
+    // this.props.removeVolunteerRequest(this.state.updatedRequest);
   };
 
   completeRequest = request => {
     console.log(request);
-    this.props.completeVolunteerRequest(request.id);
+    // this.props.completeVolunteerRequest(request.id);
   };
 
   render() {

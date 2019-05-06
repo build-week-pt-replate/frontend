@@ -24,88 +24,88 @@ import {
   COMPLETE_VOLUNTEER_REQUESTS_FAILURE
 } from "../actions/index";
 
-const mockDataVolunteer = [
-  {
-    id: 1,
-    requestDate: "2019-04-24",
-    requestTime: "11:00:00",
-    locationName: "Hunger First",
-    locationStreet: "111 Kenwood Rd",
-    locationCity: "Knoxville",
-    locationState: "TN",
-    locationZip: "37902",
-    foodDescription: "Various canned food items",
-    comment: "Can be picked up anytime before 2pm",
-    businessId: 1,
-    volunteerId: null,
-    created_at: "2019-04-30 03:26:56",
-    updated_at: "2019-04-30 03:26:56"
-  },
-  {
-    id: 2,
-    requestDate: "2019-04-27",
-    requestTime: "10:30:00",
-    locationName: "Hope Shelter",
-    locationStreet: "110 Carolina Street",
-    locationCity: "Knoxville",
-    locationState: "TN",
-    locationZip: "37902",
-    foodDescription: "Boxed and canned items",
-    comment: "",
-    businessId: 2,
-    volunteerId: 1,
-    created_at: "2019-04-30 03:26:56",
-    updated_at: "2019-04-30 03:26:56"
-  },
-  {
-    id: 3,
-    requestDate: "2019-04-27",
-    requestTime: "10:30:00",
-    locationName: "Hope Shelter",
-    locationStreet: "110 Carolina Street",
-    locationCity: "San Francisco",
-    locationState: "TN",
-    locationZip: "37902",
-    foodDescription: "Boxed and canned items",
-    comment: "",
-    businessId: 3,
-    volunteerId: null,
-    created_at: "2019-04-30 03:26:56",
-    updated_at: "2019-04-30 03:26:56"
-  },
-  {
-    id: 4,
-    requestDate: "2019-04-27",
-    requestTime: "10:30:00",
-    locationName: "Hope Shelter",
-    locationStreet: "110 Carolina Street",
-    locationCity: "San Francisco",
-    locationState: "TN",
-    locationZip: "37902",
-    foodDescription: "Boxed and canned items",
-    comment: "",
-    businessId: 7,
-    volunteerId: null,
-    created_at: "2019-04-30 03:26:56",
-    updated_at: "2019-04-30 03:26:56"
-  },
-  {
-    id: 5,
-    requestDate: "2019-04-27",
-    requestTime: "10:30:00",
-    locationName: "Hope Shelter",
-    locationStreet: "110 Carolina Street",
-    locationCity: "San Francisco",
-    locationState: "TN",
-    locationZip: "37902",
-    foodDescription: "Boxed and canned items",
-    comment: "",
-    businessId: 9,
-    volunteerId: null,
-    created_at: "2019-04-30 03:26:56",
-    updated_at: "2019-04-30 03:26:56"
-  }
-];
+// const mockDataVolunteer = [
+//   {
+//     id: 1,
+//     requestDate: "2019-04-24",
+//     requestTime: "11:00:00",
+//     locationName: "Hunger First",
+//     locationStreet: "111 Kenwood Rd",
+//     locationCity: "Knoxville",
+//     locationState: "TN",
+//     locationZip: "37902",
+//     foodDescription: "Various canned food items",
+//     comment: "Can be picked up anytime before 2pm",
+//     businessId: 1,
+//     volunteerId: null,
+//     created_at: "2019-04-30 03:26:56",
+//     updated_at: "2019-04-30 03:26:56"
+//   },
+//   {
+//     id: 2,
+//     requestDate: "2019-04-27",
+//     requestTime: "10:30:00",
+//     locationName: "Hope Shelter",
+//     locationStreet: "110 Carolina Street",
+//     locationCity: "Knoxville",
+//     locationState: "TN",
+//     locationZip: "37902",
+//     foodDescription: "Boxed and canned items",
+//     comment: "",
+//     businessId: 2,
+//     volunteerId: 1,
+//     created_at: "2019-04-30 03:26:56",
+//     updated_at: "2019-04-30 03:26:56"
+//   },
+//   {
+//     id: 3,
+//     requestDate: "2019-04-27",
+//     requestTime: "10:30:00",
+//     locationName: "Hope Shelter",
+//     locationStreet: "110 Carolina Street",
+//     locationCity: "San Francisco",
+//     locationState: "TN",
+//     locationZip: "37902",
+//     foodDescription: "Boxed and canned items",
+//     comment: "",
+//     businessId: 3,
+//     volunteerId: null,
+//     created_at: "2019-04-30 03:26:56",
+//     updated_at: "2019-04-30 03:26:56"
+//   },
+//   {
+//     id: 4,
+//     requestDate: "2019-04-27",
+//     requestTime: "10:30:00",
+//     locationName: "Hope Shelter",
+//     locationStreet: "110 Carolina Street",
+//     locationCity: "San Francisco",
+//     locationState: "TN",
+//     locationZip: "37902",
+//     foodDescription: "Boxed and canned items",
+//     comment: "",
+//     businessId: 7,
+//     volunteerId: null,
+//     created_at: "2019-04-30 03:26:56",
+//     updated_at: "2019-04-30 03:26:56"
+//   },
+//   {
+//     id: 5,
+//     requestDate: "2019-04-27",
+//     requestTime: "10:30:00",
+//     locationName: "Hope Shelter",
+//     locationStreet: "110 Carolina Street",
+//     locationCity: "San Francisco",
+//     locationState: "TN",
+//     locationZip: "37902",
+//     foodDescription: "Boxed and canned items",
+//     comment: "",
+//     businessId: 9,
+//     volunteerId: null,
+//     created_at: "2019-04-30 03:26:56",
+//     updated_at: "2019-04-30 03:26:56"
+//   }
+// ];
 
 const initialState = {
   account: null,
@@ -114,7 +114,7 @@ const initialState = {
   isBusinessInEditMode: null,
   isDeletingVolunteer: false,
   isDeletingBusiness: false,
-  requests: mockDataVolunteer,
+  requests: [],
   fetchingData: false
 };
 
@@ -202,7 +202,7 @@ const volunteerReducer = (state = initialState, action) => {
         ...state,
         error: "",
         fetchingData: false,
-        requests: mockDataVolunteer
+        requests: action.payload
       };
     case FETCH_VOLUNTEER_REQUESTS_FAILURE:
       return {

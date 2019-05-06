@@ -16,7 +16,7 @@ const VolunteerRequestList = props => {
       {props.requests.map((request, index) => {
         const imagePath = foodArray[index % 4];
 
-        if (localStorage.getItem("id") === request.volunteerId) {
+        if (Number(localStorage.getItem("id")) === request.volunteerId) {
           return (
             <RequestCard
               request={request}
