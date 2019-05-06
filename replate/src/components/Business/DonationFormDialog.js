@@ -202,6 +202,7 @@ export default class DonationFormDialog extends Component {
     return (
       <div>
         <Dialog
+          maxWidth="sm"
           open={isOpen}
           onClose={onClose}
           aria-labelledby="form-dialog-title"

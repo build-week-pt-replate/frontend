@@ -110,25 +110,23 @@ class BusinessDash extends React.Component {
             (
               <div className="dash-content">
                 <div className="titles-wrapper">
-                  <div className="business-title">
-                    <h2>{account.companyName}'s Dashboard</h2>
+                  <div className="top-dash-wrapper">
+                    <div className="business-title">
+                      <h2>{account.companyName}'s Dashboard</h2>
+                    </div>
+
+                    <div className="add-btn-wrapper">
+                      <h3 className="h-3-add-donation">Add Donation</h3>
+                      <AddMUIcon
+                        variant="outlined"
+                        color="primary"
+                        onClick={this.handleClickOpen}
+                      />
+                    </div>
                   </div>
 
                   <div className=" ">
                     <h3>Pick Up Schedule</h3>
-                  </div>
-
-            <div className="add-btn-wrapper">
-              <h3 className="h-3-add-donation">Add Donation</h3>
-              <AddMUIcon
-                variant="outlined"
-                color="primary"
-                onClick={this.handleClickOpen}
-              />
-            </div>
-
-                  <div className=" ">
-                    <h3>Next Week's Schedule</h3>
                   </div>
                 </div>
 
