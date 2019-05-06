@@ -63,7 +63,16 @@ class StepOneForm extends Component {
           <Typography component="h1" variant="h5">
             <strong>Business Donor Sign-Up</strong>
           </Typography>
-          <form className={classes.form} onSubmit={this.props.updateStepNumber}>
+          <form className={classes.form}
+                onSubmit={() => {
+                  if (repeatPassword !== password) {
+                    alert('Passwords must match!');
+
+                  } else {
+                    this.props.updateStepNumber();
+                  }
+                }}
+          >
 
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="companyName">Company Name</InputLabel>
