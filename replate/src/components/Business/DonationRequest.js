@@ -51,7 +51,9 @@ const DonationRequest = (props) => {
 
         <Typography component="p">
           Date: {props.request.requestDate} <br />
-          Request Time: {props.request.requestTime} <br />
+          Pick up Time: {props.request.requestTime} <br />
+          Street: {props.request.locationStreet} <br />
+          City: {props.request.locationCity} <br />
           Food Description: {props.request.foodDescription}
         </Typography>
       </CardContent>

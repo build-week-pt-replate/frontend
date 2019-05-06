@@ -213,7 +213,7 @@ const businessReducers = (state = initialState, action) => {
     case DELETING_BUSINESS_REQUEST_SUCCESS:
       return {
         ...state,
-        isDeletingRequest: true,
+        isDeletingRequest: false,
         error: null,
         requests: state.requests.filter(req => req.id !== Number(action.payload))
       };
