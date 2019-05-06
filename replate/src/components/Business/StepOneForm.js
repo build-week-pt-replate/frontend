@@ -58,9 +58,10 @@ class StepOneForm extends Component {
       <main className={classes.main}>
         <CssBaseline />
         <Paper className={classes.paper}>
+          <p> Step One </p>
 
           <Typography component="h1" variant="h5">
-            <strong>Business Donor Signup</strong>
+            <strong>Business Donor Sign-Up</strong>
           </Typography>
           <form className={classes.form} onSubmit={this.props.updateStepNumber}>
 
@@ -69,7 +70,7 @@ class StepOneForm extends Component {
               <Input
                 id="companyName"
                 name="companyName"
-                autoComplete
+                autoComplete="companyName"
                 autoFocus
                 value={companyName}
                 onChange={this.props.handleInputChange}
@@ -81,7 +82,8 @@ class StepOneForm extends Component {
               <Input
                 id="phone"
                 name="phone"
-                type="phone"
+                type="tel"
+                pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
                 autoComplete="phone"
                 autoFocus
                 value={phone}
@@ -122,7 +124,6 @@ class StepOneForm extends Component {
                 name="repeatPassword"
                 type="password"
                 id="repeatPassword"
-                autoComplete="current-password"
                 value={repeatPassword}
                 onChange={this.props.handleInputChange}
               />
