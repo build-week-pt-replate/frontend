@@ -58,7 +58,7 @@ function VForm2(props) {
         <Typography component="h1" variant="h5">
           <strong>Volunteer Signup</strong>
         </Typography>
-        <form className={classes.form} onSubmit={props.handleLogin}>
+        <form className={classes.form} onSubmit={props.addAccount}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
             <Input

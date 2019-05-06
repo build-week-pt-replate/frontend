@@ -1,0 +1,25 @@
+.VForm2-form-110 {
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.VForm2-paper-108 {
+  display: flex;
+  padding: 16px 24px 24px;
+  margin-top: 64px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.MuiFormControl-fullWidth-115 {
+  width: 50%;
+}
+
+.sign-up-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 80vw;
+}
