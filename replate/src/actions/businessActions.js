@@ -42,11 +42,11 @@ export const FETCH_BUSINESS_REQUESTS_SUCCESS =
 export const FETCH_BUSINESS_REQUESTS_FAILURE =
   "FETCH_BUSINESS_REQUESTS_FAILURE";
 
-export const fetchBusinessRequests = () => dispatch => {
+export const fetchBusinessRequests = businessId => dispatch => {
   dispatch({
     type: FETCH_BUSINESS_REQUESTS_START
   });
-
+  
   const token = localStorage.getItem('token');
   console.log('TOKEN:', token);
 
@@ -54,7 +54,7 @@ export const fetchBusinessRequests = () => dispatch => {
     headers: { Authorization: token }
   };
 
-  const url = 'https://replate-be.herokuapp.com/api/request';
+  const url = `https://replate-be.herokuapp.com/api/request/bus/${businessId}`;
   const request = axios.get(url, config);
 
   return request
