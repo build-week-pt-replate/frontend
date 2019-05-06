@@ -31,6 +31,7 @@ class BusinessDash extends React.Component {
       requestTime: '',
       foodDescription: '',
       comment: '',
+      businessId: '',
       stepNumber: 1,
     }
 
@@ -38,16 +39,12 @@ class BusinessDash extends React.Component {
   }
 
   componentDidMount() {
-    const businessId = localStorage.getItem('id');
-    console.log('BusinessID:::', businessId);
+    const businessId = localStorage.getItem('id')
+    this.setState({ businessId: businessId })
     if (businessId) {
       this.props.fetchBusinessData(businessId);
-
+      this.props.fetchBusinessRequests(businessId);
     }
-
-    console.log('ACCOUNT Name:', this.props.account)
-    // fetch all the donation requests here
-    this.props.fetchBusinessRequests();
   }
 
   handleInputChange = event => {
