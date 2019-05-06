@@ -11,7 +11,11 @@ import Typography from "@material-ui/core/Typography";
 const styles = {
   card: {
     minWidth: 275,
-    marginLeft: 26
+    marginLeft: 26,
+    marginBottom: 13,
+    paddingTop: 16,
+    paddingLeft: 16,
+    paddingRight: 16
   },
   bullet: {
     display: "inline-block",
@@ -42,7 +46,7 @@ const RequestCard = props => {
       />
 
       <CardContent className="card-content-words">
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component="h2" className="card-title">
           {props.request.locationName}
         </Typography>
 
@@ -60,7 +64,7 @@ const RequestCard = props => {
           {props.completed === false ? (
             <Button
               size="small"
-              color="secondary"
+              color="primary"
               // value={props.request}
               onClick={() => {
                 props.request.volunteerId !== null
@@ -71,7 +75,7 @@ const RequestCard = props => {
               {props.request.volunteerId !== null ? "Complete" : "Accept"}
             </Button>
           ) : (
-            <Button size="small" color="secondary">
+            <Button size="small" color="primary">
               Completed
             </Button>
           )}
@@ -79,7 +83,7 @@ const RequestCard = props => {
           {props.completed === false ? (
             <Button
               size="small"
-              color="secondary"
+              color="primary"
               // value={props.request}
               onClick={() => {
                 props.removeRequest(props.request);

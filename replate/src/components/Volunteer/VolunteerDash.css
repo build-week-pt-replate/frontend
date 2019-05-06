@@ -10,3 +10,8 @@
   align-content: center;
   align-items: flex-end;
 }
+
+.loading {
+  text-align: center;
+  padding-top: 40%;
+}

@@ -87,7 +87,7 @@ class VolunteerDash extends React.Component {
               </div>
 
               <div className="requests-box">
-                <h3 className="dashboard-titles">Available Requests</h3>
+                <h3 className="dashboard-titles">Available Requests:</h3>
                 <RequestList
                   requests={this.props.requests}
                   account={this.props.account}
@@ -97,8 +97,9 @@ class VolunteerDash extends React.Component {
                   completed={false}
                 />
               </div>
+
               <div className="requests-box">
-                <h3 className="dashboard-titles">Current Requests</h3>
+                <h3 className="dashboard-titles">Current Requests:</h3>
                 <VolunteerRequestList
                   requests={this.props.requests}
                   account={this.props.account}
@@ -107,8 +108,9 @@ class VolunteerDash extends React.Component {
                   completed={false}
                 />
               </div>
+
               <div className="requests-box">
-                <h3 className="dashboard-titles">Completed Requests</h3>
+                <h3 className="dashboard-titles">Completed Requests:</h3>
                 <div className="available-requests-container">
                   <VolunteerRequestList
                     requests={this.state.completedRequests}
@@ -117,20 +119,12 @@ class VolunteerDash extends React.Component {
                     completeRequest={this.completeRequest}
                     completed={true}
                   />
-                  {/* {this.state.completedRequests.map((request, index) => {
-                    const imagePath = foodArray[index % 4];
-                    <RequestCard
-                      request={request}
-                      key={request.id}
-                      imagePath={imagePath}
-                    />;
-                  })} */}
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <h3>Loading</h3>
+          <h3 className="loading">Loading...</h3>
         )}
       </div>
     );
