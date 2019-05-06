@@ -6,10 +6,36 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { withStyles } from "@material-ui/core/styles";
 
-export default class DonationFormDialog extends Component {
+const styles = {
+  modal: {
+    backgroundColor: '#0e5814',
+    color: '#FFFFFF',
+    marginBottom: 20,
+    fontSize: 21,
+  },
+
+  dialog: {
+    minHeight: '90vh',
+    maxHeight: '90vh',
+    width: 900,
+  },
+
+  contentText: {
+    marginBottom: 30,
+  },
+
+  lastContentText: {
+    marginBottom: 233
+  },
+};
+
+class DonationFormDialog extends Component {
 
   render() {
+    const { classes } = this.props;
+
     const {
       onClose,
       isOpen,
@@ -31,7 +57,11 @@ export default class DonationFormDialog extends Component {
 
     const form = (
       <>
-        <DialogTitle id="form-dialog-title">
+        <DialogTitle
+          id="form-dialog-title"
+          disableTypography
+          className={classes.modal}
+        >
           Schedule New Pick Up
         </DialogTitle>
         <DialogContent>
@@ -145,45 +175,43 @@ export default class DonationFormDialog extends Component {
 
     const confirmationView = (
       <>
-        <DialogContent>
-          <DialogTitle>
+          <DialogTitle disableTypography className={classes.modal}>
             Please verify your donation details
           </DialogTitle>
-        </DialogContent>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             Location Name:  {locationName}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             Street:  {locationStreet}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             City:  {locationCity}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             State:  {locationState}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             Zip:  {locationZip}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             Pick Up Date:  {requestDate}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             Pick Up Time:  {requestTime}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.contentText}>
             Food Description:  {foodDescription}
           </DialogContentText>
 
-          <DialogContentText>
+          <DialogContentText className={classes.lastContentText}>
             Additional Comments:  {comment}
           </DialogContentText>
 
@@ -202,6 +230,7 @@ export default class DonationFormDialog extends Component {
     return (
       <div>
         <Dialog
+          classes={{ paper: classes.dialog }}
           maxWidth="sm"
           open={isOpen}
           onClose={onClose}
@@ -217,3 +246,5 @@ export default class DonationFormDialog extends Component {
     );
   }
 }
+
+export default withStyles(styles)(DonationFormDialog);
