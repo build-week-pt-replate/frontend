@@ -148,8 +148,8 @@ export const fetchVolunteerData = volunteerId => dispatch => {
       dispatch({ type: FETCH_VOLUNTEER_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response, "You got an error");
-      if (err.response.status === 403) {
+      console.log(err.status, "You got an error");
+      if (err.status === 403) {
         localStorage.removeItem("token");
       }
       dispatch({ type: FETCH_VOLUNTEER_DATA_FAILURE, payload: err.response });
@@ -286,10 +286,7 @@ export const completeVolunteerRequest = requestId => dispatch => {
   };
 
   axios
-    .put(
-      `https://replate-be.herokuapp.com/api/request/${requestId}`,
-      config
-    )
+    .put(`https://replate-be.herokuapp.com/api/request/${requestId}`, config)
     .then(res => {
       dispatch({
         type: COMPLETE_VOLUNTEER_REQUESTS_SUCCESS,
@@ -304,4 +301,3 @@ export const completeVolunteerRequest = requestId => dispatch => {
       return Promise.reject(err);
     });
 };
-
