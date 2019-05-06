@@ -38,8 +38,12 @@ class BusinessDash extends React.Component {
   }
 
   componentDidMount() {
-    const businessId = localStorage.getItem('id')
-    this.props.fetchBusinessData(businessId);
+    const businessId = localStorage.getItem('id');
+    console.log('BusinessID:::', businessId);
+    if (businessId) {
+      this.props.fetchBusinessData(businessId);
+
+    }
 
     console.log('ACCOUNT Name:', this.props.account)
     // fetch all the donation requests here

@@ -20,7 +20,10 @@ export const createBusinessAccount = newAccount => dispatch => {
     .then(({ data }) => {
       console.log("POST::", data);
 
+      // localStorage.removeItem("token");
       localStorage.setItem("token", data.token);
+      localStorage.setItem("id", data.id);
+
       dispatch({
         type: CREATING_BUSINESS_ACCOUNT_SUCCESS,
         payload: data
