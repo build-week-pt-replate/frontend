@@ -15,29 +15,80 @@
     margin-left: 24px;
 }
 
+@media (max-width: 500px) {
+
+    .titles-wrapper {
+        margin-left: unset;
+    }
+}
+
+
 .top-dash-wrapper {
     display: flex;
     justify-content: space-evenly;
+
+}
+
+@media (max-width: 500px) {
+
+    .top-dash-wrapper {
+        display: flex;
+        flex-direction: column;
+
+    }
 }
 
 .business-title {
     margin-top: 4%;
 }
 
+
+@media (max-width: 500px) {
+
+    .business-title {
+        text-align: center;
+    }
+}
+
+
 .add-btn-wrapper {
     display: flex;
     margin-top: 4%;
 }
+
+@media (max-width: 500px) {
+
+    .add-btn-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 
 .h-3-add-donation {
     margin-top: 24px;
     margin-right: 20px;
 }
 
+
+@media (max-width: 500px) {
+
+    .h-3-add-donation {
+        margin-top: 20px;
+    }
+}
+
+
+.text-center {
+    text-align: center;
+}
+
 .donation-request-wrapper {
     display: flex;
     flex-flow: wrap;
     margin: 0 auto;
+    justify-content: center;
 }
 
 ul {
