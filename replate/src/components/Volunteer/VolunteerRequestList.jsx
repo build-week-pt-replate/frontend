@@ -24,6 +24,7 @@ const VolunteerRequestList = props => {
               imagePath={imagePath}
               removeRequest={props.removeRequest}
               completeRequest={props.completeRequest}
+              completed={props.completed}
             />
           );
         }

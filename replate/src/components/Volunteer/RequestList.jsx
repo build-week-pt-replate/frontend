@@ -29,6 +29,7 @@ const RequestList = props => {
               removeRequest={props.removeRequest}
               imagePath={imagePath}
               completeRequest={props.completeRequest}
+              completed={props.completed}
             />
           );
         }

@@ -168,7 +168,7 @@ function VForm2(props) {
             color="primary"
             className={classes.submit}
           >
-            Sign in
+            Signup
           </Button>
         </form>
       </Paper>
