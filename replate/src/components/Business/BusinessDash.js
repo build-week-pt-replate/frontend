@@ -80,8 +80,8 @@ class BusinessDash extends React.Component {
       .addDonation({businessId: this.props.account.id, ...newDonation})
       .then(() => {
         this.setState({
-          isSuccessful: true,
-          open: false
+          ...this.defaultState,
+          isSuccessful: true
         });
       })
       .catch(err => {
