@@ -60,6 +60,7 @@ class VolunteerDash extends React.Component {
     // });
     console.log("After first setState", newRequest);
     this.props.removeVolunteerRequest(newRequest);
+    window.alert("You have removed the request from your list");
   };
 
   completeRequest = request => {
@@ -68,6 +69,7 @@ class VolunteerDash extends React.Component {
       completedRequests: [...prevState.completedRequests, request]
     }));
     this.props.completeVolunteerRequest(request.id);
+    window.alert("You have completed the request!");
   };
 
   render() {
@@ -77,15 +79,17 @@ class VolunteerDash extends React.Component {
           <div>
             <DashHeader history={this.props.history} />
             <div className="volunteer-dash">
-              <h2 className="dashboard-titles">
-                {this.props.account.firstName}'s Dashboard
-              </h2>
-              {/* <h2>Volunteer Dashboard</h2> */}
-              <h3 className="dashboard-titles">
-                City: {this.props.account.city}
-              </h3>
+              <div className="dash-title-city">
+                <h2 className="dashboard-titles">
+                  {this.props.account.firstName}'s Dashboard
+                </h2>
+                <h3 className="dashboard-titles">
+                  City: {this.props.account.city}
+                </h3>
+              </div>
+
               <div className="requests-box">
-                <h3 className="dashboard-titles">Available Requests</h3>
+                <h3 className="dashboard-titles">Available Requests:</h3>
                 <RequestList
                   requests={this.props.requests}
                   account={this.props.account}
@@ -95,8 +99,9 @@ class VolunteerDash extends React.Component {
                   completed={false}
                 />
               </div>
+
               <div className="requests-box">
-                <h3 className="dashboard-titles">Current Requests</h3>
+                <h3 className="dashboard-titles">Current Requests:</h3>
                 <VolunteerRequestList
                   requests={this.props.requests}
                   account={this.props.account}
@@ -106,30 +111,28 @@ class VolunteerDash extends React.Component {
                 />
               </div>
 
-              <div className="requests-box">
-                <h3 className="dashboard-titles">Completed Requests</h3>
-                <div className="available-requests-container">
-                  <VolunteerRequestList
-                    requests={this.state.completedRequests}
-                    account={this.props.account}
-                    removeRequest={this.removeRequest}
-                    completeRequest={this.completeRequest}
-                    completed={true}
-                  />
-                  {/* {this.state.completedRequests.map((request, index) => {
-                    const imagePath = foodArray[index % 4];
-                    <RequestCard
-                      request={request}
-                      key={request.id}
-                      imagePath={imagePath}
-                    />;
-                  })} */}
+              {this.state.completedRequests.length !== 0 ? (
+                <div className="requests-box">
+                  <h3 className="dashboard-titles">Completed Requests:</h3>
+                  <div className="available-requests-container">
+                    <VolunteerRequestList
+                      requests={this.state.completedRequests}
+                      account={this.props.account}
+                      removeRequest={this.removeRequest}
+                      completeRequest={this.completeRequest}
+                      completed={true}
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div>
+                  <h3>No completed requests :(</h3>
+                </div>
+              )}
             </div>
           </div>
         ) : (
-          <h3>Loading</h3>
+          <h3 className="loading">Loading...</h3>
         )}
       </div>
     );

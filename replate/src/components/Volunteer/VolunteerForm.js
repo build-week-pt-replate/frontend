@@ -65,6 +65,7 @@ class VolunteerForm extends React.Component {
       });
       alert("Passwords did not match.");
     }
+    this.props.history.push("/login");
   };
 
   render() {
