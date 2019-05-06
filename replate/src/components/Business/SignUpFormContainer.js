@@ -32,9 +32,7 @@ class SignUpFormContainer extends Component {
     });
   };
 
-  updateStepNumber = (event) => {
-    event.preventDefault();
-
+  updateStepNumber = () => {
     this.setState({
       stepNumber: this.state.stepNumber + 1,
     })

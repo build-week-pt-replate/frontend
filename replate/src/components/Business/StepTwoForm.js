@@ -85,7 +85,6 @@ class StepTwoForm extends Component {
                 id="street"
                 name="street"
                 autoComplete="street"
-                autoFocus
                 value={street}
                 onChange={this.props.handleInputChange}
               />
@@ -97,7 +96,6 @@ class StepTwoForm extends Component {
                 id="city"
                 name="city"
                 autoComplete="city"
-                autoFocus
                 value={city}
                 onChange={this.props.handleInputChange}
               />

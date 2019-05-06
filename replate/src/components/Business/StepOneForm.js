@@ -64,7 +64,8 @@ class StepOneForm extends Component {
             <strong>Business Donor Sign-Up</strong>
           </Typography>
           <form className={classes.form}
-                onSubmit={() => {
+                onSubmit={(event) => {
+                  event.preventDefault();
                   if (repeatPassword !== password) {
                     alert('Passwords must match!');
 
@@ -94,7 +95,6 @@ class StepOneForm extends Component {
                 type="tel"
                 pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
                 autoComplete="phone"
-                autoFocus
                 value={phone}
                 onChange={this.props.handleInputChange}
               />
@@ -107,7 +107,6 @@ class StepOneForm extends Component {
                 name="email"
                 type="email"
                 autoComplete="email"
-                autoFocus
                 value={email}
                 onChange={this.props.handleInputChange}
               />
