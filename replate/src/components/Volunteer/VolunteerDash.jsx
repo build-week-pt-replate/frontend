@@ -64,7 +64,7 @@ class VolunteerDash extends React.Component {
 
   completeRequest = request => {
     console.log(request);
-    // this.props.completeVolunteerRequest(request.id);
+    this.props.completeVolunteerRequest(request.id);
   };
 
   render() {
@@ -88,6 +88,7 @@ class VolunteerDash extends React.Component {
                   account={this.props.account}
                   acceptRequest={this.acceptRequest}
                   removeRequest={this.removeRequest}
+                  completeRequest={this.completeRequest}
                 />
               </div>
               <div className="requests-box">

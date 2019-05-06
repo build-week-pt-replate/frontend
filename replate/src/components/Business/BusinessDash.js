@@ -79,7 +79,7 @@ class BusinessDash extends React.Component {
     } = this.state;
 
     this.props
-      .addDonation(newDonation)
+      .addDonation({businessId: this.props.account.id, ...newDonation})
       .then(() => {
         this.setState({
           isSuccessful: true
