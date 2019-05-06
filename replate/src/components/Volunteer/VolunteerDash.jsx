@@ -111,18 +111,24 @@ class VolunteerDash extends React.Component {
                 />
               </div>
 
-              <div className="requests-box">
-                <h3 className="dashboard-titles">Completed Requests:</h3>
-                <div className="available-requests-container">
-                  <VolunteerRequestList
-                    requests={this.state.completedRequests}
-                    account={this.props.account}
-                    removeRequest={this.removeRequest}
-                    completeRequest={this.completeRequest}
-                    completed={true}
-                  />
+              {this.state.completedRequests.length !== 0 ? (
+                <div className="requests-box">
+                  <h3 className="dashboard-titles">Completed Requests:</h3>
+                  <div className="available-requests-container">
+                    <VolunteerRequestList
+                      requests={this.state.completedRequests}
+                      account={this.props.account}
+                      removeRequest={this.removeRequest}
+                      completeRequest={this.completeRequest}
+                      completed={true}
+                    />
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div>
+                  <h3>No completed requests :(</h3>
+                </div>
+              )}
             </div>
           </div>
         ) : (
